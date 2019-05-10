@@ -5,5 +5,6 @@ $route['default_controller'] = 'auth';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['dosen'] = 'dosen/dosen';
+$route['home'] = 'dosen';
+$route['login'] = 'auth';
 

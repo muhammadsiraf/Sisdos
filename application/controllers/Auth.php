@@ -16,9 +16,8 @@ class Auth extends CI_Controller
         $this->load->view("loginview");
     }
 
-	public function aksi_login()
-	{
-			public function aksi_login(){
+
+	public function aksi_login(){
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		$where = array(
@@ -26,7 +25,7 @@ class Auth extends CI_Controller
 			'password' => md5($password)
 			);
 
-		$cek = $this->model_akun->cek_login("registrasi",$where);
+		$cek = $this->auth_model->cek_login("registrasi",$where);
 		$numrow = $cek->num_rows();
 		$level = $cek->row()->tipe;
 		if($numrow > 0){
@@ -52,6 +51,12 @@ class Auth extends CI_Controller
 		}
  	}
 	 
+	public function logout()
+    {
+ 		$this->session->sess_destroy();
+		redirect(base_url('login'));
+	}
+	
     public function add()
     {
  
