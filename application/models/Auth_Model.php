@@ -26,8 +26,12 @@ class Auth_model extends CI_Model
         ];
     }
 
-    function cek_login($table,$where){
-		return $this->db->get_where($table,$where);
+    function cek_login($username,$password){
+        $where = array(
+			'username' => $username,
+			'password' => $password
+		);
+		return $this->db->get_where($this->$_table,$where);
 	}
 
     public function getAll()
@@ -35,7 +39,7 @@ class Auth_model extends CI_Model
         return $this->db->get($this->_table)->result();
     }
 
-    public function getById($username, $password)
+    public function getByUsername($username, $password)
     {
         return $this->db->get_where($this->_table, ["username"=>$username,"password"=>$password])->row();
     }

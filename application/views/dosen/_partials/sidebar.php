@@ -5,30 +5,57 @@
           <span>Dashboard</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+          <i class="fas fa-fw fa-user "></i>
+          <span>Profile</span></a>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
+          <span>Evaluasi Kinerja Dosen</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <h6 class="dropdown-header">Login Screens:</h6>
-          <a class="dropdown-item" href="login.html">Login</a>
-          <a class="dropdown-item" href="register.html">Register</a>
-          <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
+          <h6 class="dropdown-header">Sasaran Kinerja Pegawai</h6>
+          <a class="dropdown-item" href="login.html">Rancangan Sasaran Kerja</a>
+          <a class="dropdown-item" href="register.html">Evaluasi Sasaran Kerja</a>
+          <a class="dropdown-item" href="forgot-password.html">Komponen SKP</a>
           <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Other Pages:</h6>
-          <a class="dropdown-item" href="404.html">404 Page</a>
-          <a class="dropdown-item" href="blank.html">Blank Page</a>
+          <h6 class="dropdown-header">Beban Kerja Dosen</h6>
+          <a class="dropdown-item" href="404.html">Bidang Pendidikan</a>
+          <a class="dropdown-item" href="blank.html">Bidang Penelitian</a>
+          <a class="dropdown-item" href="blank.html">Bidang Pengabdian Masyarakat</a>
+          <a class="dropdown-item" href="blank.html">Penunjang Kegiatan Dosen</a>
+          <a class="dropdown-item" href="blank.html">Kesimpulan BKD</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Pengajuan Kenaikan Jabatan</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <h6 class="dropdown-header">Kenaikan Jabatan</h6>
+          <a class="dropdown-item" href="login.html">Pengisian Kelengkapan</a>
+          <a class="dropdown-item" href="register.html">Simulasi Penilaian</a>
+          <a class="dropdown-item" href="forgot-password.html">Pengajuan</a>
+          <div class="dropdown-divider"></div>
+        </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Pengajuan Sertifikasi Dosen</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <h6 class="dropdown-header">Sertifikasi Dosen</h6>
+          <a class="dropdown-item" href="login.html">Pengisian BKD Serdosn</a>
+          <a class="dropdown-item" href="register.html">Simulasi Pengajuan</a>
+          <a class="dropdown-item" href="forgot-password.html">Pengajuan</a>
+          <div class="dropdown-divider"></div>
+        </div>
       </li>
+
     </ul>
