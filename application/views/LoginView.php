@@ -22,6 +22,14 @@
 <body class="bg-dark">
 
   <div class="container">
+    <?php 
+      // echo "barbar";
+      if(isset($notif)){
+        echo "<div class=\"alert alert-danger\" role=\"alert\">
+          $notif;
+        </div>";
+      }
+    ?>
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Login</div>
       <div class="card-body">

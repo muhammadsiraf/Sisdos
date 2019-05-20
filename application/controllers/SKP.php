@@ -34,27 +34,30 @@ class SKP extends MY_Controller
 
     public function viewPendidikanBKD()
     {
-       
+        $this->load->view("dosen/page/bkd/pendidikanBKD");                     
     }
 
     public function viewPenelitianBKD()
     {
+        $this->load->view("dosen/page/bkd/penelitianBKD");              
        
     }
 
     public function viewPengabdianBKD()
     {
+        $this->load->view("dosen/page/bkd/pengabdianBKD");              
        
     }
 
     public function viewPenunjangBKD()
     {
-       
+        $this->load->view("dosen/page/bkd/penunjangBKD");              
     }
+    
 
     public function viewKesimpulanBKD()
     {
-       
+        $this->load->view("dosen/page/bkd/kesimpulanBKD");                     
     }
     public function edit($id=null)
     {

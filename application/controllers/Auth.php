@@ -14,7 +14,15 @@ class Auth extends CI_Controller
 
     public function index()
     {	
-        $this->load->view("loginview");
+		
+		$statuslogin=$this->session->userdata('statuslogin');
+		if($statuslogin!=null)
+		{
+			redirect(base_url('home'));
+		}        
+		else{
+			$this->load->view("loginview");
+		}
     }
 
 
@@ -24,7 +32,7 @@ class Auth extends CI_Controller
 		$cek = $this->auth_model->cek_login($username,$password);
 		$numrow = $cek->num_rows();
 					
-		$level = $level->tipe;
+		// $level = $level->tipe;
 
 		if($numrow > 0){
 		
@@ -45,13 +53,21 @@ class Auth extends CI_Controller
 			);
 
 			$this->session->set_userdata($data_session);
-
-			redirect(base_url("home"));
+			
+			if($statuslogin=='loginadmin'){
+				redirect(base_url("home"));
+			}
+			elseif($statuslogin=='logindosen'){
+				redirect(base_url("home"));				
+			}
+			elseif($statuslogin=='logindikti'){
+				redirect(base_url("home"));
+			}
 
 		}else{
-			
-			echo "Username $username dan password salah $password !";
-			
+			$data["notif"]="Username dan Password Salah";
+			// echo "Username $username dan password salah $password !";
+			$this->load->view('LoginView',$data);
 			// echo 
 		}
  	}
@@ -62,6 +78,29 @@ class Auth extends CI_Controller
 		redirect(base_url('login'));
 	}
 	
+	public function home()
+    {
+		$whoislogin=$this->session->userdata('status');
+		if($whoislogin=='loginadmin'){
+	        $this->load->view("admin/dashboard");
+		}elseif($whoislogin=='logindosen'){
+	        $this->load->view("dosen/dashboard");		
+		}elseif($whoislogin=='logindikti'){
+	        $this->load->view("dikti/dashboard");		
+		}
+    }
+
+	public function viewDashboardAdmin()
+    {
+        $this->load->view("admin/dashboard");		
+    }
+
+	public function viewDashboardDikti()
+    {
+        $this->load->view("dikti/dashboard");
+	}
+	
+
     public function add()
     {
  
@@ -70,6 +109,7 @@ class Auth extends CI_Controller
 
     public function edit($id=null)
     {
+
     }
 
    public function delete($id=null)

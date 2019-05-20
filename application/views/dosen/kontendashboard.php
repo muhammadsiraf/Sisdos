@@ -76,4 +76,10 @@
 			<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 		</div>
 
+		<h1><?php $statuslogin=$this->session->userdata('nama');
+		$dosen=$this->session->userdata('dosen');
+		echo $statuslogin."<br>";
+		echo " $dosen->nama";
+		echo " $dosen->photo ";
+		?></h1>
 		</div>

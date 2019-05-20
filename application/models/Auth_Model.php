@@ -31,7 +31,7 @@ class Auth_model extends CI_Model
 			'username' => $username,
 			'password' => $password
 		);
-		return $this->db->get_where($this->$_table,$where);
+		return $this->db->get_where($this->_table,$where);
 	}
 
     public function getAll()

@@ -22,7 +22,7 @@
         <?php $this->load->view('dosen/_partials/breadcrumb.php')?>
 
         <!-- konten  dashboard -->
-        <?php $this->load->view('dosen/page/bkd/penunjangKonten.php')?>
+        <?php $this->load->view('dosen/page/kontenProfile.php')?>
         
 
       <!-- Sticky Footer -->
