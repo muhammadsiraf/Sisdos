@@ -84,9 +84,39 @@ class Dosen extends MY_Controller
         }
     }
 
+    public function tambahPendidikan()
+    {
+        $dosencek=$this->session->userdata('dosen');
+       
+       if  ($dosencek!=null){
+             echo "dosen check true";
+             $pendidikan = $this->pendidikan_model;
+             $validation = $this->form_validation;        
+              $pendidikan->addPendidikan();
+              $this->session->set_flashdata('success', 'berhasil simpan data baru');
+              redirect('/profile/');
+        }
+    }
+
 
    public function delete($id=null)
     {
    
     }
+
+    
+   public function uploadPhoto()
+    {
+       $dosencek=$this->session->userdata('dosen');
+       
+       if  ($dosencek!=null){
+             echo "dosen check true";
+             $dosen = $this->dosen_model;
+             $validation = $this->form_validation;        
+             $dosen->_uploadImageDosen();
+            //   $this->session->set_flashdata('success', 'berhasil simpan data baru');
+            //   redirect('/profile/');
+        }
+    }
+
 }

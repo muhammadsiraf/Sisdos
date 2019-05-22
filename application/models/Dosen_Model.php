@@ -79,9 +79,9 @@ class Dosen_model extends CI_Model
         $this->gelar_depan = $post["gelardepan"];
         $this->gelar_belakang = $post["gelarbelakang"];
         $this->jenis_kelamin = $post["jeniskelamin"];
-        $this->JAFA = $this->session->userdata('dosen')->JAFA;
-        $this->TMT_JAFA = $this->session->userdata('dosen')->TMT_JAFA;
-        $this->angka_kredit = $this->session->userdata('dosen')->angka_kredit;
+        $this->JAFA = $post["jafa"];
+        $this->TMT_JAFA = $post["tmtjafa"];
+        $this->angka_kredit = $post["angkakredit"];
         $this->username = $this->session->userdata('dosen')->username;
         $this->photo = $post["photo"];
         $this->db->update($this->_table, $this, array('id_dosen'=>$post['id']));
@@ -91,13 +91,13 @@ class Dosen_model extends CI_Model
     {
         $post = $this->input->post();
         $this->id_dosen = $this->session->userdata('dosen')->id_dosen;
-        $this->nama = $this->session->userdata('dosen')->nama;
+        $this->nama = $post["nama"];
         $this->NIDN_NUPN = $this->session->userdata('dosen')->NIDN_NUPN;
-        $this->tempat_lahir = $this->session->userdata('dosen')->NIDN_NUPN;
-        $this->tanggal_lahir = $this->session->userdata('dosen')->NIDN_NUPN;
-        $this->gelar_depan = $this->session->userdata('dosen')->NIDN_NUPN;
-        $this->gelar_belakang = $this->session->userdata('dosen')->NIDN_NUPN;
-        $this->jenis_kelamin = $this->session->userdata('dosen')->NIDN_NUPN;
+        $this->tempat_lahir = $post["tempatlahir"];
+        $this->tanggal_lahir = $post["tanggallahir"];
+        $this->gelar_depan = $post["gelardepan"];
+        $this->gelar_belakang = $post["gelarbelakang"];
+        $this->jenis_kelamin = $post["jeniskelamin"];
         $this->JAFA = $post["JAFA"];
         $this->TMT_JAFA = $post["TMTJAFA"];
         $this->angka_kredit = $post["angkakredit"];
@@ -106,6 +106,37 @@ class Dosen_model extends CI_Model
         $this->db->update($this->_table, $this, array('id_dosen'=>$post['id']));
     }
 
+    public function _uploadImageDosen()
+    {
+        $iddosen=$this->session->userdata('dosen')->id_dosen;
+        $uploadpath="./datadosen/$iddosen/profile/";
+        echo "->check go to upload function";
+        if(!is_dir($uploadpath)) {
+            echo "->check make path";
+            mkdir($uploadpath);
+        }
+
+        $config['upload_path']          = $uploadpath;
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['file_name']            = 'photodose1';
+        $config['overwrite']			= true;
+        $config['max_size']             = 1024; // 1MB
+    // $config['max_width']            = 1024;
+    // $config['max_height']           = 768;
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('berkas')) {
+            echo "->check uploaded";
+            $sql = "UPDATE `dosen` SET `photo` = 'photodosen1.jpg' WHERE `dosen`.`id_dosen` = $iddosen";
+            $this->db->query($sql);
+        }
+        else{
+            echo "->gak keupload gan ";
+        }
+    
+        // redirect('/profile/');
+    }
 
     public function delete($id)
     {

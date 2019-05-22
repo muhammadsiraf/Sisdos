@@ -41,7 +41,18 @@ class Pendidikan_model extends CI_Model
 
     public function addPendidikan()
     {
-       
+       $post = $this->input->post();
+        $this->id_dosen = $post["id_dosen"];
+        $this->jenjang = $post["jenjang"];
+        $this->perguruan_tinggi = $post["perguruan_tinggi"];
+        $this->program_studi = $post["program_studi"];
+        $this->negara = $post["negara"];
+        $this->tahun_mulai = $post["tahun_mulai"];
+        $this->tahun_selesai = $post["tahun_selesai"];
+        $this->gelar = $post["gelar"];
+        $this->sumber_dana = $post["sumberdana"];
+
+        $this->db->insert($this->_table, $this);
     }
 
     public function updatePendidikan()

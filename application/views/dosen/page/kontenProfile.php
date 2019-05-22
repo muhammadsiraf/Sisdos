@@ -14,9 +14,12 @@
         <img class="card-img-top" src="<?php echo base_url("$uriphoto")?>" alt="Card image cap">
         <div class="card-body">
             <p class="card-text"><?php echo base_url("$uriphoto")?> Some Dosen Photo <?php echo $dosen->photo?> text to build on the card title and make up the bulk of the card's content.</p>
-        
-        <a class="btn btn-sm btn-success" href="">New Photo?</a>
+       <form action="<?php echo base_url('dosen/uploadPhoto')?>">
+        <!-- <a class="btn btn-sm btn-success" href="">New Photo?</a -->
         <a class="btn btn-sm btn-danger" href="">Delete</a>
+        <input type="file" name="berkas" class="btn btn-sm btn-success">
+        <input type="submit" value="upload" />
+        </form>
         </div>
       </div>
     </div>

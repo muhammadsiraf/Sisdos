@@ -14,9 +14,11 @@
         <img class="card-img-top" src="<?php echo base_url("$uriphoto")?>" alt="Card image cap">
         <div class="card-body">
             <p class="card-text"><?php echo base_url("$uriphoto")?> Some Dosen Photo <?php echo $dosen->photo?> text to build on the card title and make up the bulk of the card's content.</p>
-        
-        <a class="btn btn-sm btn-success" href="">New Photo?</a>
+        <form action="<?php echo base_url('dosen/uploadPhoto')?>">
+        <!-- <a class="btn btn-sm btn-success" href="">New Photo?</a -->
         <a class="btn btn-sm btn-danger" href="">Delete</a>
+        <input type="file" name="photo" class="btn btn-sm btn-success">
+        </form>
         </div>
       </div>
     </div>
@@ -47,6 +49,9 @@
 
                       <input type="hidden" class="form-control" name="id" id="id_dosen" value="<?php echo $dosen->id_dosen;?>" title="Masukan NUPN">
                       <input type="hidden" class="form-control" name="photo" id="id_dosen" value="<?php echo $dosen->photo;?>" >
+                      <input type="hidden" class="form-control" name="jafa" id="id_dosen" value="<?php echo $dosen->JAFA;?>" >
+                      <input type="hidden" class="form-control" name="tmtjafa" id="id_dosen" value="<?php echo $dosen->TMT_JAFA;?>" >
+                      <input type="hidden" class="form-control" name="angkakredit" id="id_dosen" value="<?php echo $dosen->angka_kredit;?>" >
                       
                       <div class="form-group">
                           
@@ -114,8 +119,11 @@
              </div><!--/tab-pane-->
              <div class="tab-pane" id="pendidikan">
                 <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
+                  <form class="form" action="<?php echo base_url("dosen/tambahPendidikan")?>" method="post" id="registrationForm">
+                      <input type="hidden" class="form-control" name="id_dosen" id="id_dosen" value="<?php echo $dosen->id_dosen;?>" >
+                      
                       <div class="form-group">
+
                           
                           <div class="col-xs-6">
                               <label for="first_name"><h4>Jenjang</h4></label>
@@ -126,14 +134,14 @@
                           
                           <div class="col-xs-6">
                             <label for="last_name"><h4>Perguruan Tinggi</h4></label>
-                              <input type="text" class="form-control" name="perguru" id="perguru" placeholder="" title="perguruan tinggi">
+                              <input type="text" class="form-control" name="perguruan_tinggi" id="perguru" placeholder="" title="perguruan tinggi">
                           </div>
                       </div>
           
                       <div class="form-group">
                           <div class="col-xs-6">
                              <label for="mobile"><h4>Program Studi</h4></label>
-                              <input type="text" class="form-control" name="prodi" id="prodi" placeholder="" title="program didik">
+                              <input type="text" class="form-control" name="program_studi" id="prodi" placeholder="" title="program didik">
                           </div>
                       </div>
                       <div class="form-group">
@@ -147,14 +155,14 @@
                           
                           <div class="col-xs-6">
                               <label for="email"><h4>Tahun Mulai</h4></label>
-                              <input type="text" class="form-control" name="tahunmulai" id="tahunmulai" placeholder="" title="Tahun Mulai">
+                              <input type="text" class="form-control" name="tahun_mulai" id="tahunmulai" placeholder="" title="Tahun Mulai">
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="password"><h4>Tahun Selesai</h4></label>
-                              <input type="text" class="form-control" name="tahunselesai" id="tahunselesai" placeholder="" title="tahun selesai">
+                              <input type="text" class="form-control" name="tahun_selesai" id="tahunselesai" placeholder="" title="tahun selesai">
                           </div>
                       </div>
 
@@ -177,8 +185,8 @@
                                 <br>
                               	<!-- <button id="editProfil" class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Edit</button> -->
                                	<!-- <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button> -->
-                                <a class="btn btn-lg btn-success" href="<?php echo base_url("profile/edit/simpan")?>">Simpan</a>
-                                <a class="btn btn-lg btn-danger" href="<?php echo base_url("profile/#pendidikan")?>">Kembali</a>
+                                <input class="btn btn-success" type="submit" name="btn" value="Simpan" />
+                                <a class="btn  btn-danger" href="<?php echo base_url("profile/#pendidikan")?>">Kembali</a>
                             </div>
                       </div>
               	</form>
@@ -195,6 +203,13 @@
                   <form class="form" action="<?php echo base_url("dosen/editJabatan")?>" method="post" id="formjabatan">
                       <input type="hidden" class="form-control" name="photo" id="id_dosen" value="<?php echo $dosen->photo;?>" >
                       <input type="hidden" class="form-control" name="id" id="id_dosen" value="<?php echo $dosen->id_dosen;?>" title="Masukan NUPN">
+                      <input type="hidden" class="form-control" name="nama" id="id_dosen" value="<?php echo $dosen->nama;?>" >
+                      <input type="hidden" class="form-control" name="nupn" id="id_dosen" value="<?php echo $dosen->NIDN_NUPN;?>" >
+                      <input type="hidden" class="form-control" name="tempatlahir" id="id_dosen" value="<?php echo $dosen->tempat_lahir;?>" >
+                      <input type="hidden" class="form-control" name="tanggallahir" id="id_dosen" value="<?php echo $dosen->tanggal_lahir;?>" >
+                      <input type="hidden" class="form-control" name="gelardepan" id="id_dosen" value="<?php echo $dosen->gelar_depan;?>" >
+                      <input type="hidden" class="form-control" name="gelarbelakang" id="id_dosen" value="<?php echo $dosen->gelar_belakang;?>" >
+                      <input type="hidden" class="form-control" name="jeniskelamin" id="id_dosen" value="<?php echo $dosen->jenis_kelamin;?>" >
                     
                       <div class="form-group">
                           
