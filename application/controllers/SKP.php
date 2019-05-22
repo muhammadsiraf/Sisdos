@@ -43,7 +43,7 @@ class SKP extends MY_Controller
         else{
             $tahunajar=post['tahunajar'];
             $semester=post['semester'];
-            if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")!=null)
+            if($id_tridharma=$skp->getTridharma($iddosen,$semester,$tahunajar)!=null)
             {
                             
                             $id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")->id_tridharma;
@@ -60,7 +60,40 @@ class SKP extends MY_Controller
 
     public function viewEvaluasiSKP()
     {
-        $this->load->view("dosen/page/skp/evaluasiSKP");              
+        $iddosen=$this->session->userdata('dosen')->id_dosen;
+        
+        $skp=$this->skp_model;
+        if(!ISSET($_post['tahunajar'],$_post['semester'])){
+            $tahunajar="2018/2019";
+            $semester="genap";
+            if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")!=null)
+            {
+                            
+                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")->id_tridharma;
+                            $dataRancanganSKP=$skp->getEvalSKP($id_tridharma);
+                            $data['dataSKP']=$dataRancanganSKP;            
+            }
+            else{
+                $data['sataSKP']=null;
+            }
+            $this->load->view("dosen/page/skp/evaluasiSKP",$data);               
+        }
+        else{
+            $tahunajar=post['tahunajar'];
+            $semester=post['semester'];
+            if($id_tridharma=$skp->getTridharma($iddosen,$semester,$tahunajar)!=null)
+            {
+                            
+                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")->id_tridharma;
+                            $dataRancanganSKP=$skp->getEvalSKP($id_tridharma);
+                            $data['dataSKP']=$dataRancanganSKP;            
+            }
+            else{
+                $data['sataSKP']=null;
+            }
+            $this->load->view("dosen/page/skp/evaluasiSKP",$data);   
+        }
+                    
     }
 
     public function viewKomponenSKP()

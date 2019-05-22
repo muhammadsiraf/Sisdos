@@ -1,15 +1,17 @@
 <h1>Evaluasi SKP</h1>
+<?php $dosen=$this->session->userdata('dosen')?>
 <div class="container">
-  <div class="row">
+<div class="row">
     <div class="col-lg">
     <div class="card">
     <h5 class="card-header">Featured</h5>
     <div class="card-body">
-           <table class="table">
+    <form action="">
+          <table class="table">
       <thead class="table-bordered">
       <tr>
         <th scope="col">Nama: </th>
-        <th scope="col">Bulan Purnama</th>
+        <th scope="col"><?php echo $dosen->nama ?></th>
       </tr>
       <tr>
         <th scope="col">Status BKD:</th>
@@ -18,23 +20,40 @@
             <option>Dosen Tetap</option>
           </select>
         </th>
-
       </tr>
       <tr>
         <th scope="col">Tahun Akademik:</th>
         <th scope="col">
           <select class="form-control form-control-sm">
-            <option>2018/2019 || Genap</option>
+            <option>2018/2019</option>
+            <option>2017/2018</option>
+            <option>2016/2017</option>
+            <option>2016/2015</option>
           </select>
         </th>
 
       </tr>
+      <tr>
+        <th scope="col">Semester</th>
+        <th scope="col">
+          <select class="form-control form-control-sm">
+            <option>ganjil</option>
+            <option>genap</option>
+          </select>
+        </th>
+      </tr>
       </thead>
       </table>
+      <button class="btn btn-sm btn-primary">
+        Tampil
+      </button>
+    
+    </form>
     </div>
     </div>
     </div>
   </div>
+  
   
   <br>
 
@@ -69,78 +88,29 @@
         </thead>
 
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Melaksankan Perkuliahan</td>
-            <td >7</td>
-            <td>sks</td>
-            <td>100</td>
-            <td><input name="jumlahRealisasi" type="text" class="form-control" id="jumlahRealisasi" aria-describedby="" placeholder="Jumlah"></td>
-            <td><input name="kualitasRealisasi" type="text" class="form-control" id="kualitasRealisasi" aria-describedby="" placeholder="Kualitas "></td>
-            <td>1</td>
-            <td>SMT</td>
-            <td><button type="button" class="btn btn-warning">Edit</button></td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Membimbing Seminar </td>
-            <td >7</td>
-            <td>mhsw</td>
-            <td>100</td>
-            <td><input name="jumlahRealisasi" type="text" class="form-control" id="jumlahRealisasi" aria-describedby="" placeholder="Jumlah"></td>
-            <td><input name="kualitasRealisasi" type="text" class="form-control" id="kualitasRealisasi" aria-describedby="" placeholder="Kualitas "></td>
-            <td>1</td>
-            <td>SMT</td>
-            <td><button type="button" class="btn btn-warning">Edit</button></td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Bertugas Sebagai Penguji</td>
-            <td >2</td>
-            <td>mhsw</td>
-            <td>100</td>
-            <td><input name="jumlahRealisasi" type="text" class="form-control" id="jumlahRealisasi" aria-describedby="" placeholder="Jumlah"></td>
-            <td><input name="kualitasRealisasi" type="text" class="form-control" id="kualitasRealisasi" aria-describedby="" placeholder="Kualitas "></td>
-            <td>2</td>
-            <td>SMT</td>
-            <td><button type="button" class="btn btn-warning">Edit</button></td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>Menduduki Jabatan Pimpinan</td>
-            <td >10</td>
-            <td>sks</td>
-            <td>100</td>
-            <td><input name="jumlahRealisasi" type="text" class="form-control" id="jumlahRealisasi" aria-describedby="" placeholder="Jumlah"></td>
-            <td><input name="kualitasRealisasi" type="text" class="form-control" id="kualitasRealisasi" aria-describedby="" placeholder="Kualitas "></td>
-            <td>1</td>
-            <td>SMT</td>
-            <td><button type="button" class="btn btn-warning">Edit</button></td>
-          </tr>
-          <tr>
-            <th scope="row">5</th>
-            <td>Menghasilkan Karya Ilmiah</td>
-            <td>1</td>
-            <td>artikel</td>
-            <td>100</td>
-            <td><input name="jumlahRealisasi" type="text" class="form-control" id="jumlahRealisasi" aria-describedby="" placeholder="Jumlah"></td>
-            <td><input name="kualitasRealisasi" type="text" class="form-control" id="kualitasRealisasi" aria-describedby="" placeholder="Kualitas "></td>
-            <td>1</td>
-            <td>THN</td>
-            <td><button type="button" class="btn btn-warning">Edit</button></td>
-          </tr>
-          <tr>
-            <th scope="row">6</th>
-            <td>Memberi Latihan</td>
-            <td>1</td>
-            <td>kegiatan</td>
-            <td>100</td>
-            <td><input name="jumlahRealisasi" type="text" class="form-control" id="jumlahRealisasi" aria-describedby="" placeholder="Jumlah"></td>
-            <td><input name="kualitasRealisasi" type="text" class="form-control" id="kualitasRealisasi" aria-describedby="" placeholder="Kualitas "></td>
-            <td>1</td>
-            <td>SMT</td>
-            <td><button type="button" class="btn btn-warning">Edit</button></td>
-          </tr>
+          <?php 
+            $count=1;
+            if(ISSET($dataSKP)){
+                foreach($dataSKP as $skp){
+                // echo "<h3>$count</h3><br>";
+                // $count++;
+                echo "<tr>";
+                echo "<th scope=\"row\">$count</th>";
+                echo "<td>$skp->uraian</td>";
+                echo "<td>$skp->target_jumlah</td>";
+                echo "<td>$skp->target_satuan</td>";
+                echo "<td>$skp->kualitas_mutu</td>";
+                echo "<td><input name=\"jumlahRealisasi\" type=\"text\" class=\"form-control\" id=\"jumlahRealisasi\" aria-describedby=\"\" placeholder=\"Jumlah\" value=\"$skp->realisasi_jumlah\"></td>";
+                echo "<td><input name=\"kualitasRealisasi\" type=\"text\" class=\"form-control\" id=\"kualitasRealisasi\" aria-describedby=\"\" placeholder=\"Kualitas\" value=\"$skp->realisasi_kualitas\"></td>";
+                echo "<td>$skp->waktu_jumlah</td>";
+                echo "<td>$skp->waktu_satuan</td>";
+                echo "<td><button type=\"button\" class=\"btn btn-warning\">Edit</button></td>";
+                echo "</tr>";
+                $count++;
+            }
+            }
+            
+          ?>
           <tr>
             <th colspan="5" scope="row"></th>
             <td><button type="button" class="btn btn-success">Simpan</button></td>
