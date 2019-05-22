@@ -6,7 +6,7 @@
     <div class="card">
     <h5 class="card-header">Featured</h5>
     <div class="card-body">
-    <form action="<?php echo base_url("SKP/viewRancanganSKP")?>" method="post">
+    <form action="<?php echo base_url("skp/rancangan")?>" method="post">
           <table class="table">
       <thead class="table-bordered">
       <tr>

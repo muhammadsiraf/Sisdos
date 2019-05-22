@@ -66,7 +66,7 @@ class SKP extends MY_Controller
         $iddosen=$this->session->userdata('dosen')->id_dosen;
         
         $skp=$this->skp_model;
-        if(!ISSET($_post['tahunajar'],$_post['semester'])){
+        if(!ISSET($_POST['tahunajar'],$_POST['semester'])){
             $tahunajar="2018/2019";
             $semester="genap";
             if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")!=null)
@@ -82,8 +82,8 @@ class SKP extends MY_Controller
             $this->load->view("dosen/page/skp/evaluasiSKP",$data);               
         }
         else{
-            $tahunajar=post['tahunajar'];
-            $semester=post['semester'];
+            $tahunajar=$_POST['tahunajar'];
+            $semester=$_POST['semester'];
             if($id_tridharma=$skp->getTridharma($iddosen,$semester,$tahunajar)!=null)
             {
                             
