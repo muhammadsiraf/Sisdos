@@ -6,7 +6,7 @@
     <div class="card">
     <h5 class="card-header">Featured</h5>
     <div class="card-body">
-    <form action="">
+    <form action="<?php echo base_url("SKP/viewRancanganSKP")?>" method="post">
           <table class="table">
       <thead class="table-bordered">
       <tr>
@@ -24,11 +24,11 @@
       <tr>
         <th scope="col">Tahun Akademik:</th>
         <th scope="col">
-          <select class="form-control form-control-sm">
-            <option>2018/2019</option>
-            <option>2017/2018</option>
-            <option>2016/2017</option>
-            <option>2016/2015</option>
+          <select class="form-control form-control-sm" name="tahunajar">
+            <option value="2018/2019">2018/2019</option>
+            <option value="2017/2018">2017/2018</option>
+            <option value="2016/2017">2016/2017</option>
+            <option value="2016/2015">2016/2015</option>
           </select>
         </th>
 
@@ -36,15 +36,15 @@
       <tr>
         <th scope="col">Semester</th>
         <th scope="col">
-          <select class="form-control form-control-sm">
-            <option>ganjil</option>
-            <option>genap</option>
+          <select class="form-control form-control-sm" name="semester">
+            <option value="ganjil">ganjil</option>
+            <option value="genap" >genap</option>
           </select>
         </th>
       </tr>
       </thead>
       </table>
-      <button class="btn btn-sm btn-primary">
+      <button type=submit class="btn btn-sm btn-primary">
         Tampil
       </button>
     
