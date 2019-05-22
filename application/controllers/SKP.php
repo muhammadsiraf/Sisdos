@@ -61,6 +61,11 @@ class SKP extends MY_Controller
                
     }
 
+    public function viewTambahSKP()
+    {
+            $this->load->view("dosen/page/skp/tambahSKP");   
+    }
+
     public function viewEvaluasiSKP()
     {
         $iddosen=$this->session->userdata('dosen')->id_dosen;
