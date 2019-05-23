@@ -63,7 +63,17 @@ class SKP extends MY_Controller
 
     public function viewTambahSKP()
     {
-            $this->load->view("dosen/page/skp/tambahSKP");   
+            $skp=$this->skp_model;
+            $dataPendidikan=$skp->getListofUraian(1);
+            $dataPenelitian=$skp->getListofUraian(2);
+            $dataPengabdian=$skp->getListofUraian(3);
+            $dataPenunjang=$skp->getListofUraian(4);
+            $data["pendidikan"]=$dataPendidikan;
+            $data["penelitian"]=$dataPenelitian;
+            $data["pengabdian"]=$dataPengabdian;
+            $data["penunjang"]=$dataPenunjang;
+
+            $this->load->view("dosen/page/skp/tambahSKP",$data);   
     }
 
     public function viewEvaluasiSKP()

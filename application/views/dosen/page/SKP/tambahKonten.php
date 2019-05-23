@@ -93,42 +93,29 @@
         </thead>
 
         <tbody>
-            <tr>
-            <th scope="row">A</th>
-            <td>Studi lanjut Tingkat Doktor (S3)</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr>
-           <tr>
-            <th scope="row">B</th>
-            <td>Studi lanjut Tingkat Doktor (S2)</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Melaksankan Perkuliahan</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr>
-           <tr>
-            <th scope="row">2</th>
-            <td>Membimbing Seminar</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr> <tr>
-            <th scope="row">3</th>
-            <td>Membimbing KKN, PKN, PKL</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr> <tr>
-            <th scope="row">4</th>
-            <td>Membimbing dan Ikut Membimbing dalam Menghasilkan disertasi, tesis, skripsi dan laporan akhir studi</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr> <tr>
-            <th scope="row">5</th>
-            <td>Bertugas Sebagai Penguji pada Ujian Akhir</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          <tr>
-            <th colspan="3" scope="row"></th>
-            <td><button type="button" class="btn btn-primary">Simpan</button><button type="button" class="btn btn-danger">Batal</button></td>
-            <td></td>
-          </tr>
+        <form action="">
+          <?php 
+          $count=1;
+            if(ISSET($pendidikan)){
+              foreach ($pendidikan as $pend) {
+                // echo "$count.<br>";
+                echo "<tr>";
+                echo "<th scope=\"row\">$count</th>";
+                echo "<td>$pend->nama</td>";
+                // echo "<td colspan=\"4\" ><button type=\"button\" class=\"btn btn-success\">V</button></td>";
+                echo "<td>";
+                echo "<label class=\"btn btn-success\">";
+                echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
+                echo "V";
+                echo "</label>";
+                echo "</td>";
+                echo "<tr>";
+                $count++;
+              }
+            }
+
+          ?>
+        </form>         
         </tbody>
 
       </table>
@@ -150,42 +137,29 @@
         </thead>
 
         <tbody>
-            <tr>
-            <th scope="row">A</th>
-            <td>Studi lanjut Tingkat Doktor (S3)</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr>
-           <tr>
-            <th scope="row">B</th>
-            <td>Studi lanjut Tingkat Doktor (S2)</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Melaksankan Perkuliahan</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr>
-           <tr>
-            <th scope="row">2</th>
-            <td>Membimbing Seminar</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr> <tr>
-            <th scope="row">3</th>
-            <td>Membimbing KKN, PKN, PKL</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr> <tr>
-            <th scope="row">4</th>
-            <td>Membimbing dan Ikut Membimbing dalam Menghasilkan disertasi, tesis, skripsi dan laporan akhir studi</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr> <tr>
-            <th scope="row">5</th>
-            <td>Bertugas Sebagai Penguji pada Ujian Akhir</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          <tr>
-            <th colspan="3" scope="row"></th>
-            <td><button type="button" class="btn btn-primary">Simpan</button><button type="button" class="btn btn-danger">Batal</button></td>
-            <td></td>
-          </tr>
+           <form action="">
+          <?php 
+          $count=1;
+            if(ISSET($penelitian)){
+              foreach ($penelitian as $pen) {
+                // echo "$count.<br>";
+                echo "<tr>";
+                echo "<th scope=\"row\">$count</th>";
+                echo "<td>$pen->nama</td>";
+                // echo "<td colspan=\"4\" ><button type=\"button\" class=\"btn btn-success\">V</button></td>";
+                echo "<td>";
+                echo "<label class=\"btn btn-success\">";
+                echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
+                echo "V";
+                echo "</label>";
+                echo "</td>";
+                echo "<tr>";
+                $count++;
+              }
+            }
+
+          ?>
+        </form>         
         </tbody>
 
       </table>
@@ -207,42 +181,29 @@
         </thead>
 
         <tbody>
-            <tr>
-            <th scope="row">A</th>
-            <td>Studi lanjut Tingkat Doktor (S3)</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr>
-           <tr>
-            <th scope="row">B</th>
-            <td>Studi lanjut Tingkat Doktor (S2)</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Melaksankan Perkuliahan</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr>
-           <tr>
-            <th scope="row">2</th>
-            <td>Membimbing Seminar</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr> <tr>
-            <th scope="row">3</th>
-            <td>Membimbing KKN, PKN, PKL</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr> <tr>
-            <th scope="row">4</th>
-            <td>Membimbing dan Ikut Membimbing dalam Menghasilkan disertasi, tesis, skripsi dan laporan akhir studi</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr> <tr>
-            <th scope="row">5</th>
-            <td>Bertugas Sebagai Penguji pada Ujian Akhir</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          <tr>
-            <th colspan="3" scope="row"></th>
-            <td><button type="button" class="btn btn-primary">Simpan</button><button type="button" class="btn btn-danger">Batal</button></td>
-            <td></td>
-          </tr>
+          <form action="">
+          <?php 
+          $count=1;
+            if(ISSET($pengabdian)){
+              foreach ($pengabdian as $peng) {
+                // echo "$count.<br>";
+                echo "<tr>";
+                echo "<th scope=\"row\">$count</th>";
+                echo "<td>$peng->nama</td>";
+                // echo "<td colspan=\"4\" ><button type=\"button\" class=\"btn btn-success\">V</button></td>";
+                echo "<td>";
+                echo "<label class=\"btn btn-success\">";
+                echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
+                echo "V";
+                echo "</label>";
+                echo "</td>";
+                echo "<tr>";
+                $count++;
+              }
+            }
+
+          ?>
+        </form>         
         </tbody>
 
       </table>
@@ -265,42 +226,29 @@
         </thead>
 
         <tbody>
-            <tr>
-            <th scope="row">A</th>
-            <td>Studi lanjut Tingkat Doktor (S3)</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr>
-           <tr>
-            <th scope="row">B</th>
-            <td>Studi lanjut Tingkat Doktor (S2)</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Melaksankan Perkuliahan</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr>
-           <tr>
-            <th scope="row">2</th>
-            <td>Membimbing Seminar</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr> <tr>
-            <th scope="row">3</th>
-            <td>Membimbing KKN, PKN, PKL</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr> <tr>
-            <th scope="row">4</th>
-            <td>Membimbing dan Ikut Membimbing dalam Menghasilkan disertasi, tesis, skripsi dan laporan akhir studi</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          </tr> <tr>
-            <th scope="row">5</th>
-            <td>Bertugas Sebagai Penguji pada Ujian Akhir</td>
-            <td colspan="4" ><button type="button" class="btn btn-success">V</button></td>
-          <tr>
-            <th colspan="3" scope="row"></th>
-            <td><button type="button" class="btn btn-primary">Simpan</button><button type="button" class="btn btn-danger">Batal</button></td>
-            <td></td>
-          </tr>
+          <form action="">
+          <?php 
+          $count=1;
+            if(ISSET($penunjang)){
+              foreach ($penunjang as $penun) {
+                // echo "$count.<br>";
+                echo "<tr>";
+                echo "<th scope=\"row\">$count</th>";
+                echo "<td>$penun->nama</td>";
+                // echo "<td colspan=\"4\" ><button type=\"button\" class=\"btn btn-success\">V</button></td>";
+                echo "<td>";
+                echo "<label class=\"btn btn-success\">";
+                echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
+                echo "V";
+                echo "</label>";
+                echo "</td>";
+                echo "<tr>";
+                $count++;
+              }
+            }
+
+          ?>
+        </form>         
         </tbody>
 
       </table>
