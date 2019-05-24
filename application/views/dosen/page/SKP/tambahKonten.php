@@ -97,21 +97,49 @@
           <?php 
           $count=1;
             if(ISSET($pendidikan)){
+              // echo "EKO masuk seleksi pendidikan";
               foreach ($pendidikan as $pend) {
                 // echo "$count.<br>";
-                echo "<tr>";
-                echo "<th scope=\"row\">$count</th>";
-                echo "<td>$pend->nama</td>";
-                // echo "<td colspan=\"4\" ><button type=\"button\" class=\"btn btn-success\">V</button></td>";
-                echo "<td>";
-                echo "<label class=\"btn btn-success\">";
-                echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
-                echo "V";
-                echo "</label>";
-                echo "</td>";
-                echo "<tr>";
-                $count++;
-              }
+                if($triPendidikan!=null){
+                    //  echo "EKO masuk ke seleksi tripendidikan tidak NULL<br>";
+                     $cek=0;
+                     for ($i=0; $i < count($triPendidikan); $i++) { 
+                      //  $tes=$triPendidikan[$i]->jenis_uraian_skp;
+                      //  echo "PEND : $pend->id_jenis_uraian == ARRAY :$tes  <br>";
+                       if($pend->id_jenis_uraian==$triPendidikan[$i]->jenis_uraian_skp){
+                          $cek++;
+                       }
+                     }
+
+                    //  echo "JUMLAH SAMA: $cek<br>";
+                     if($cek==0){
+                        echo "<tr>";
+                        echo "<th scope=\"row\">$count</th>";
+                        echo "<td>$pend->nama</td>";
+                        echo "<td>";
+                        echo "<label class=\"btn btn-success\">";
+                        echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
+                        echo "V";
+                        echo "</label>";
+                        echo "</td>";
+                        echo "<tr>";
+                        $count++;      
+                     }
+                }else{
+                        echo "<tr>";
+                        echo "<th scope=\"row\">$count</th>";
+                        echo "<td>$pend->nama</td>";
+                        echo "<td>";
+                        echo "<label class=\"btn btn-success\">";
+                        echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
+                        echo "V";
+                        echo "</label>";
+                        echo "</td>";
+                        echo "<tr>";
+                        $count++;
+                }
+               
+                }
             }
 
           ?>
@@ -138,27 +166,57 @@
 
         <tbody>
            <form action="">
-          <?php 
+           <?php 
           $count=1;
             if(ISSET($penelitian)){
+              // echo "EKO masuk seleksi pendidikan";
               foreach ($penelitian as $pen) {
                 // echo "$count.<br>";
-                echo "<tr>";
-                echo "<th scope=\"row\">$count</th>";
-                echo "<td>$pen->nama</td>";
-                // echo "<td colspan=\"4\" ><button type=\"button\" class=\"btn btn-success\">V</button></td>";
-                echo "<td>";
-                echo "<label class=\"btn btn-success\">";
-                echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
-                echo "V";
-                echo "</label>";
-                echo "</td>";
-                echo "<tr>";
-                $count++;
-              }
+                if($triPenelitian!=null){
+                    //  echo "EKO masuk ke seleksi tripendidikan tidak NULL<br>";
+                     $cek=0;
+                     for ($i=0; $i < count($triPenelitian); $i++) { 
+                      //  $tes=$triPendidikan[$i]->jenis_uraian_skp;
+                      //  echo "PEND : $pend->id_jenis_uraian == ARRAY :$tes  <br>";
+                       if($pen->id_jenis_uraian==$triPenelitian[$i]->jenis_uraian_skp){
+                          $cek++;
+                       }
+                     }
+
+                    //  echo "JUMLAH SAMA: $cek<br>";
+                     if($cek==0){
+                        echo "<tr>";
+                        echo "<th scope=\"row\">$count</th>";
+                        echo "<td>$pen->nama</td>";
+                        echo "<td>";
+                        echo "<label class=\"btn btn-success\">";
+                        echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
+                        echo "V";
+                        echo "</label>";
+                        echo "</td>";
+                        echo "<tr>";
+                        $count++;      
+                     }
+                }else{
+                        echo "<tr>";
+                        echo "<th scope=\"row\">$count</th>";
+                        echo "<td>$pen->nama</td>";
+                        echo "<td>";
+                        echo "<label class=\"btn btn-success\">";
+                        echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
+                        echo "V";
+                        echo "</label>";
+                        echo "</td>";
+                        echo "<tr>";
+                        $count++;      
+                }
+
+               
+                }
             }
 
           ?>
+         
         </form>         
         </tbody>
 
@@ -185,21 +243,50 @@
           <?php 
           $count=1;
             if(ISSET($pengabdian)){
+              // echo "EKO masuk seleksi pendidikan";
               foreach ($pengabdian as $peng) {
                 // echo "$count.<br>";
-                echo "<tr>";
-                echo "<th scope=\"row\">$count</th>";
-                echo "<td>$peng->nama</td>";
-                // echo "<td colspan=\"4\" ><button type=\"button\" class=\"btn btn-success\">V</button></td>";
-                echo "<td>";
-                echo "<label class=\"btn btn-success\">";
-                echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
-                echo "V";
-                echo "</label>";
-                echo "</td>";
-                echo "<tr>";
-                $count++;
-              }
+                if($triPengabdian!=null){
+                    //  echo "EKO masuk ke seleksi tripendidikan tidak NULL<br>";
+                     $cek=0;
+                     for ($i=0; $i < count($triPengabdian); $i++) { 
+                      //  $tes=$triPendidikan[$i]->jenis_uraian_skp;
+                      //  echo "PEND : $pend->id_jenis_uraian == ARRAY :$tes  <br>";
+                       if($peng->id_jenis_uraian==$triPengabdian[$i]->jenis_uraian_skp){
+                          $cek++;
+                       }
+                     }
+
+                    //  echo "JUMLAH SAMA: $cek<br>";
+                     if($cek==0){
+                        echo "<tr>";
+                        echo "<th scope=\"row\">$count</th>";
+                        echo "<td>$peng->nama</td>";
+                        echo "<td>";
+                        echo "<label class=\"btn btn-success\">";
+                        echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
+                        echo "V";
+                        echo "</label>";
+                        echo "</td>";
+                        echo "<tr>";
+                        $count++;      
+                     }
+                }else{
+                        echo "<tr>";
+                        echo "<th scope=\"row\">$count</th>";
+                        echo "<td>$peng->nama</td>";
+                        echo "<td>";
+                        echo "<label class=\"btn btn-success\">";
+                        echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
+                        echo "V";
+                        echo "</label>";
+                        echo "</td>";
+                        echo "<tr>";
+                        $count++;      
+                }
+
+               
+                }
             }
 
           ?>
@@ -227,27 +314,57 @@
 
         <tbody>
           <form action="">
-          <?php 
+           <?php 
           $count=1;
             if(ISSET($penunjang)){
+              // echo "EKO masuk seleksi pendidikan";
               foreach ($penunjang as $penun) {
                 // echo "$count.<br>";
-                echo "<tr>";
-                echo "<th scope=\"row\">$count</th>";
-                echo "<td>$penun->nama</td>";
-                // echo "<td colspan=\"4\" ><button type=\"button\" class=\"btn btn-success\">V</button></td>";
-                echo "<td>";
-                echo "<label class=\"btn btn-success\">";
-                echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
-                echo "V";
-                echo "</label>";
-                echo "</td>";
-                echo "<tr>";
-                $count++;
-              }
+                if($triPenunjang!=null){
+                    //  echo "EKO masuk ke seleksi tripendidikan tidak NULL<br>";
+                     $cek=0;
+                     for ($i=0; $i < count($triPenunjang); $i++) { 
+                      //  $tes=$triPendidikan[$i]->jenis_uraian_skp;
+                      //  echo "PEND : $pend->id_jenis_uraian == ARRAY :$tes  <br>";
+                       if($penun->id_jenis_uraian==$triPenunjang[$i]->jenis_uraian_skp){
+                          $cek++;
+                       }
+                     }
+
+                    //  echo "JUMLAH SAMA: $cek<br>";
+                     if($cek==0){
+                        echo "<tr>";
+                        echo "<th scope=\"row\">$count</th>";
+                        echo "<td>$penun->nama</td>";
+                        echo "<td>";
+                        echo "<label class=\"btn btn-success\">";
+                        echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
+                        echo "V";
+                        echo "</label>";
+                        echo "</td>";
+                        echo "<tr>";
+                        $count++;      
+                     }
+                }else{
+                        echo "<tr>";
+                        echo "<th scope=\"row\">$count</th>";
+                        echo "<td>$penun->nama</td>";
+                        echo "<td>";
+                        echo "<label class=\"btn btn-success\">";
+                        echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
+                        echo "V";
+                        echo "</label>";
+                        echo "</td>";
+                        echo "<tr>";
+                        $count++;      
+                }
+
+               
+                }
             }
 
           ?>
+         
         </form>         
         </tbody>
 

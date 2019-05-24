@@ -107,7 +107,8 @@
           ?>
           <tr>
             <th colspan="3" scope="row"></th>
-            <td><button type="button" class="btn btn-primary">Tambah Sasaran</button></td>
+            <!-- <td><button href="<?php echo base_url("skp/tambah/?$idtridharma")?>" type="button" class="btn btn-primary">Tambah Sasaran</button></td> -->
+            <td><a class="btn btn-primary" href="<?php echo base_url("skp/tambah/$idtridharma")?>">Tambah</a></td>
             <td><button type="button" class="btn btn-success">Simpan</button></td>
           </tr>
         

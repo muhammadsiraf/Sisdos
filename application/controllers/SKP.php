@@ -35,10 +35,11 @@ class SKP extends MY_Controller
                             
                             $id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")->id_tridharma;
                             $dataRancanganSKP=$skp->getSKP($id_tridharma);
+                            $data['idtridharma']=$id_tridharma;
                             $data['dataSKP']=$dataRancanganSKP;            
             }
             else{
-                $data['sataSKP']=null;
+                $data['dataSKP']=null;
             }
             $this->load->view("dosen/page/skp/rancanganSKP",$data);               
         }
@@ -51,29 +52,51 @@ class SKP extends MY_Controller
                             
                             $id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")->id_tridharma;
                             $dataRancanganSKP=$skp->getSKP($id_tridharma);
+                            $data['idtridharma']=$id_tridharma;
                             $data['dataSKP']=$dataRancanganSKP;            
             }
             else{
-                $data['sataSKP']=null;
+                $data['dataSKP']=null;
             }
             $this->load->view("dosen/page/skp/rancanganSKP",$data);   
         }
                
     }
 
-    public function viewTambahSKP()
+    public function viewTambahSKP( $idtridharma=null )
     {
             $skp=$this->skp_model;
-            $dataPendidikan=$skp->getListofUraian(1);
-            $dataPenelitian=$skp->getListofUraian(2);
-            $dataPengabdian=$skp->getListofUraian(3);
-            $dataPenunjang=$skp->getListofUraian(4);
-            $data["pendidikan"]=$dataPendidikan;
-            $data["penelitian"]=$dataPenelitian;
-            $data["pengabdian"]=$dataPengabdian;
-            $data["penunjang"]=$dataPenunjang;
+            // $dataTridharmaCurrent=$skp->getSKPTambah($idtridharma);
+            $idtridharma=(int)$idtridharma;
+            $data["triPendidikan"]= $this->queryToArray($skp->getSKPperJenis($idtridharma,1));
+            $data["triPenelitian"]=$this->queryToArray($skp->getSKPperJenis($idtridharma,2));
+            $data["triPengabdian"]=$this->queryToArray($skp->getSKPperJenis($idtridharma,3));
+            $data["triPenunjang"]=$this->queryToArray($skp->getSKPperJenis($idtridharma,4));
+            $data["pendidikan"]=$skp->getListofUraian(1);
+            $data["penelitian"]=$skp->getListofUraian(2);
+            $data["pengabdian"]=$skp->getListofUraian(3);
+            $data["penunjang"]=$skp->getListofUraian(4);
 
             $this->load->view("dosen/page/skp/tambahSKP",$data);   
+    }
+
+    public function methodTest($nama){
+        $namaMu=$nama;
+        return $namaMu;
+    }
+
+    public function queryToArray($hasilQuery)
+    {
+        $arrayKembali=[];
+        $count=0;
+        if ($hasilQuery!=null) {
+            foreach($hasilQuery as $hasil){   
+                $arrayKembali[$count]=$hasil;
+                $count++;
+        }
+        }
+        
+        return $arrayKembali;
     }
 
     public function viewEvaluasiSKP()
@@ -89,10 +112,11 @@ class SKP extends MY_Controller
                             
                             $id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")->id_tridharma;
                             $dataRancanganSKP=$skp->getEvalSKP($id_tridharma);
+                            $data['idtridharma']=$id_tridharma;
                             $data['dataSKP']=$dataRancanganSKP;            
             }
             else{
-                $data['sataSKP']=null;
+                $data['dataSKP']=null;
             }
             $this->load->view("dosen/page/skp/evaluasiSKP",$data);               
         }
@@ -107,7 +131,7 @@ class SKP extends MY_Controller
                             $data['dataSKP']=$dataRancanganSKP;            
             }
             else{
-                $data['sataSKP']=null;
+                $data['dataSKP']=null;
             }
             $this->load->view("dosen/page/skp/evaluasiSKP",$data);   
         }
