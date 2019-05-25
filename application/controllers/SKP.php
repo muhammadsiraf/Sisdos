@@ -35,10 +35,14 @@ class SKP extends MY_Controller
                             
                             $id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")->id_tridharma;
                             $dataRancanganSKP=$skp->getSKP($id_tridharma);
+                            $data['tahunajar']=$tahunajar;
+                            $data['semester']=$semester;
                             $data['idtridharma']=$id_tridharma;
                             $data['dataSKP']=$dataRancanganSKP;            
             }
             else{
+                $data['tahunajar']=$tahunajar;
+                $data['semester']=$semester;
                 $data['dataSKP']=null;
             }
             $this->load->view("dosen/page/skp/rancanganSKP",$data);               
@@ -50,12 +54,16 @@ class SKP extends MY_Controller
             if($id_tridharma=$skp->getTridharma($iddosen,$semester,$tahunajar)!=null)
             {
                             
-                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")->id_tridharma;
+                            $id_tridharma=$skp->getTridharma($iddosen,$semester,$tahunajar)->id_tridharma;
                             $dataRancanganSKP=$skp->getSKP($id_tridharma);
+                            $data['tahunajar']=$tahunajar;
+                            $data['semester']=$semester;
                             $data['idtridharma']=$id_tridharma;
                             $data['dataSKP']=$dataRancanganSKP;            
             }
             else{
+                $data['tahunajar']=$tahunajar;
+                $data['semester']=$semester;
                 $data['dataSKP']=null;
             }
             $this->load->view("dosen/page/skp/rancanganSKP",$data);   
@@ -68,6 +76,7 @@ class SKP extends MY_Controller
             $skp=$this->skp_model;
             // $dataTridharmaCurrent=$skp->getSKPTambah($idtridharma);
             $idtridharma=(int)$idtridharma;
+            $data["idtridharma"]=$idtridharma;
             $data["triPendidikan"]= $this->queryToArray($skp->getSKPperJenis($idtridharma,1));
             $data["triPenelitian"]=$this->queryToArray($skp->getSKPperJenis($idtridharma,2));
             $data["triPengabdian"]=$this->queryToArray($skp->getSKPperJenis($idtridharma,3));
@@ -77,7 +86,16 @@ class SKP extends MY_Controller
             $data["pengabdian"]=$skp->getListofUraian(3);
             $data["penunjang"]=$skp->getListofUraian(4);
 
+
             $this->load->view("dosen/page/skp/tambahSKP",$data);   
+    }
+
+    public function tambahSKP()
+    {
+        $skp=$this->skp_model;
+        $skp->tambahSKP();
+        $idtridharma=$_POST['idtridharma'];
+        redirect("/skp/tambah/$idtridharma");
     }
 
     public function methodTest($nama){
@@ -126,7 +144,7 @@ class SKP extends MY_Controller
             if($id_tridharma=$skp->getTridharma($iddosen,$semester,$tahunajar)!=null)
             {
                             
-                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")->id_tridharma;
+                            $id_tridharma=$skp->getTridharma($iddosen,$semester,$tahunajar)->id_tridharma;
                             $dataRancanganSKP=$skp->getEvalSKP($id_tridharma);
                             $data['dataSKP']=$dataRancanganSKP;            
             }
@@ -136,6 +154,17 @@ class SKP extends MY_Controller
             $this->load->view("dosen/page/skp/evaluasiSKP",$data);   
         }
                     
+    }
+
+    public function newTridharma(){
+        $tahunajar=$_GET['tahunajar'];
+        $semester=$_GET['semester'];
+        $skp=$this->skp_model;
+        $skp->newTridharma($tahunajar,$semester);
+        $iddosen=$this->session->userdata('dosen')->id_dosen;
+        $idtridharma=$skp->getTridharma($iddosen,$semester,$tahunajar)->id_tridharma;
+        redirect("/skp/tambah/$idtridharma");
+        // $this->viewTambahSKP($idtridharma);
     }
 
     public function viewKomponenSKP()

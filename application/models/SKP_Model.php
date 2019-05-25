@@ -17,7 +17,27 @@ class SKP_model extends CI_Model
         ];
     }
 
+    public function newTridharma($tahunajar,$semester){
+        $post=$this->input->post();
+        $id_dosen=$this->session->userdata('dosen')->id_dosen;
+        $inputData=array(
+        'id_dosen' => $id_dosen,
+        'tahun_ajaran' => $tahunajar,
+        'semester' => $semester,
+        );
+        $this->db->insert($this->_tridharma, $inputData);
+    }
 
+    public function tambahSKP(){
+        $post=$this->input->post();
+        $id_tridharma=$post["idtridharma"];
+        $jenis_uraian_skp=$post["id_uraian"];
+        $inputData=array(
+            'id_tridharma'=>$id_tridharma,
+            'jenis_uraian_skp'=>$jenis_uraian_skp,
+        );
+        $this->db->insert($this->_skp, $inputData);
+    }
 
     public function getTridharma($id_dosen,$semester,$tahunajar)
     {

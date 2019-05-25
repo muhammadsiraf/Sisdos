@@ -93,7 +93,6 @@
         </thead>
 
         <tbody>
-        <form action="">
           <?php 
           $count=1;
             if(ISSET($pendidikan)){
@@ -117,10 +116,12 @@
                         echo "<th scope=\"row\">$count</th>";
                         echo "<td>$pend->nama</td>";
                         echo "<td>";
-                        echo "<label class=\"btn btn-success\">";
-                        echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
-                        echo "V";
-                        echo "</label>";
+                        $urlkirim=base_url("/SKP/tambahSKP/");
+                        echo "<form action=\"$urlkirim\" method=\"post\">";
+                        echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"idtridharma\" value=\"$idtridharma\">";
+                        echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"id_uraian\" value=\"$pend->id_jenis_uraian\">";
+                        echo "<input class=\"btn btn-success\" type=\"submit\" id=\"inlineCheckbox1\" value=\"tambah\">";
+                        echo "</form>";
                         echo "</td>";
                         echo "<tr>";
                         $count++;      
@@ -130,10 +131,12 @@
                         echo "<th scope=\"row\">$count</th>";
                         echo "<td>$pend->nama</td>";
                         echo "<td>";
-                        echo "<label class=\"btn btn-success\">";
-                        echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
-                        echo "V";
-                        echo "</label>";
+                        $urlkirim=base_url("/SKP/tambahSKP/");
+                        echo "<form action=\"$urlkirim\" method=\"post\">";
+                        echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"idtridharma\" value=\"$idtridharma\">";
+                        echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"id_uraian\" value=\"$pend->id_jenis_uraian\">";
+                        echo "<input class=\"btn btn-success\" type=\"submit\" id=\"inlineCheckbox1\" value=\"tambah\">";
+                        echo "</form>";
                         echo "</td>";
                         echo "<tr>";
                         $count++;
@@ -143,7 +146,7 @@
             }
 
           ?>
-        </form>         
+                
         </tbody>
 
       </table>
@@ -189,10 +192,12 @@
                         echo "<th scope=\"row\">$count</th>";
                         echo "<td>$pen->nama</td>";
                         echo "<td>";
-                        echo "<label class=\"btn btn-success\">";
-                        echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
-                        echo "V";
-                        echo "</label>";
+                        $urlkirim=base_url("/SKP/tambahSKP/");
+                        echo "<form action=\"$urlkirim\" method=\"post\">";
+                        echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"idtridharma\" value=\"$idtridharma\">";
+                        echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"id_uraian\" value=\"$pen->id_jenis_uraian\">";
+                        echo "<input class=\"btn btn-success\" type=\"submit\" id=\"inlineCheckbox1\" value=\"tambah\">";
+                        echo "</form>";
                         echo "</td>";
                         echo "<tr>";
                         $count++;      
@@ -202,10 +207,12 @@
                         echo "<th scope=\"row\">$count</th>";
                         echo "<td>$pen->nama</td>";
                         echo "<td>";
-                        echo "<label class=\"btn btn-success\">";
-                        echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
-                        echo "V";
-                        echo "</label>";
+                        $urlkirim=base_url("/SKP/tambahSKP/");
+                        echo "<form action=\"$urlkirim\" method=\"post\">";
+                        echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"idtridharma\" value=\"$idtridharma\">";
+                        echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"id_uraian\" value=\"$pen->id_jenis_uraian\">";
+                        echo "<input class=\"btn btn-success\" type=\"submit\" id=\"inlineCheckbox1\" value=\"tambah\">";
+                        echo "</form>";
                         echo "</td>";
                         echo "<tr>";
                         $count++;      
@@ -263,10 +270,12 @@
                         echo "<th scope=\"row\">$count</th>";
                         echo "<td>$peng->nama</td>";
                         echo "<td>";
-                        echo "<label class=\"btn btn-success\">";
-                        echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
-                        echo "V";
-                        echo "</label>";
+                        $urlkirim=base_url("/SKP/tambahSKP/");
+                        echo "<form action=\"$urlkirim\" method=\"post\">";
+                        echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"idtridharma\" value=\"$idtridharma\">";
+                        echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"id_uraian\" value=\"$peng->id_jenis_uraian\">";
+                        echo "<input class=\"btn btn-success\" type=\"submit\" id=\"inlineCheckbox1\" value=\"tambah\">";
+                        echo "</form>";
                         echo "</td>";
                         echo "<tr>";
                         $count++;      
@@ -276,10 +285,12 @@
                         echo "<th scope=\"row\">$count</th>";
                         echo "<td>$peng->nama</td>";
                         echo "<td>";
-                        echo "<label class=\"btn btn-success\">";
-                        echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
-                        echo "V";
-                        echo "</label>";
+                        $urlkirim=base_url("/SKP/tambahSKP/");
+                        echo "<form action=\"$urlkirim\" method=\"post\">";
+                        echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"idtridharma\" value=\"$idtridharma\">";
+                        echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"id_uraian\" value=\"$peng->id_jenis_uraian\">";
+                        echo "<input class=\"btn btn-success\" type=\"submit\" id=\"inlineCheckbox1\" value=\"tambah\">";
+                        echo "</form>";
                         echo "</td>";
                         echo "<tr>";
                         $count++;      
@@ -337,10 +348,12 @@
                         echo "<th scope=\"row\">$count</th>";
                         echo "<td>$penun->nama</td>";
                         echo "<td>";
-                        echo "<label class=\"btn btn-success\">";
-                        echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
-                        echo "V";
-                        echo "</label>";
+                        $urlkirim=base_url("/SKP/tambahSKP/");
+                        echo "<form action=\"$urlkirim\" method=\"post\">";
+                        echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"idtridharma\" value=\"$idtridharma\">";
+                        echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"id_uraian\" value=\"$penun->id_jenis_uraian\">";
+                        echo "<input class=\"btn btn-success\" type=\"submit\" id=\"inlineCheckbox1\" value=\"tambah\">";
+                        echo "</form>";
                         echo "</td>";
                         echo "<tr>";
                         $count++;      
@@ -350,10 +363,12 @@
                         echo "<th scope=\"row\">$count</th>";
                         echo "<td>$penun->nama</td>";
                         echo "<td>";
-                        echo "<label class=\"btn btn-success\">";
-                        echo "<input class=\"btn btn-success\" type=\"checkbox\" id=\"inlineCheckbox1\" value=\"yes\">";
-                        echo "V";
-                        echo "</label>";
+                        $urlkirim=base_url("/SKP/tambahSKP/");
+                        echo "<form action=\"$urlkirim\" method=\"post\">";
+                        echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"idtridharma\" value=\"$idtridharma\">";
+                        echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"id_uraian\" value=\"$penun->id_jenis_uraian\">";
+                        echo "<input class=\"btn btn-success\" type=\"submit\" id=\"inlineCheckbox1\" value=\"tambah\"  >";
+                        echo "</form>";
                         echo "</td>";
                         echo "<tr>";
                         $count++;      
