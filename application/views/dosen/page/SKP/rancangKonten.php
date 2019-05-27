@@ -155,9 +155,10 @@ function submitForms(){
         
         for (i=1;i<panjang;i++){
             var namaform="form"+i;
-            document.forms[namaform].submit();
+            document.getElementById(namaform).submit();
             return true;
         }
+        document.location.reload(true);
 }
 
 $(document).ready(function(){

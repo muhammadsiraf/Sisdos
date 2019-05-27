@@ -209,7 +209,41 @@ class SKP extends MY_Controller
 
     public function viewPendidikanBKD()
     {
-        $this->load->view("dosen/page/bkd/pendidikanBKD");                     
+        $iddosen=$this->session->userdata('dosen')->id_dosen;
+        
+        $skp=$this->skp_model;
+        if(!ISSET($_POST['tahunajar'],$_POST['semester'])){
+            $tahunajar="2018/2019";
+            $semester="genap";
+            if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")!=null)
+            {
+                            
+                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")->id_tridharma;
+                            $dataRancanganSKP=$skp->getBKDperjenis($id_tridharma,1);
+                            $data['idtridharma']=$id_tridharma;
+                            $data['dataBKD']=$dataRancanganSKP;            
+            }
+            else{
+                $data['dataBKD']=null;
+            }
+            $this->load->view("dosen/page/bkd/pendidikanBKD",$data);                           
+        }
+        else{
+            $tahunajar=$_POST['tahunajar'];
+            $semester=$_POST['semester'];
+            if($id_tridharma=$skp->getTridharma($iddosen,$semester,$tahunajar)!=null)
+            {
+                            
+                            $id_tridharma=$skp->getTridharma($iddosen,$semester,$tahunajar)->id_tridharma;
+                            $dataRancanganSKP=$skp->getBKDperjenis($id_tridharma,1);
+                            $data['dataBKD']=$dataRancanganSKP;            
+            }
+            else{
+                $data['dataBKD']=null;
+                $this->load->view("dosen/page/bkd/pendidikanBKD",$data);                           
+            }
+        }
+                    
     }
 
     public function viewPenelitianBKD()

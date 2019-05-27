@@ -97,12 +97,15 @@ class SKP_model extends CI_Model
     {
         // return $this->db->query("SELECT uraian_skp.uraian , skp_penilaian.target_jumlah, skp_penilaian.target_satuan, skp_penilaian.kualitas_mutu, skp_penilaian.waktu_jumlah, skp_penilaian.waktu_satuan, skp_penilaian.realisasi_jumlah, skp_penilaian.realisasi_kualitas FROM `skp_penilaian` INNER JOIN `uraian_skp` ON skp_penilaian.id_uraian_skp=uraian_skp.id_uraian WHERE id_tridharma=$id_tridharma")->result();
         return $this->db->query("SELECT jenis_uraian_skp.nama as uraian , skp_penilaian.target_jumlah, skp_penilaian.target_satuan, skp_penilaian.kualitas_mutu, skp_penilaian.waktu_jumlah, skp_penilaian.waktu_satuan, skp_penilaian.realisasi_jumlah, skp_penilaian.realisasi_kualitas, skp_penilaian.id_pskp FROM `skp_penilaian` INNER JOIN `jenis_uraian_skp` ON skp_penilaian.jenis_uraian_skp=jenis_uraian_skp.id_jenis_uraian WHERE id_tridharma=$id_tridharma")->result();
-
     }
 
     public function getListofUraian($byjenisTridharma)
     {
         return $this->db->get_where($this->_jenisUraian,["id_jenis_tridharma"=>$byjenisTridharma])->result();
+    }
+
+    public function getBKDperjenis($id_tridharma,$id_jenisTridharma){
+        return $this->db->query("SELECT jenis_uraian_skp.nama as uraian, skp_penilaian.target_jumlah, skp_penilaian.target_satuan, skp_penilaian.kualitas_mutu, skp_penilaian.waktu_jumlah, skp_penilaian.waktu_satuan, skp_penilaian.id_pskp, skp_penilaian.realisasi_jumlah, skp_penilaian.realisasi_kualitas, skp_penilaian.sks_bkd, skp_penilaian.rekomendasi FROM `skp_penilaian` INNER JOIN `jenis_uraian_skp` ON skp_penilaian.jenis_uraian_skp=jenis_uraian_skp.id_jenis_uraian WHERE id_tridharma=$id_tridharma AND jenis_uraian_skp.id_jenis_tridharma=$id_jenisTridharma")->result();
     }
 
 }
