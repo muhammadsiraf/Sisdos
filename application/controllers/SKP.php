@@ -110,6 +110,27 @@ class SKP extends MY_Controller
         redirect("/skp/rancangan");
     }
 
+    public function updateEvalSKP(){
+        $skp=$this->skp_model;
+        $post=$this->input->post();
+        $idpskp=$post["idpskp"];
+        $realisasiJumlah=$post["jumlahRealisasi"];
+        $realisasiKualitas=$post["kualitasRealisasi"];
+
+        $where=array(
+            'id_pskp'=>$idpskp,
+        );
+
+        $dataMasuk=array(
+            'realisasi_jumlah'=>$realisasiJumlah,
+            'realisasi_kualitas'=>$realisasiKualitas
+        );
+
+        $skp->updateSKP($dataMasuk,$where);
+        redirect("/skp/evaluasi");
+
+    }
+
     public function methodTest($nama){
         $namaMu=$nama;
         return $namaMu;

@@ -100,12 +100,16 @@
                 echo "<td>$skp->target_jumlah</td>";
                 echo "<td>$skp->target_satuan</td>";
                 echo "<td>$skp->kualitas_mutu</td>";
+                $urlupdate=base_url("SKP/updateEvalSKP");
+                echo "<form action=\"$urlupdate\" method=\"POST\">";
+                echo "<input type=\"hidden\" value=\"$skp->id_pskp\" name=\"idpskp\">";
                 echo "<td><input name=\"jumlahRealisasi\" type=\"text\" class=\"form-control\" id=\"jumlahRealisasi\" aria-describedby=\"\" placeholder=\"Jumlah\" value=\"$skp->realisasi_jumlah\"></td>";
                 echo "<td><input name=\"kualitasRealisasi\" type=\"text\" class=\"form-control\" id=\"kualitasRealisasi\" aria-describedby=\"\" placeholder=\"Kualitas\" value=\"$skp->realisasi_kualitas\"></td>";
                 echo "<td>$skp->waktu_jumlah</td>";
                 echo "<td>$skp->waktu_satuan</td>";
-                echo "<td><button type=\"button\" class=\"btn btn-warning\">Edit</button></td>";
+                echo "<td><button type=\"button\" class=\"btn btn-warning\">Edit</button><input class=\"btn btn-success\" type=\"submit\" value=\"update\"></td>";
                 echo "</tr>";
+                echo "</form>";
                 $count++;
             }
             }
