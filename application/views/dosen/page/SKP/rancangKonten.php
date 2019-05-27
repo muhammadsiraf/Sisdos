@@ -1,4 +1,7 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  
 <h1>Rancangan SKP </h1>
+
 <?php $dosen=$this->session->userdata('dosen')?>
 <div class="container">
   <div class="row">
@@ -90,16 +93,24 @@
                 foreach($dataSKP as $skp){
                 // echo "<h3>$count</h3><br>";
                 // $count++;
+
                 echo "<tr>";
                 echo "<th scope=\"row\">$count</th>";
                 echo "<td>$skp->uraian</td>";
+                $namaid="form$count";
+                $uriEdit=base_url("/SKP/editSKP/");
+                echo "<form action=\"$uriEdit\" id=\"$namaid\" method=\"POST\">";
+                echo "<input name=\"idpskp\" type=\"hidden\" value=\"$skp->id_pskp\">";
                 echo "<td><input name=\"jumlahTarget\" type=\"text\" class=\"form-control\" id=\"jumlahTarget\" aria-describedby=\"\" placeholder=\"Jumlah\" value=\"$skp->target_jumlah\"></td>";
                 echo "<td><input name=\"satuanTarget\" type=\"text\" class=\"form-control\" id=\"satuanTarget\" aria-describedby=\"\" placeholder=\"Satuan\" value=\"$skp->target_satuan\"></td>";
                 echo "<td><input name=\"kualitasMutu\" type=\"text\" class=\"form-control\" id=\"kualitasMutu\" aria-describedby=\"\" placeholder=\"Mutu\" value=\"$skp->kualitas_mutu\"></td>";
                 echo "<td><input name=\"jumlahWaktu\" type=\"text\" class=\"form-control\" id=\"jumlahWaktu\" aria-describedby=\"\" placeholder=\"Jumlah\" value=\"$skp->waktu_jumlah\"></td>";
                 echo "<td><input name=\"satuanWaktu\" type=\"text\" class=\"form-control\" id=\"satuanWaktu\" aria-describedby=\"\" placeholder=\"Satuan\" value=\"$skp->waktu_satuan\"></td>";
-                echo "<td><button type=\"button\" class=\"btn btn-danger\">X</button></td>";
+                $urldelete=base_url("/SKP/deleteSKP/$skp->id_pskp");             
+                $urlupdate=base_url("/SKP/editSKP/");  
+                echo "<td><a class=\"btn btn-danger\"href=\"$urldelete\">X</a>||<input class=\"btn btn-primary\" type=\"submit\" value=\"update\"></td>";
                 echo " </tr>";
+                echo "</form>";
                 $count++;
             }
             }
@@ -118,7 +129,7 @@
               }
             ?>
   
-            <td><button type="button" class="btn btn-success">Simpan</button></td>
+            <td><input href="javascript:void(0);" type="submit" class="btn btn-success" id="nar" value="simpan"/></td>
           </tr>
         
         </form>
@@ -131,3 +142,29 @@
     
   </div>
 </div>
+
+<script>
+
+function masook(){
+  alert("Masuk Pak De");
+}    
+
+function submitForms(){
+        var i;
+        var panjang=<?php Print($count); ?>;
+        
+        for (i=1;i<panjang;i++){
+            var namaform="form"+i;
+            document.forms[namaform].submit();
+            return true;
+        }
+}
+
+$(document).ready(function(){
+ 
+    $("#nar").click(function(){
+        submitForms();
+    })
+
+});
+</script>

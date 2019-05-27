@@ -98,6 +98,18 @@ class SKP extends MY_Controller
         redirect("/skp/tambah/$idtridharma");
     }
 
+    public function deleteSKP($id_pskp=null){
+        $skp=$this->skp_model;
+        $skp->hapusSKP($id_pskp);
+        redirect("/skp/rancangan");
+    }
+
+    public function editSKP(){
+        $skp=$this->skp_model;
+        $skp->editSKP();
+        redirect("/skp/rancangan");
+    }
+
     public function methodTest($nama){
         $namaMu=$nama;
         return $namaMu;
@@ -166,6 +178,8 @@ class SKP extends MY_Controller
         redirect("/skp/tambah/$idtridharma");
         // $this->viewTambahSKP($idtridharma);
     }
+
+    
 
     public function viewKomponenSKP()
     {

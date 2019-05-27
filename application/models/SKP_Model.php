@@ -39,6 +39,34 @@ class SKP_model extends CI_Model
         $this->db->insert($this->_skp, $inputData);
     }
 
+    public function hapusSKP($id_pskp){
+        $where=array(
+            'id_pskp'=>$id_pskp,
+        );
+        $this->db->delete($this->_skp,$where);
+    }
+
+    public function editSKP(){
+        $post=$this->input->post();
+        $idpskp=$post["idpskp"];
+        $jumlahTarget=$post["jumlahTarget"];
+        $satuanTarget=$post["satuanTarget"];
+        $kualitasMutu=$post["kualitasMutu"];
+        $jumlahWaktu=$post["jumlahWaktu"];
+        $satuanWaktu=$post["satuanWaktu"];
+        $where=array(
+            'id_pskp'=>$idpskp
+        );
+        $inputData=array(
+            'target_jumlah'=>$jumlahTarget,
+            'target_satuan'=>$satuanTarget,
+            'kualitas_mutu'=>$kualitasMutu,
+            'waktu_jumlah'=>$jumlahWaktu,
+            'waktu_satuan'=>$satuanWaktu,
+        );
+        $this->db->update($this->_skp,$inputData,$where);
+    }
+
     public function getTridharma($id_dosen,$semester,$tahunajar)
     {
         return $this->db->get_where($this->_tridharma, ["id_dosen"=>$id_dosen,"tahun_ajaran"=>$tahunajar,"semester"=>$semester])->row();
@@ -47,7 +75,7 @@ class SKP_model extends CI_Model
     public function getSKP($id_tridharma)
     {
         // return $this->db->query("SELECT uraian_skp.uraian, skp_penilaian.target_jumlah, skp_penilaian.target_satuan, skp_penilaian.kualitas_mutu, skp_penilaian.waktu_jumlah, skp_penilaian.waktu_satuan FROM `skp_penilaian` INNER JOIN `uraian_skp` ON skp_penilaian.id_uraian_skp=uraian_skp.id_uraian WHERE id_tridharma=$id_tridharma")->result();
-        return $this->db->query("SELECT jenis_uraian_skp.nama as uraian, skp_penilaian.target_jumlah, skp_penilaian.target_satuan, skp_penilaian.kualitas_mutu, skp_penilaian.waktu_jumlah, skp_penilaian.waktu_satuan FROM `skp_penilaian` INNER JOIN `jenis_uraian_skp` ON skp_penilaian.jenis_uraian_skp=jenis_uraian_skp.id_jenis_uraian WHERE id_tridharma=$id_tridharma")->result();
+        return $this->db->query("SELECT jenis_uraian_skp.nama as uraian, skp_penilaian.target_jumlah, skp_penilaian.target_satuan, skp_penilaian.kualitas_mutu, skp_penilaian.waktu_jumlah, skp_penilaian.waktu_satuan, skp_penilaian.id_pskp FROM `skp_penilaian` INNER JOIN `jenis_uraian_skp` ON skp_penilaian.jenis_uraian_skp=jenis_uraian_skp.id_jenis_uraian WHERE id_tridharma=$id_tridharma")->result();
         
     }
 

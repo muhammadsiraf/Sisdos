@@ -117,7 +117,7 @@
                         echo "<td>$pend->nama</td>";
                         echo "<td>";
                         $urlkirim=base_url("/SKP/tambahSKP/");
-                        echo "<form action=\"$urlkirim\" method=\"post\">";
+                        echo "<form action=\"$urlkirim\" method=\"POST\">";
                         echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"idtridharma\" value=\"$idtridharma\">";
                         echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"id_uraian\" value=\"$pend->id_jenis_uraian\">";
                         echo "<input class=\"btn btn-success\" type=\"submit\" id=\"inlineCheckbox1\" value=\"tambah\">";
@@ -132,7 +132,7 @@
                         echo "<td>$pend->nama</td>";
                         echo "<td>";
                         $urlkirim=base_url("/SKP/tambahSKP/");
-                        echo "<form action=\"$urlkirim\" method=\"post\">";
+                        echo "<form action=\"$urlkirim\" method=\"POST\">";
                         echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"idtridharma\" value=\"$idtridharma\">";
                         echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"id_uraian\" value=\"$pend->id_jenis_uraian\">";
                         echo "<input class=\"btn btn-success\" type=\"submit\" id=\"inlineCheckbox1\" value=\"tambah\">";
@@ -193,7 +193,7 @@
                         echo "<td>$pen->nama</td>";
                         echo "<td>";
                         $urlkirim=base_url("/SKP/tambahSKP/");
-                        echo "<form action=\"$urlkirim\" method=\"post\">";
+                        echo "<form action=\"$urlkirim\" method=\"POST\">";
                         echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"idtridharma\" value=\"$idtridharma\">";
                         echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"id_uraian\" value=\"$pen->id_jenis_uraian\">";
                         echo "<input class=\"btn btn-success\" type=\"submit\" id=\"inlineCheckbox1\" value=\"tambah\">";
@@ -208,7 +208,7 @@
                         echo "<td>$pen->nama</td>";
                         echo "<td>";
                         $urlkirim=base_url("/SKP/tambahSKP/");
-                        echo "<form action=\"$urlkirim\" method=\"post\">";
+                        echo "<form action=\"$urlkirim\" method=\"POST\">";
                         echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"idtridharma\" value=\"$idtridharma\">";
                         echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"id_uraian\" value=\"$pen->id_jenis_uraian\">";
                         echo "<input class=\"btn btn-success\" type=\"submit\" id=\"inlineCheckbox1\" value=\"tambah\">";
@@ -271,7 +271,7 @@
                         echo "<td>$peng->nama</td>";
                         echo "<td>";
                         $urlkirim=base_url("/SKP/tambahSKP/");
-                        echo "<form action=\"$urlkirim\" method=\"post\">";
+                        echo "<form action=\"$urlkirim\" method=\"POST\">";
                         echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"idtridharma\" value=\"$idtridharma\">";
                         echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"id_uraian\" value=\"$peng->id_jenis_uraian\">";
                         echo "<input class=\"btn btn-success\" type=\"submit\" id=\"inlineCheckbox1\" value=\"tambah\">";
@@ -286,7 +286,7 @@
                         echo "<td>$peng->nama</td>";
                         echo "<td>";
                         $urlkirim=base_url("/SKP/tambahSKP/");
-                        echo "<form action=\"$urlkirim\" method=\"post\">";
+                        echo "<form action=\"$urlkirim\" method=\"POST\">";
                         echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"idtridharma\" value=\"$idtridharma\">";
                         echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"id_uraian\" value=\"$peng->id_jenis_uraian\">";
                         echo "<input class=\"btn btn-success\" type=\"submit\" id=\"inlineCheckbox1\" value=\"tambah\">";
@@ -349,7 +349,7 @@
                         echo "<td>$penun->nama</td>";
                         echo "<td>";
                         $urlkirim=base_url("/SKP/tambahSKP/");
-                        echo "<form action=\"$urlkirim\" method=\"post\">";
+                        echo "<form action=\"$urlkirim\" method=\"POST\">";
                         echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"idtridharma\" value=\"$idtridharma\">";
                         echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"id_uraian\" value=\"$penun->id_jenis_uraian\">";
                         echo "<input class=\"btn btn-success\" type=\"submit\" id=\"inlineCheckbox1\" value=\"tambah\">";
@@ -364,7 +364,7 @@
                         echo "<td>$penun->nama</td>";
                         echo "<td>";
                         $urlkirim=base_url("/SKP/tambahSKP/");
-                        echo "<form action=\"$urlkirim\" method=\"post\">";
+                        echo "<form action=\"$urlkirim\" method=\"POST\">";
                         echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"idtridharma\" value=\"$idtridharma\">";
                         echo "<input class=\"text\" type=\"hidden\" id=\"inlineCheckbox1\" name=\"id_uraian\" value=\"$penun->id_jenis_uraian\">";
                         echo "<input class=\"btn btn-success\" type=\"submit\" id=\"inlineCheckbox1\" value=\"tambah\"  >";
