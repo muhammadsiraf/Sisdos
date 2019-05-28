@@ -87,33 +87,58 @@
         </thead>
 
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Menduduki Jabatan Pimpinan di Perguruan Tinggi</td>
-            <td >7</td>
-            <td>sks</td>
-            <td>100</td>
-            <td>10</td>
-            <td>sks</td>
-            <td>100</td>
-            <td><input name="jumlahRealisasi" type="text" class="form-control" id="jumlahRealisasi" aria-describedby="" placeholder="Jumlah"></td>
-            <td><input name="kualitasRealisasi" type="text" class="form-control" id="kualitasRealisasi" aria-describedby="" placeholder="Kualitas "></td>
-            <td><button type="button" class="btn btn-warning">Lihat</button></td>
-          </tr>
+           <?php 
+          
+          $count=1;
+          foreach($dataBKD as $bkd){
+              echo "<tr>";
+              echo "<th scope=\"row\">$count</th>";
+              echo "<td>$bkd->uraian</td>";
+              echo "<td>$bkd->target_jumlah</td>";
+              echo "<td>$bkd->target_satuan</td>";
+              echo "<td>$bkd->kualitas_mutu</td>";
+              echo "<td>$bkd->realisasi_jumlah</td>";
+              echo "<td>$bkd->target_satuan</td>";
+              echo "<td>$bkd->realisasi_kualitas</td>";
+              $urlupdate=base_url("/SKP/updateBKD/3");
+              echo "<form action=\"$urlupdate\" method=\"POST\">";
+              echo "<td><input name=\"sksBKD\" type=\"text\" class=\"form-control\" id=\"jumlahRealisasi\" aria-describedby=\"\" placeholder=\"Jumlah\" value=\"$bkd->sks_bkd\"></td>";
+              echo "<input name=\"idpskp\" type=\"hidden\" class=\"form-control\" id=\"kualitasRealisasi\" aria-describedby=\"\" placeholder=\"Kualitas\" value=\"$bkd->id_pskp\">";
+              echo "<td><select class=\"form-control form-control-sm\" name=\"rekomendasi\">";
+              
 
-          <tr>
-            <th scope="row">2</th>
-            <td>Anggota Redaksi Jurnal Ber-ISSN</td>
-            <td >1</td>
-            <td>kegiatan</td>
-            <td>100</td>
-            <td>0</td>
-            <td>kegiatan</td>
-            <td>0</td>
-            <td><input name="jumlahRealisasi" type="text" class="form-control" id="jumlahRealisasi" aria-describedby="" placeholder="Jumlah"></td>
-            <td><input name="kualitasRealisasi" type="text" class="form-control" id="kualitasRealisasi" aria-describedby="" placeholder="Kualitas "></td>
-            <td><button type="button" class="btn btn-danger" disabled>Kosong</button></td>
-          </tr>
+              if($bkd->rekomendasi=="selesai"){
+                $selesai="selected";
+              }
+              elseif($bkd->rekomendasi=="lanjutkan"){
+                $lanjutkan="selected";
+              }
+              elseif($bkd->rekomendasi=="beban lebih"){
+                $beban="selected";
+              }
+              elseif($bkd->rekomendasi=="gagal"){
+                $gagal="selected";
+              }
+              else{
+                $kosong="selected";
+              }
+              echo "<option value=\"kosong\" $kosong>kosong</option>";
+              echo "<option value=\"lanjutkan\" $lanjutkan>lanjutkan</option>";
+              echo "<option value=\"beban lebih\" $beban>beban lebih</option>";
+              echo "<option value=\"selesai\" $selesai>selesai</option>";
+              echo "<option value=\"gagal\" $gagal>gagal</option>";
+
+              echo "</select></td>";
+              echo "<td><button type=\"button\" class=\"btn btn-warning\">Lihat</button>";
+              echo "<input type=\"submit\" class=\"btn btn-success\" value=\"update\"></td>";
+
+              echo "</form>";
+              echo "</tr>";
+              $count++;
+          }
+          
+          ?>
+         
          
           <tr>
             <th colspan="5" scope="row"></th>
