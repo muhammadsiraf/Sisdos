@@ -105,6 +105,11 @@
               echo "<input name=\"idpskp\" type=\"hidden\" class=\"form-control\" id=\"kualitasRealisasi\" aria-describedby=\"\" placeholder=\"Kualitas\" value=\"$bkd->id_pskp\">";
               echo "<td><select class=\"form-control form-control-sm\" name=\"rekomendasi\">";
               
+              $selesai="";
+              $lanjutkan="";
+              $beban="";
+              $gagal="";
+              $kosong="";
 
               if($bkd->rekomendasi=="selesai"){
                 $selesai="selected";
@@ -128,6 +133,8 @@
               echo "<option value=\"gagal\" $gagal>gagal</option>";
 
               echo "</select></td>";
+
+              echo "$bkd->rekomendasi ";
 
               echo "<td><button type=\"button\" class=\"btn btn-warning\">Lihat</button>";
               echo "<input type=\"submit\" class=\"btn btn-success\" value=\"update\"></td>";

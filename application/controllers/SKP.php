@@ -384,11 +384,11 @@ class SKP extends MY_Controller
         if($idjenis==1){
             redirect("/bkd/pendidikan");
         }elseif($idjenis==2){
-            redirect("/skp/penelitian");
+            redirect("/bkd/penelitian");
         }elseif($idjenis=3){
-            redirect("/skp/pengabdian");
+            redirect("/bkd/pengabdian");
         }elseif($idjenis=4){
-            redirect("/skp/penunjang");
+            redirect("/bkd/penunjang");
         }
     }
 

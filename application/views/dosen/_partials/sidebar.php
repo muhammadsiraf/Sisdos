@@ -1,4 +1,6 @@
+<?php $dosen=$this->session->userdata('dosen');?>
 <ul class="sidebar navbar-nav">
+
       <li class="nav-item active">
         <a class="nav-link" href="<?php echo site_url('home')?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -57,5 +59,26 @@
           <div class="dropdown-divider"></div>
         </div>
       </li>
+
+      <?php 
+      if($dosen->JAFA=="Kepala Prodi")
+      {
+        echo "<li class=\"nav-item dropdown\">";
+        echo "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"pagesDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">";
+        echo "<i class=\"fas fa-fw fa-folder\"></i>";
+        echo "<span>Penilaian Dosen</span>";
+        echo "</a>";
+        echo "<div class=\"dropdown-menu\" aria-labelledby=\"pagesDropdown\">"; 
+        echo "<h6 class=\"dropdown-header\">Penilaian Dosen</h6>";
+        echo "<a class=\"dropdown-item\" href=\"<?php echo site_url('serdos/bkdserdos')?>\">Daftar Dosen</a>";
+        echo "<a class=\"dropdown-item\" href=\"<?php echo site_url('serdos/simulasi')?>\">Penilaian SKP</a>";
+        echo "<a class=\"dropdown-item\" href=\"<?php echo site_url('serdos/pengajuan')?>\">Penilaian Perilaku</a>";
+        echo "<div class=\"dropdown-divider\"></div>";
+        echo "</div>";
+        echo "</li>";
+      }
+      
+      
+      ?>
 
     </ul>

@@ -86,7 +86,7 @@
         </thead>
 
         <tbody>
-        <form action="">
+        <!-- <form action=""> -->
           <?php 
             $count=1;
             if(ISSET($dataSKP)){
@@ -132,7 +132,7 @@
             <td><input href="javascript:void(0);" type="submit" class="btn btn-success" id="nar" value="simpan"/></td>
           </tr>
         
-        </form>
+        <!-- </form> -->
         </tbody>
 
       </table>
