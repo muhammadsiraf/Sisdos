@@ -119,4 +119,9 @@ class Dosen extends MY_Controller
         }
     }
 
+    public function view_all_my_dosen($id_dosen_atasan)
+    {
+
+    }
+
 }

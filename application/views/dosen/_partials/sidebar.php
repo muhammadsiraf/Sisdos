@@ -70,9 +70,12 @@
         echo "</a>";
         echo "<div class=\"dropdown-menu\" aria-labelledby=\"pagesDropdown\">"; 
         echo "<h6 class=\"dropdown-header\">Penilaian Dosen</h6>";
-        echo "<a class=\"dropdown-item\" href=\"<?php echo site_url('serdos/bkdserdos')?>\">Daftar Dosen</a>";
-        echo "<a class=\"dropdown-item\" href=\"<?php echo site_url('serdos/simulasi')?>\">Penilaian SKP</a>";
-        echo "<a class=\"dropdown-item\" href=\"<?php echo site_url('serdos/pengajuan')?>\">Penilaian Perilaku</a>";
+        $urldaftar=site_url('penilian/daftar');
+        $urlPenilaianSKP=site_url('penilian/skpbkd');
+        $urlperilaku=site_url('penilian/perilaku');
+        echo "<a class=\"dropdown-item\" href=\"$urldaftar\">Daftar Dosen</a>";
+        echo "<a class=\"dropdown-item\" href=\"$urlPenilaianSKP\">Penilaian SKP</a>";
+        echo "<a class=\"dropdown-item\" href=\"$urlperilaku\">Penilaian Perilaku</a>";
         echo "<div class=\"dropdown-divider\"></div>";
         echo "</div>";
         echo "</li>";
