@@ -136,9 +136,13 @@
 
               echo "</select></td>";
 
-              echo "<td><button type=\"button\" class=\"btn btn-warning\">Lihat</button>";
-              echo "<input type=\"submit\" class=\"btn btn-success\" value=\"update\"></td>";
-
+              if(!$bkd->berkas_bukti_capaian||$bkd->berkas_bukti_capaian=="kosong"){
+                  echo "<td><button class=\"btn btn-danger\" disable>kosong</button></td>";
+              }
+              else{
+                  $urlberkas=base_url("/file/berkas/$bkd->berkas_bukti_capaian");
+                  echo "<td><a type=\"button\" class=\"btn btn-primary\" href=$urlberkas>Lihat</a></td>";
+              }
               echo "</form>";
               echo "</tr>";
               $count++;

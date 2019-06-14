@@ -116,6 +116,29 @@ class SKP extends MY_Controller
         $idpskp=$post["idpskp"];
         $realisasiJumlah=$post["jumlahRealisasi"];
         $realisasiKualitas=$post["kualitasRealisasi"];
+        $fileberkas=$post["fileupload"];
+		$namafile=uniqid();
+        $config['upload_path']          = './file/berkas';
+		$config['allowed_types']        = 'gif|jpg|png|jpeg|pdf|doc|docx';
+		$config['file_name']            = $namafile;
+        $this->load->library('upload', $config);
+        
+        if (isset($_FILES) && @$_FILES['fileupload']['error'] == '0') 
+        {
+            if ( ! $this->upload->do_upload('fileupload'))
+            {
+
+            }
+            else
+            {
+                $upload_data = $this->upload->data();
+				$file_name = $upload_data['file_name'];
+            }
+        }
+        else{
+            $file_name="kosong";
+        }
+
 
         $where=array(
             'id_pskp'=>$idpskp,
@@ -123,7 +146,8 @@ class SKP extends MY_Controller
 
         $dataMasuk=array(
             'realisasi_jumlah'=>$realisasiJumlah,
-            'realisasi_kualitas'=>$realisasiKualitas
+            'realisasi_kualitas'=>$realisasiKualitas,
+            'berkas_bukti_capaian'=>$file_name,
         );
 
         $skp->updateSKP($dataMasuk,$where);
