@@ -21,7 +21,7 @@
           <h6 class="dropdown-header">Sasaran Kinerja Pegawai</h6>
           <a class="dropdown-item" href="<?php echo site_url('skp/rancangan')?>">Rancangan Sasaran Kerja</a>
           <a class="dropdown-item" href="<?php echo site_url('skp/evaluasi')?>">Evaluasi Sasaran Kerja</a>
-          <a class="dropdown-item" href="<?php echo site_url('skp/komponen')?>">Komponen SKP</a>
+          <a class="dropdown-item" href="<?php echo site_url('skp/hasil')?>">Hasil Evaluasi SKP</a>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header">Beban Kerja Dosen</h6>
           <a class="dropdown-item" href="<?php echo site_url('bkd/pendidikan')?>">Bidang Pendidikan</a>
@@ -83,5 +83,10 @@
       
       
       ?>
-
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('logout')?>">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Logout</span>
+        </a>
+      </li>
     </ul>

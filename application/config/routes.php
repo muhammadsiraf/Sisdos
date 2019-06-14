@@ -13,6 +13,7 @@ $route['logout'] = 'auth/logout';
 $route['skp/rancangan'] = 'skp/viewRancanganSKP';
 $route['skp/evaluasi'] = 'skp/viewEvaluasiSKP';
 $route['skp/komponen'] = 'skp/viewKomponenSKP';
+$route['skp/hasil'] = 'skp/view_hasil_skp';
 $route['skp/tambah/(:num)'] = 'skp/viewTambahSKP/$1';
 
 
