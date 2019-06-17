@@ -71,8 +71,8 @@
         echo "<div class=\"dropdown-menu\" aria-labelledby=\"pagesDropdown\">"; 
         echo "<h6 class=\"dropdown-header\">Penilaian Dosen</h6>";
         $urldaftar=site_url('penilaian/daftar');
-        $urlPenilaianSKP=site_url('penilian/skpbkd');
-        $urlperilaku=site_url('penilian/perilaku');
+        $urlPenilaianSKP=site_url('penilaian/skpbkd');
+        $urlperilaku=site_url('penilaian/perilaku');
         echo "<a class=\"dropdown-item\" href=\"$urldaftar\">Daftar Dosen</a>";
         echo "<a class=\"dropdown-item\" href=\"$urlPenilaianSKP\">Penilaian SKP</a>";
         echo "<a class=\"dropdown-item\" href=\"$urlperilaku\">Penilaian Perilaku</a>";

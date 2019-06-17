@@ -36,3 +36,8 @@ $route['profile'] = 'dosen/viewProfileDosen';
 $route['profile/edit'] = 'dosen/viewEditProfil';
 
 $route['penilaian/daftar']='dosen/view_evaluasi_dosen_index';
+$route['penilaian/perilaku']='dosen/view_evaluasi_dosen_penilaian';
+$route['penilaian/skpbkd']='dosen/view_evaluasi_dosen_skp';
+$route['penilaian/perilaku/(:any)/(:any)/(:num)']='dosen/view_nilai_dosen/$1/$2/$3';
+
+

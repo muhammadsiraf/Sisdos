@@ -129,6 +129,51 @@ class Dosen extends MY_Controller
         $this->load->view("dosen/page/penilaian/daftardosen",$data);        
     }
 
+    public function view_evaluasi_dosen_penilaian()
+    {
+
+        $dosen =$this->dosen_model;
+        $dosen_penilai=$this->session->userdata('dosen');
+
+        $all_dosen_bawahan=$dosen->get_all_dosen($dosen_penilai->program_didik);
+        $data['dosen_bawahan']=$all_dosen_bawahan;
+        
+        if(!ISSET($_POST['tahun'],$_POST['semester'])){
+            $data['semester']="genap";
+            $data['tahun']="2018/2019";            
+        }
+        else{
+            $data['semester']=$_POST['semester'];
+            $data['tahun']=$_POST['tahun'];
+
+        }
+
+        $this->load->view("dosen/page/penilaian/penilaian_dosen_daftar",$data);            
+    }
+
+    public function view_evaluasi_dosen_skp()
+    {
+        $dosen =$this->dosen_model;
+        $dosen_penilai=$this->session->userdata('dosen');
+
+        $all_dosen_bawahan=$dosen->get_all_dosen($dosen_penilai->program_didik);
+        $data['dosen_bawahan']=$all_dosen_bawahan;
+        $this->load->view("dosen/page/penilaian/penilaian_skp_dosen",$data);
+    }
+
+    public function view_nilai_dosen($semester,$tahun,$id_dosen)
+    {   
+        $data['semester']=$semester;
+        $data['tahun']=$tahun;
+        $data['iddosen']=$id_dosen;
+        $dosennilai=$this->dosen_model;
+        $dosen=$this->session->userdata('dosen');
+        $ceksudah=$dosennilai->cek_dosen_dinilai($semester,$tahun,$dosen->program_didik);
+        $this->load->view("dosen/page/penilaian/nilai_dosen_konten",$data);
+
+
+    }
+
 
 
 }

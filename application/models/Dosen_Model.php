@@ -149,4 +149,9 @@ class Dosen_model extends CI_Model
         return $this->db->query("SELECT * FROM `dosen` WHERE program_didik=$program_didik")->result();
     }
 
+    public function cek_dosen_dinilai($semester,$tahun)
+    {
+        return $this->db->query("SELECT dosen.id_dosen, dosen.nama, perilaku_penilaian.sudah_nilai from `dosen` INNER JOIN `perilaku_penilaian` ON dosen.id_dosen=perilaku_penilaian.id_dosen WHERE perilaku_penilaian.semester=$semester AND perilaku_penilaian.tahun=$tahun");
+    }
+
 }
