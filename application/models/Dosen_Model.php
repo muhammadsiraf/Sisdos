@@ -144,4 +144,9 @@ class Dosen_model extends CI_Model
     }
 
 
+    public function get_all_dosen($program_didik)
+    {
+        return $this->db->query("SELECT * FROM `dosen` WHERE program_didik=$program_didik")->result();
+    }
+
 }

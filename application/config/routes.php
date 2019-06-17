@@ -34,3 +34,5 @@ $route['serdos/pengajuan']='serdos/viewPengajuan';
 
 $route['profile'] = 'dosen/viewProfileDosen';
 $route['profile/edit'] = 'dosen/viewEditProfil';
+
+$route['penilaian/daftar']='dosen/view_evaluasi_dosen_index';

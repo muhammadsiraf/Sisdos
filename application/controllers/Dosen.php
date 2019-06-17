@@ -119,9 +119,16 @@ class Dosen extends MY_Controller
         }
     }
 
-    public function view_all_my_dosen($id_dosen_atasan)
+    public function view_evaluasi_dosen_index()
     {
+        $dosen =$this->dosen_model;
+        $dosen_penilai=$this->session->userdata('dosen');
 
+        $all_dosen_bawahan=$dosen->get_all_dosen($dosen_penilai->program_didik);
+        $data['dosen_bawahan']=$all_dosen_bawahan;
+        $this->load->view("dosen/page/penilaian/daftardosen",$data);        
     }
+
+
 
 }

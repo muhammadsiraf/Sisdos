@@ -70,7 +70,7 @@
         echo "</a>";
         echo "<div class=\"dropdown-menu\" aria-labelledby=\"pagesDropdown\">"; 
         echo "<h6 class=\"dropdown-header\">Penilaian Dosen</h6>";
-        $urldaftar=site_url('penilian/daftar');
+        $urldaftar=site_url('penilaian/daftar');
         $urlPenilaianSKP=site_url('penilian/skpbkd');
         $urlperilaku=site_url('penilian/perilaku');
         echo "<a class=\"dropdown-item\" href=\"$urldaftar\">Daftar Dosen</a>";
