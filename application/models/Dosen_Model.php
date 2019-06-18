@@ -149,9 +149,61 @@ class Dosen_model extends CI_Model
         return $this->db->query("SELECT * FROM `dosen` WHERE program_didik=$program_didik")->result();
     }
 
-    public function cek_dosen_dinilai($semester,$tahun)
+    public function cek_dosen_dinilai($semester,$tahun, $prodi)
     {
-        return $this->db->query("SELECT dosen.id_dosen, dosen.nama, perilaku_penilaian.sudah_nilai from `dosen` INNER JOIN `perilaku_penilaian` ON dosen.id_dosen=perilaku_penilaian.id_dosen WHERE perilaku_penilaian.semester=$semester AND perilaku_penilaian.tahun=$tahun");
+        return $this->db->get_where("perilaku_penilaian",["semester"=>$semester,"tahun"=>$tahun])->result();
+    }
+
+    public function simpan_penilaian()
+    {
+        $post = $this->input->post();
+        // $tahun=$post
+        $datainsert=array(
+            'id_dosen'=>$post["iddosen"],
+            'semester'=>$post["semester"],
+            'tahun'=>$post["tahun"],
+            'orientasi'=>$post["orientasi"],
+            'integritas'=>$post["integritas"],
+            'komitmen'=>$post["komitmen"],
+            'disiplin'=>$post["disiplin"],
+            'kerjasama'=>$post["kerjasama"],
+            'kepemimpinan'=>$post["kepemimpinan"],
+            'sudah_nilai'=>1,
+        );
+
+        $this->db->insert("perilaku_penilaian",$datainsert);
+    }
+
+    public function cek_dosen_nilai($id_dosen,$semester, $tahun)
+    {
+        if($this->db->get_where("perilaku_penilaian", ["id_dosen"=>$id_dosen,"semester"=>$semester,""])->row())
+        {
+
+        }
+    }
+
+    public function edit_penilaian()
+    {
+        $post = $this->input->post();
+        // $tahun=$post
+        $datainsert=array(
+            'orientasi'=>$post["orientasi"],
+            'integritas'=>$post["integritas"],
+            'komitmen'=>$post["komitmen"],
+            'disiplin'=>$post["disiplin"],
+            'kerjasama'=>$post["kerjasama"],
+            'kepemimpinan'=>$post["kepemimpinan"],
+            'sudah_nilai'=>1,
+        );
+
+        $where=array(
+            'id_dosen'=>$post["iddosen"],
+            'semester'=>$post["semester"],
+            'tahun'=>$post["tahun"],
+        );
+
+
+        $this->db->update("perilaku_penilaian",$datainsert,$where);
     }
 
 }

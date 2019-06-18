@@ -9,7 +9,7 @@
 <div class="col-lg">
 <div class="card">
 <div class="card-body">
-<form action="<?php echo base_url("dosen/nilai_perilaku_action")?>" method="POST">
+<form action="<?php echo base_url("dosen/edit_nilai_perilaku_action")?>" method="POST">
     <input type="hidden" name="semester" value="<?php echo $semester;?>">
     <input type="hidden" name="tahun" value="<?php echo $tahun;?>">
     <input type="hidden" name="iddosen" value="<?php echo $iddosen;?>">

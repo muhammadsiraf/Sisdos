@@ -11,6 +11,7 @@ class Dosen extends MY_Controller
 		// $this->dosenRequired(array('except'=>array('')));
         $this->load->model("dosen_model");
         $this->load->model("pendidikan_model");
+ 
         $this->load->library('form_validation');
     }
     
@@ -140,13 +141,17 @@ class Dosen extends MY_Controller
         
         if(!ISSET($_POST['tahun'],$_POST['semester'])){
             $data['semester']="genap";
-            $data['tahun']="2018/2019";            
+            $data['tahun']="2018-2019";            
         }
         else{
             $data['semester']=$_POST['semester'];
             $data['tahun']=$_POST['tahun'];
 
         }
+        $semester=$data['semester'];
+        $tahun=$data['tahun'];
+        $ceksudah=$dosen->cek_dosen_dinilai($semester,$tahun,$dosen_penilai->program_didik);
+        $data['dosensudah']=$ceksudah;
 
         $this->load->view("dosen/page/penilaian/penilaian_dosen_daftar",$data);            
     }
@@ -158,6 +163,7 @@ class Dosen extends MY_Controller
 
         $all_dosen_bawahan=$dosen->get_all_dosen($dosen_penilai->program_didik);
         $data['dosen_bawahan']=$all_dosen_bawahan;
+
         $this->load->view("dosen/page/penilaian/penilaian_skp_dosen",$data);
     }
 
@@ -168,12 +174,34 @@ class Dosen extends MY_Controller
         $data['iddosen']=$id_dosen;
         $dosennilai=$this->dosen_model;
         $dosen=$this->session->userdata('dosen');
-        $ceksudah=$dosennilai->cek_dosen_dinilai($semester,$tahun,$dosen->program_didik);
-        $this->load->view("dosen/page/penilaian/nilai_dosen_konten",$data);
 
-
+        $this->load->view("dosen/page/penilaian/halaman_nilai_dosen",$data);
     }
 
+    public function view_edit_dosen($semester, $tahun, $id_dosen)
+    {
+        $data['semester']=$semester;
+        $data['tahun']=$tahun;
+        $data['iddosen']=$id_dosen;
+        $dosennilai=$this->dosen_model;
+        $dosen=$this->session->userdata('dosen');
+
+        $this->load->view("dosen/page/penilaian/halaman_edit_nilai_dosen",$data);
+    }
+
+    public function nilai_perilaku_action()
+    {
+        $dosen=$this->dosen_model;
+        $dosen->simpan_penilaian();
+        redirect("penilaian/perilaku");
+    }
+
+    public function edit_nilai_perilaku_action()
+    {
+        $dosen=$this->dosen_model;
+        $dosen->edit_penilaian();
+        redirect("penilaian/perilaku");
+    }
 
 
 }

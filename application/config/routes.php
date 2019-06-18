@@ -39,5 +39,8 @@ $route['penilaian/daftar']='dosen/view_evaluasi_dosen_index';
 $route['penilaian/perilaku']='dosen/view_evaluasi_dosen_penilaian';
 $route['penilaian/skpbkd']='dosen/view_evaluasi_dosen_skp';
 $route['penilaian/perilaku/(:any)/(:any)/(:num)']='dosen/view_nilai_dosen/$1/$2/$3';
+$route['penilaian/perilaku/edit/(:any)/(:any)/(:num)']='dosen/view_edit_dosen/$1/$2/$3';
 
+$route['penilaian/nilai']='dosen/nilai_perilaku_action';
+$route['penilaian/edit']='dosen/edit_nilai_perilaku_action';
 

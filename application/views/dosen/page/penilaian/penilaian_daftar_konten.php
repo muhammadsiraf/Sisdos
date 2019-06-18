@@ -10,7 +10,7 @@
 <div class="card">
 <div class="card-body">
   pilih semester dan tahun
-  <form action="penilaian/perilaku" method="POST">
+  <form action="<?php echo base_url("penilaian/perilaku")?>" method="POST">
     <label for="">Semester: </label>
     <select name="semester" id="">
       <option value="genap">Genap</option>
@@ -19,11 +19,11 @@
     <br>
     <label for="">Tahun Ajaran: </label>
     <select name="tahun" id="">
-      <option value="2018/2019">2018/2019</option>
-      <option value="2017/2018">2017/2018</option>
-      <option value="2016/2017">2016/2017</option>      
-      <option value="2015/2016">2015/2016</option>      
-      <option value="2014/2015">2014/2015</option>      
+      <option value="2018-2019">2018/2019</option>
+      <option value="2017-2018">2017/2018</option>
+      <option value="2016-2017">2016/2017</option>      
+      <option value="2015-2016">2015/2016</option>      
+      <option value="2014-2015">2014/2015</option>      
     </select>
     <br>
     <input class="btn btn-primary" type="submit" value="Tampilkan">
@@ -63,7 +63,20 @@
                 echo "<th scope=\"row\">$dosbaw->JAFA</th>";
                 echo "<th scope=\"row\">$dosbaw->angka_kredit</th>";
                 $nilai_url=base_url("penilaian/perilaku/$semester/$tahun/$dosbaw->id_dosen");
-                echo "<th scope=\"row\"><a href=\"$nilai_url\" class=\"btn btn-primary\">Nilai</a></th>";
+                $edit_url=base_url("penilaian/perilaku/edit/$semester/$tahun/$dosbaw->id_dosen");
+                $cek=0;
+                foreach($dosensudah as $sudah)
+                {
+                  if($sudah->id_dosen==$dosbaw->id_dosen){
+                    $cek=1;
+                  }
+                }
+                if($cek==1){
+                  echo "<th scope=\"row\"><a href=\"$edit_url\" class=\"btn btn-success\">edit</a> <button class=\"btn btn-danger\" disabled>sudah</button></th>";
+                }
+                else{
+                  echo "<th scope=\"row\"><a href=\"$nilai_url\" class=\"btn btn-primary\">Nilai</a></th>";
+                }
                 echo "</tr>";
                 $count++;
                 }
