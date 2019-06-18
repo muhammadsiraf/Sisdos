@@ -11,7 +11,7 @@ class Dosen extends MY_Controller
 		// $this->dosenRequired(array('except'=>array('')));
         $this->load->model("dosen_model");
         $this->load->model("pendidikan_model");
- 
+        $this->load->model("SKP_model");
         $this->load->library('form_validation');
     }
     
@@ -123,10 +123,27 @@ class Dosen extends MY_Controller
     public function view_evaluasi_dosen_index()
     {
         $dosen =$this->dosen_model;
+        $skp= $this->SKP_model;
         $dosen_penilai=$this->session->userdata('dosen');
+        
+        if(!ISSET($_POST['tahun'],$_POST['semester'])){
+            $data['semester']="genap";
+            $data['tahun']="2018-2019";            
+        }
+        else{
+            $data['semester']=$_POST['semester'];
+            $data['tahun']=$_POST['tahun'];
 
+        }
+        $semester=$data['semester'];
+        $sems="ganjil";
+        $tahun=$data['tahun'];
+        $prodi=$dosen_penilai->program_didik;
         $all_dosen_bawahan=$dosen->get_all_dosen($dosen_penilai->program_didik);
+        $data_nilai_dosen=$skp->get_tridharma_dosen($semester,$tahun,$prodi);
         $data['dosen_bawahan']=$all_dosen_bawahan;
+        $data['nilai_dosen']=$data_nilai_dosen;
+        // echo var_dump($data_nilai_dosen);
         $this->load->view("dosen/page/penilaian/daftardosen",$data);        
     }
 
@@ -202,6 +219,7 @@ class Dosen extends MY_Controller
         $dosen->edit_penilaian();
         redirect("penilaian/perilaku");
     }
+
 
 
 }

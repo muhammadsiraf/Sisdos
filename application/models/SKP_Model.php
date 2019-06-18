@@ -104,8 +104,14 @@ class SKP_model extends CI_Model
         return $this->db->get_where($this->_jenisUraian,["id_jenis_tridharma"=>$byjenisTridharma])->result();
     }
 
-    public function getBKDperjenis($id_tridharma,$id_jenisTridharma){
+    public function getBKDperjenis($id_tridharma,$id_jenisTridharma)
+    {
         return $this->db->query("SELECT jenis_uraian_skp.nama as uraian, skp_penilaian.target_jumlah, skp_penilaian.target_satuan, skp_penilaian.kualitas_mutu, skp_penilaian.waktu_jumlah, skp_penilaian.waktu_satuan, skp_penilaian.id_pskp, skp_penilaian.realisasi_jumlah, skp_penilaian.realisasi_kualitas, skp_penilaian.sks_bkd, skp_penilaian.rekomendasi, skp_penilaian.berkas_bukti_capaian FROM `skp_penilaian` INNER JOIN `jenis_uraian_skp` ON skp_penilaian.jenis_uraian_skp=jenis_uraian_skp.id_jenis_uraian WHERE id_tridharma=$id_tridharma AND jenis_uraian_skp.id_jenis_tridharma=$id_jenisTridharma")->result();
+    }
+
+    public function get_tridharma_dosen($semester,$tahun, $program_didik_dosen)
+    {
+        return $this->db->query("SELECT  tridharma.id_dosen, tridharma.nilai_perilaku, tridharma.nilai_kredit_skp, tridharma.sks_bkd_total, tridharma.rancangan_approve, tridharma.evaluasi_approve, tridharma.persentase_skp, tridharma.total_nilai FROM `tridharma` INNER JOIN `dosen` ON tridharma.id_dosen=dosen.id_dosen  WHERE tridharma.tahun_ajaran=\"$tahun\" AND tridharma.semester=\"$semester\" AND dosen.program_didik=$program_didik_dosen")->result();
     }
 
 }

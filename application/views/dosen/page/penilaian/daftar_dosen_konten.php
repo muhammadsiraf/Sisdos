@@ -8,7 +8,7 @@
 <div class="card">
 <div class="card-body">
   pilih semester dan tahun
-  <form action="<?php echo base_url("penilaian/perilaku")?>" method="POST">
+  <form action="<?php echo base_url("penilaian/daftar")?>" method="POST">
     <label for="">Semester: </label>
     <select name="semester" id="">
       <option value="genap">Genap</option>
@@ -69,10 +69,25 @@
                 echo "<th scope=\"row\">$dosbaw->ikatan_kerja</th>";
                 echo "<th scope=\"row\">$dosbaw->JAFA</th>";
                 echo "<th scope=\"row\">$dosbaw->angka_kredit</th>";
-                echo "<th scope=\"row\">Nilai SKP</th>";
-                echo "<th scope=\"row\">Nilai Perilaku</th>";
-                echo "<th scope=\"row\">Total Nilai</th>";
-                echo "<th scope=\"row\">Kategori</th>";
+                $cek=0;
+                foreach($nilai_dosen as $nilai){
+                  if($nilai->id_dosen==$dosbaw->id_dosen){
+                    
+                    echo "<th scope=\"row\">$nilai->persentase_skp</th>";
+                    echo "<th scope=\"row\">$nilai->nilai_perilaku</th>";
+                    echo "<th scope=\"row\">$nilai->total_nilai</th>";
+                    echo "<th scope=\"row\">Kategori</th>";
+                    $cek++;
+                  }
+                }
+                if($cek==0){
+                    echo "<th scope=\"row\">0</th>";
+                    echo "<th scope=\"row\">0</th>";
+                    echo "<th scope=\"row\">0</th>";
+                    // echo "<th scope=\"row\">Kosong</th>";
+                    echo "<th scope=\"row\">Belum Mengisi</th>";
+                    
+                }
                 echo "<th scope=\"row\"><a href=\"\" class=\"btn btn-primary\">detail</a></th>";
                 echo "</tr>";
                 $count++;
