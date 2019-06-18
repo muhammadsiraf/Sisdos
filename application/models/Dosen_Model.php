@@ -204,6 +204,48 @@ class Dosen_model extends CI_Model
 
 
         $this->db->update("perilaku_penilaian",$datainsert,$where);
+        $this->update_total_nilai_rata($post["iddosen"],$post["semester"],$post["tahun"]);
+    }
+
+    public function update_total_nilai_rata($id_dosen,$semester,$tahun)
+    {
+        $where=array(
+            'id_dosen'=>$id_dosen,
+            'semester'=>$semester,
+            'tahun'=>$tahun,
+        );
+        $data_dosen=$this->db->get_where("perilaku_penilaian",$where)->row();
+        if($data_dosen!=null){
+            $orientasi=$data_dosen->orientasi;
+            $integritas=$data_dosen->integritas;
+            $komitmen=$data_dosen->komitmen;
+            $disiplin=$data_dosen->disiplin;
+            $kerjasama=$data_dosen->kerjasama;
+            $kepemimpinan=$data_dosen->kepemimpinan;
+            $rata_total=$orientasi+$integritas+$komitmen+$disiplin+$kerjasama+$kepemimpinan;
+            $rata_total=$rata_total/6;
+
+            $data_update=array(
+                'total_nilai_rata'=>$rata_total,
+            );
+
+            $this->db->update("perilaku_penilaian", $data_update,$where);
+            
+            $data_update=array(
+                'nilai_perilaku'=>$rata_total,
+            );
+
+            $where=array(
+            'id_dosen'=>$id_dosen,
+            'semester'=>$semester,
+            'tahun_ajaran'=>$tahun,
+            );
+
+            $this->db->update("tridharma", $data_update,$where);
+
+
+        }
+
     }
 
 }

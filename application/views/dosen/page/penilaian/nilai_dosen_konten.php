@@ -1,9 +1,4 @@
 <h1>Halaman Penilaian Dosen</h1>
-<h3><?php echo  $semester?></h3>
-<br>
-<h3><?php echo $tahun?></h3>
-<br>
-<h3><?php echo $iddosen?></h3>
 <div class="container">
 <div class="row">
 <div class="col-lg">

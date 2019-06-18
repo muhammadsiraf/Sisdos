@@ -73,7 +73,7 @@
         $urldaftar=site_url('penilaian/daftar');
         $urlPenilaianSKP=site_url('penilaian/skpbkd');
         $urlperilaku=site_url('penilaian/perilaku');
-        echo "<a class=\"dropdown-item\" href=\"$urldaftar\">Daftar Dosen</a>";
+        echo "<a class=\"dropdown-item\" href=\"$urldaftar\">Daftar Rekapitulasi Dosen</a>";
         echo "<a class=\"dropdown-item\" href=\"$urlPenilaianSKP\">Penilaian SKP</a>";
         echo "<a class=\"dropdown-item\" href=\"$urlperilaku\">Penilaian Perilaku</a>";
         echo "<div class=\"dropdown-divider\"></div>";

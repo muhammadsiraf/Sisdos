@@ -28,10 +28,10 @@
         <th scope="col">Tahun Akademik:</th>
         <th scope="col">
           <select class="form-control form-control-sm" name="tahunajar">
-            <option value="2018/2019">2018/2019</option>
-            <option value="2017/2018">2017/2018</option>
-            <option value="2016/2017">2016/2017</option>
-            <option value="2016/2015">2016/2015</option>
+            <option value="2018-2019">2018/2019</option>
+            <option value="2017-2018">2017/2018</option>
+            <option value="2016-2017">2016/2017</option>
+            <option value="2016-2015">2016/2015</option>
           </select>
         </th>
 
