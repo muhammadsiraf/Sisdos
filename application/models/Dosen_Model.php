@@ -248,4 +248,17 @@ class Dosen_model extends CI_Model
 
     }
 
+    public function update_persetujuan_skp()
+    {
+        $post=$this->input->post();
+        $id_tridharma=$post["id_tridharma"];
+        $where=array(
+            "id_tridharma"=>$id_tridharma,
+        );
+        $data=array(
+            "rancangan_approve"=>1,
+        );
+        $this->db->update("tridharma",$data,$where);
+    }
+
 }

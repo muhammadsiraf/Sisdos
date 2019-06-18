@@ -181,7 +181,47 @@ class Dosen extends MY_Controller
         $all_dosen_bawahan=$dosen->get_all_dosen($dosen_penilai->program_didik);
         $data['dosen_bawahan']=$all_dosen_bawahan;
 
+        if(!ISSET($_POST['tahun'],$_POST['semester'])){
+            $data['semester']="genap";
+            $data['tahun']="2018-2019";            
+        }
+        else{
+            $data['semester']=$_POST['semester'];
+            $data['tahun']=$_POST['tahun'];
+
+        }
+
         $this->load->view("dosen/page/penilaian/penilaian_skp_dosen",$data);
+    }
+
+    public function view_approve_skp($id_dosen,$tahun,$semester)
+    {
+        $skp=$this->SKP_model;
+        if($id_tridharma=$skp->getTridharma($id_dosen,$semester,$tahun)!=null)
+            {
+                            
+                            $id_tridharma=$skp->getTridharma($id_dosen,$semester,$tahun)->id_tridharma;
+                            $approval=$skp->getTridharma($id_dosen,$semester,$tahun)->rancangan_approve;
+                            $dataRancanganSKP=$skp->getSKP($id_tridharma);
+                            $data['tahunajar']=$tahun;
+                            $data['semester']=$semester;
+                            $data['idtridharma']=$id_tridharma;
+                            $data['dataSKP']=$dataRancanganSKP;            
+                            $data['approval']=$approval;
+            }
+        else{
+                $data['tahunajar']=$tahun;
+                $data['semester']=$semester;
+                $data['dataSKP']=null;
+            }
+        $this->load->view("dosen/page/penilaian/approve_skp",$data);        
+    }
+
+    public function setuju_skp()
+    {
+        $dosen=$this->dosen_model;
+        $dosen->update_persetujuan_skp();
+        redirect("penilaian/skpbkd");
     }
 
     public function view_nilai_dosen($semester,$tahun,$id_dosen)
