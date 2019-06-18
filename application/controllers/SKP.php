@@ -28,12 +28,12 @@ class SKP extends MY_Controller
         // echo $_POST['semester']."<br>";
         if(!ISSET($_POST['tahunajar'],$_POST['semester'])){
             // echo "masuk tidak isset";
-            $tahunajar="2018/2019";
+            $tahunajar="2018-2019";
             $semester="genap";
-            if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")!=null)
+            if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018-2019")!=null)
             {
                             
-                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")->id_tridharma;
+                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018-2019")->id_tridharma;
                             $dataRancanganSKP=$skp->getSKP($id_tridharma);
                             $data['tahunajar']=$tahunajar;
                             $data['semester']=$semester;
@@ -180,12 +180,12 @@ class SKP extends MY_Controller
         
         $skp=$this->skp_model;
         if(!ISSET($_POST['tahunajar'],$_POST['semester'])){
-            $tahunajar="2018/2019";
+            $tahunajar="2018-2019";
             $semester="genap";
-            if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")!=null)
+            if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018-2019")!=null)
             {
                             
-                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")->id_tridharma;
+                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018-2019")->id_tridharma;
                             $dataRancanganSKP=$skp->getEvalSKP($id_tridharma);
                             $data['idtridharma']=$id_tridharma;
                             $data['dataSKP']=$dataRancanganSKP;            
@@ -237,12 +237,12 @@ class SKP extends MY_Controller
         
         $skp=$this->skp_model;
         if(!ISSET($_POST['tahunajar'],$_POST['semester'])){
-            $tahunajar="2018/2019";
+            $tahunajar="2018-2019";
             $semester="genap";
-            if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")!=null)
+            if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018-2019")!=null)
             {
                             
-                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")->id_tridharma;
+                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018-2019")->id_tridharma;
                             $dataRancanganSKP=$skp->getEvalSKP($id_tridharma);
                             $data['idtridharma']=$id_tridharma;
                             $data['dataSKP']=$dataRancanganSKP;            
@@ -276,12 +276,12 @@ class SKP extends MY_Controller
         
         $skp=$this->skp_model;
         if(!ISSET($_POST['tahunajar'],$_POST['semester'])){
-            $tahunajar="2018/2019";
+            $tahunajar="2018-2019";
             $semester="genap";
-            if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")!=null)
+            if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018-2019")!=null)
             {
                             
-                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")->id_tridharma;
+                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018-2019")->id_tridharma;
                             $dataRancanganSKP=$skp->getBKDperjenis($id_tridharma,1);
                             $data['idtridharma']=$id_tridharma;
                             $data['dataBKD']=$dataRancanganSKP;            
@@ -315,12 +315,12 @@ class SKP extends MY_Controller
         
         $skp=$this->skp_model;
         if(!ISSET($_POST['tahunajar'],$_POST['semester'])){
-            $tahunajar="2018/2019";
+            $tahunajar="2018-2019";
             $semester="genap";
-            if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")!=null)
+            if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018-2019")!=null)
             {
                             
-                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")->id_tridharma;
+                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018-2019")->id_tridharma;
                             $dataRancanganSKP=$skp->getBKDperjenis($id_tridharma,2);
                             $data['idtridharma']=$id_tridharma;
                             $data['dataBKD']=$dataRancanganSKP;            
@@ -354,12 +354,12 @@ class SKP extends MY_Controller
         
         $skp=$this->skp_model;
         if(!ISSET($_POST['tahunajar'],$_POST['semester'])){
-            $tahunajar="2018/2019";
+            $tahunajar="2018-2019";
             $semester="genap";
-            if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")!=null)
+            if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018-2019")!=null)
             {
                             
-                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")->id_tridharma;
+                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018-2019")->id_tridharma;
                             $dataRancanganSKP=$skp->getBKDperjenis($id_tridharma,3);
                             $data['idtridharma']=$id_tridharma;
                             $data['dataBKD']=$dataRancanganSKP;            
@@ -396,12 +396,12 @@ class SKP extends MY_Controller
         
         $skp=$this->skp_model;
         if(!ISSET($_POST['tahunajar'],$_POST['semester'])){
-            $tahunajar="2018/2019";
+            $tahunajar="2018-2019";
             $semester="genap";
-            if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")!=null)
+            if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018-2019")!=null)
             {
                             
-                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")->id_tridharma;
+                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018-2019")->id_tridharma;
                             $dataRancanganSKP=$skp->getBKDperjenis($id_tridharma,4);
                             $data['idtridharma']=$id_tridharma;
                             $data['dataBKD']=$dataRancanganSKP;            
@@ -466,12 +466,12 @@ class SKP extends MY_Controller
         
         $skp=$this->skp_model;
         if(!ISSET($_POST['tahunajar'],$_POST['semester'])){
-            $tahunajar="2018/2019";
+            $tahunajar="2018-2019";
             $semester="genap";
-            if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")!=null)
+            if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018-2019")!=null)
             {
                             
-                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018/2019")->id_tridharma;
+                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018-2019")->id_tridharma;
                             $dataRancanganSKP=$skp->getBKDperjenis($id_tridharma,1);
                             $pendidikan=$skp->getBKDperjenis($id_tridharma,1);
                             $penelitian=$skp->getBKDperjenis($id_tridharma,2);
