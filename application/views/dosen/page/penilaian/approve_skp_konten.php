@@ -56,15 +56,21 @@
           <tr>
             <th colspan="3" scope="row"></th>
             <form action="<?php echo base_url("dosen/setuju_skp")?>" method="post">
-            <input type="hidden" name="id_tridharma" value="<?php echo $idtridharma ?>">
-            <?php 
-                if($approval==1){
+            <input type="hidden" name="id_tridharma" value="<?php if(isset($idtridharma)){echo $idtridharma;}else{$idtridharma=null;} ?>">
+            <?php
+                if(isset($approval)){
+                  if($approval==1){
                     echo "<td><button class=\"btn btn-primary\" disabled>sudah</button></td>";
                 }
-                else{
-                
+                else{      
                     echo "<td><button type=\"submit\" class=\"btn btn-success\" >setujui</button></td>";
                 }
+                }
+                else{
+                    echo "<td><button type=\"submit\" class=\"btn btn-danger\" disabled >Belum Menyusun SKP</button></td>";
+                }
+
+                
             ?>
             </form>
           </tr>
