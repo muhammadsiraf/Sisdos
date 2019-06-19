@@ -1,10 +1,28 @@
 <h1>Approve Konten</h1>
+<div class="row">
+<div class="col-lg">
+<div class="card">
+ <h5 class="card-header">Rancangan SKP</h5>
+<div class="card-body">
 
+                   <?php 
+                    if(isset($idtridharma)){
+                        $url_evaluasi_skp=base_url("penilaian/skpbkd/approval-evaluasi/$idtridharma");
+                        echo "<a href=\"$url_evaluasi_skp\" class=\"btn btn-success\">Lihat Evaluasi</a>";
+                    }
+                 ?>
+            
+</div>
+</div>
+</div>
+</div>
 <div class="row">
     <div class="col-lg">
          <div class="card">
-             <h5 class="card-header">Featured</h5>
+            
             <div class="card-body">
+
+                
                   <table class="table">
         <thead class="thead-dark">
           <tr>
@@ -61,12 +79,16 @@
                 if(isset($approval)){
                   if($approval==1){
                     echo "<td><button class=\"btn btn-primary\" disabled>sudah</button></td>";
+
                 }
                 else{      
                     echo "<td><button type=\"submit\" class=\"btn btn-success\" >setujui</button></td>";
                 }
                 }
                 else{
+                    echo "<div class=\"alert alert-warning\" role=\"alert\">
+  Yang bersangkutan belum melakukan penyusunan rancangan SKP.
+</div>";
                     echo "<td><button type=\"submit\" class=\"btn btn-danger\" disabled >Belum Menyusun SKP</button></td>";
                 }
 

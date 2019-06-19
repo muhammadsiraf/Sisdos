@@ -96,7 +96,7 @@ class SKP_model extends CI_Model
     public function getEvalSKP($id_tridharma)
     {
         // return $this->db->query("SELECT uraian_skp.uraian , skp_penilaian.target_jumlah, skp_penilaian.target_satuan, skp_penilaian.kualitas_mutu, skp_penilaian.waktu_jumlah, skp_penilaian.waktu_satuan, skp_penilaian.realisasi_jumlah, skp_penilaian.realisasi_kualitas FROM `skp_penilaian` INNER JOIN `uraian_skp` ON skp_penilaian.id_uraian_skp=uraian_skp.id_uraian WHERE id_tridharma=$id_tridharma")->result();
-        return $this->db->query("SELECT jenis_uraian_skp.nama as uraian , skp_penilaian.target_jumlah, skp_penilaian.target_satuan, skp_penilaian.kualitas_mutu, skp_penilaian.waktu_jumlah, skp_penilaian.waktu_satuan, skp_penilaian.realisasi_jumlah, skp_penilaian.realisasi_kualitas, skp_penilaian.id_pskp, skp_penilaian.berkas_bukti_capaian FROM `skp_penilaian` INNER JOIN `jenis_uraian_skp` ON skp_penilaian.jenis_uraian_skp=jenis_uraian_skp.id_jenis_uraian WHERE id_tridharma=$id_tridharma")->result();
+        return $this->db->query("SELECT jenis_uraian_skp.nama as uraian , skp_penilaian.target_jumlah, skp_penilaian.approval, skp_penilaian.target_satuan, skp_penilaian.kualitas_mutu, skp_penilaian.waktu_jumlah, skp_penilaian.waktu_satuan, skp_penilaian.realisasi_jumlah, skp_penilaian.realisasi_kualitas, skp_penilaian.id_pskp, skp_penilaian.berkas_bukti_capaian FROM `skp_penilaian` INNER JOIN `jenis_uraian_skp` ON skp_penilaian.jenis_uraian_skp=jenis_uraian_skp.id_jenis_uraian WHERE id_tridharma=$id_tridharma")->result();
     }
 
     public function getListofUraian($byjenisTridharma)
@@ -114,4 +114,29 @@ class SKP_model extends CI_Model
         return $this->db->query("SELECT  tridharma.id_dosen, tridharma.nilai_perilaku, tridharma.nilai_kredit_skp, tridharma.sks_bkd_total, tridharma.rancangan_approve, tridharma.evaluasi_approve, tridharma.persentase_skp, tridharma.total_nilai FROM `tridharma` INNER JOIN `dosen` ON tridharma.id_dosen=dosen.id_dosen  WHERE tridharma.tahun_ajaran=\"$tahun\" AND tridharma.semester=\"$semester\" AND dosen.program_didik=$program_didik_dosen")->result();
     }
 
+    public function cek_tridharma($id_tridharma)
+    {
+        return $this->db->get_where("tridharma",["id_tridharma"=>$id_tridharma,])->row();
+    }
+
+    public function get_tridharma($where)
+    {
+        return $this->db->get_where("tridharma",$where)->result();
+    }
+
+    public function update_approval_eval_skp($id_approval)
+    {
+        $post=$this->input->post();
+        $id_pskp=$post["idpskp"];
+
+        $data_input=array(
+            "approval"=>1,
+        );
+
+        $where=array(
+            "id_pskp"=>$id_pskp,
+        );
+
+        $this->db->update($this->_skp,$data_input,$where);
+    }
 }

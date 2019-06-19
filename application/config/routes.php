@@ -44,4 +44,5 @@ $route['penilaian/perilaku/edit/(:any)/(:any)/(:num)']='dosen/view_edit_dosen/$1
 $route['penilaian/nilai']='dosen/nilai_perilaku_action';
 $route['penilaian/edit']='dosen/edit_nilai_perilaku_action';
 $route['penilaian/skpbkd/approval-rancangan/(:num)/(:any)/(:any)']='dosen/view_approve_skp/$1/$2/$3';
+$route['penilaian/skpbkd/approval-evaluasi/(:num)']='dosen/view_approve_eval_skp/$1';
 

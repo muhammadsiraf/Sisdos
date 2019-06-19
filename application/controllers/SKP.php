@@ -155,6 +155,15 @@ class SKP extends MY_Controller
 
     }
 
+    public function eval_approval()
+    {
+        $skp=$this->skp_model;
+        $post=$this->input->post();
+        $id_tridharma=$post['id_tridharma'];
+        $skp->update_approval_eval_skp($id_tridharma);
+        redirect("/penilaian/skpbkd/approval-evaluasi/$id_tridharma");
+    }
+
     public function methodTest($nama){
         $namaMu=$nama;
         return $namaMu;

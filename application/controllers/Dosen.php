@@ -217,6 +217,24 @@ class Dosen extends MY_Controller
         $this->load->view("dosen/page/penilaian/approve_skp",$data);        
     }
 
+    public function view_approve_eval_skp($id_tridharma)
+    {
+        $skp=$this->SKP_model;
+        if($skp->cek_tridharma($id_tridharma)!=null){
+            $approval=$skp->cek_tridharma($id_tridharma)->evaluasi_approve;
+            $data_evaluasi_skp=$skp->getEvalSKP($id_tridharma);
+            $data['id_tridharma']=$id_tridharma;
+            $data['approval']=$approval;
+            $data['data_skp']=$data_evaluasi_skp;
+        }
+        else{
+            $data['id_tridharma']=null;
+            $data['approval']=null;
+            $data['data_skp']=null;   
+        }
+        $this->load->view("dosen/page/penilaian/approve_eval_skp",$data);
+    }
+
     public function setuju_skp()
     {
         $dosen=$this->dosen_model;
@@ -224,6 +242,14 @@ class Dosen extends MY_Controller
         redirect("penilaian/skpbkd");
     }
 
+    public function setuju_eval_skp()
+    {
+        $dosen=$this->dosen_model;
+        $post=$this->input->post();
+        $id_tridharma=$post['id_tridharma'];
+        $dosen->update_persetujuan_eval_skp();
+        redirect("penilaian/skpbkd/approval-evaluasi/$id_tridharma");
+    }
     public function view_nilai_dosen($semester,$tahun,$id_dosen)
     {   
         $data['semester']=$semester;
@@ -259,6 +285,9 @@ class Dosen extends MY_Controller
         $dosen->edit_penilaian();
         redirect("penilaian/perilaku");
     }
+
+    
+
 
 
 
