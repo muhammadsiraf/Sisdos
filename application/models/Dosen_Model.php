@@ -274,4 +274,37 @@ class Dosen_model extends CI_Model
         $this->db->update("tridharma",$data,$where);
     }
 
+    public function update_kredit_tridharma($nilai_kredit, $id_tridharma)
+    {
+        $where=array(
+            "id_tridharma"=>$id_tridharma,
+        );
+        $data=array(
+            "nilai_kredit_skp"=>$nilai_kredit,
+        );
+        $this->db->update("tridharma",$data,$where);
+    }
+
+    public function update_persentase_skp($persentase_skp, $id_tridharma)
+    {
+        $where=array(
+            "id_tridharma"=>$id_tridharma,
+        );
+        $data=array(
+            "persentase_skp"=>$persentase_skp,
+        );
+        $this->db->update("tridharma",$data,$where);
+    }
+
+    public function update_totalnilai_tridharma($total_nilai, $id_tridharma)
+    {
+        $where=array(
+            "id_tridharma"=>$id_tridharma,
+        );
+        $data=array(
+            "total_nilai"=>$total_nilai,
+        );
+        $this->db->update("tridharma",$data,$where);
+    }
+
 }

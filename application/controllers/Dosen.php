@@ -12,6 +12,7 @@ class Dosen extends MY_Controller
         $this->load->model("dosen_model");
         $this->load->model("pendidikan_model");
         $this->load->model("SKP_model");
+
         $this->load->library('form_validation');
     }
     
@@ -248,6 +249,46 @@ class Dosen extends MY_Controller
         $post=$this->input->post();
         $id_tridharma=$post['id_tridharma'];
         $dosen->update_persetujuan_eval_skp();
+        $skp=$this->SKP_model;
+        $data_nilai_skp=$skp->get_skp_nilai($id_tridharma);
+        $data_tridharma=$skp->cek_tridharma($id_tridharma);
+        // echo var_dump($data_nilai_skp);
+        $total_kredit_skp=0;
+        $total_skp_approve=0;
+        $count_panjang_skp=0;
+        foreach($data_nilai_skp as $data)
+        {
+            echo $data->uraian."<br>";
+            $realisasi_jumlah=$data->realisasi_jumlah;
+            $realisasi_kualitas=$data->realisasi_kualitas;
+            echo $data->realisasi_jumlah."<br>";
+            echo $data->realisasi_kualitas."<br>";
+            echo $data->approval."<br>";
+            echo $data->kredit."<br>";
+            echo $data->maks_jumlah."<br>";
+            // echo $data->uraian."<br>";
+            if($realisasi_jumlah>=$data->maks_jumlah){
+                $realisasi_jumlah=$data->maks_jumlah;
+            }
+            if($data->approval==1){
+                $total_skp_approve++;
+            }
+            $total_nilai=($realisasi_jumlah*$realisasi_kualitas/100)*$data->approval*$data->kredit;
+            $total_kredit_skp=$total_kredit_skp+$total_nilai;
+            echo "Total Nilai: ".$total_nilai;
+            echo "<br>";
+            $count_panjang_skp++;
+        }
+        $total_skp_lulus=$total_skp_approve/$count_panjang_skp*100;
+        $total_nilai=($total_skp_lulus*70/100)+($data_tridharma->nilai_perilaku*30/100);
+        echo "Total Kredit Dosen Dalam 1 Semester: $total_kredit_skp"."<br>";
+        echo "Persentase SKP pass : $total_skp_lulus"."<br>";
+        echo "Total Nilai Semester ini : $total_nilai"."<br>";
+        $dosen->update_kredit_tridharma($total_kredit_skp, $id_tridharma);
+        $dosen->update_persentase_skp($total_skp_lulus,$id_tridharma);
+        $dosen->update_totalnilai_tridharma($total_nilai,$id_tridharma);
+
+
         redirect("penilaian/skpbkd/approval-evaluasi/$id_tridharma");
     }
     public function view_nilai_dosen($semester,$tahun,$id_dosen)

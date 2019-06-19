@@ -139,4 +139,9 @@ class SKP_model extends CI_Model
 
         $this->db->update($this->_skp,$data_input,$where);
     }
+
+    public function get_skp_nilai($id_tridharma)
+    {
+        return $this->db->query("SELECT jenis_uraian_skp.nama as uraian , skp_penilaian.target_jumlah, skp_penilaian.approval, skp_penilaian.target_satuan, skp_penilaian.kualitas_mutu, skp_penilaian.waktu_jumlah, skp_penilaian.waktu_satuan, skp_penilaian.realisasi_jumlah, skp_penilaian.realisasi_kualitas, skp_penilaian.id_pskp, skp_penilaian.berkas_bukti_capaian, jenis_uraian_skp.kredit, jenis_uraian_skp.maks_jumlah FROM `skp_penilaian` INNER JOIN `jenis_uraian_skp` ON skp_penilaian.jenis_uraian_skp=jenis_uraian_skp.id_jenis_uraian WHERE id_tridharma=$id_tridharma")->result();
+    }
 }
