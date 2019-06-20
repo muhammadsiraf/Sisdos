@@ -26,12 +26,25 @@ class Jabatan extends MY_Controller
         {
             $data_skp=$skp->getEvalSKP($id_tridharma);
             foreach($data_skp as $data){
-                $zip1->add_data($data->berkas_bukti_capaian);
+                $datainput=base_url("file/berkas/$data->berkas_bukti_capaian");
+                // echo "data input : $datainput <br>";
+                $name=$data->berkas_bukti_capaian;
+                $data=file_get_contents($datainput);
+                $zip1->add_data($name,$data);
+                // $zip1->read_file($datainput);
+
+                // echo "test3<br>";
             }   
+            // echo "test2";
             $namafile=$id_tridharma.".zip";
-            $zip1->archive(base_url("file/berkas_tridharma_zip/$namafile"));
+            // echo var_dump($zip1);
+            $zip1->archive(FCPATH.'/file/berkas_tridharma_zip/'.$namafile);
+            // $zip1->archive(base_url("file/berkas_tridharma_zip/$namafile"));
+            // $zip1->download("$namafile");
+            // $this->zip->download('data.zip');
         }
     }
+
 
     public function viewKelengkapan()
     {
@@ -48,6 +61,7 @@ class Jabatan extends MY_Controller
                             $dataRancanganSKP=$skp->getEvalSKP($id_tridharma);
                             $data['idtridharma']=$id_tridharma;
                             $data['dataSKP']=$dataRancanganSKP;       
+                            // echo "test";  
                             $this->zip_data_eval($id_tridharma);     
             }
             else{
@@ -66,7 +80,8 @@ class Jabatan extends MY_Controller
                             $id_tridharma=$skp->getTridharma($iddosen,$semester,$tahunajar)->id_tridharma;
                             $dataRancanganSKP=$skp->getEvalSKP($id_tridharma);
                             $data['idtridharma']=$id_tridharma;
-                            $data['dataSKP']=$dataRancanganSKP;       
+                            $data['dataSKP']=$dataRancanganSKP;     
+                            // echo "test";     
                             $this->zip_data_eval($id_tridharma);               
             }
             else{

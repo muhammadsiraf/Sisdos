@@ -128,7 +128,8 @@
             <?php 
                 if($idtridharma!=null)
                 {
-                    echo "<td><button type=\"button\" class=\"btn btn-primary\">Download Semua Berkas</button></td>";
+                    $urldata=base_url("file/berkas_tridharma_zip/$idtridharma.zip");
+                    echo "<td><a href=\"$urldata\" class=\"btn btn-primary\">download file</a></td>";
                 }
             ?>
             
