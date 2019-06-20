@@ -125,7 +125,13 @@
           ?>
           <tr>
             <th colspan="5" scope="row"></th>
-            <td><button type="button" class="btn btn-primary">Download Semua Berkas</button></td>
+            <?php 
+                if($idtridharma!=null)
+                {
+                    echo "<td><button type=\"button\" class=\"btn btn-primary\">Download Semua Berkas</button></td>";
+                }
+            ?>
+            
           </tr>
         </tbody>
 
