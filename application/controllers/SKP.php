@@ -250,13 +250,15 @@ class SKP extends MY_Controller
             $semester="genap";
             if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018-2019")!=null)
             {
-                            
-                            $id_tridharma=$skp->getTridharma($iddosen,"genap","2018-2019")->id_tridharma;
+                            $tridharma=$skp->getTridharma($iddosen,"genap","2018-2019");
+                            $id_tridharma=$tridharma->id_tridharma;
                             $dataRancanganSKP=$skp->getEvalSKP($id_tridharma);
                             $data['idtridharma']=$id_tridharma;
+                            $data['tridharma']=$tridharma;
                             $data['dataSKP']=$dataRancanganSKP;            
             }
             else{
+                $data['tridharma']=null;
                 $data['dataSKP']=null;
             }
             $this->load->view("dosen/page/skp/hasil_skp",$data);               
@@ -266,12 +268,15 @@ class SKP extends MY_Controller
             $semester=$_POST['semester'];
             if($id_tridharma=$skp->getTridharma($iddosen,$semester,$tahunajar)!=null)
             {
-                            
-                            $id_tridharma=$skp->getTridharma($iddosen,$semester,$tahunajar)->id_tridharma;
+                            $tridharma=$skp->getTridharma($iddosen,"genap","2018-2019");                            
+                            $id_tridharma=$tridharma->id_tridharma;
                             $dataRancanganSKP=$skp->getEvalSKP($id_tridharma);
+                            $data['tridharma']=$tridharma;
+                            $data['id_tridharma']=$id_tridharma;
                             $data['dataSKP']=$dataRancanganSKP;            
             }
             else{
+                $data['tridharma']=null;
                 $data['dataSKP']=null;
             }
             $this->load->view("dosen/page/skp/hasil_skp",$data);   

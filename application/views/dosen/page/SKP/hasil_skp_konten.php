@@ -128,9 +128,9 @@
         </tbody>
       </table>
 
-      <h3>Jumlah Kredit: </h3>
+      <h3>Jumlah Kredit: <?php echo $tridharma->nilai_kredit_skp;?> </h3>
       <br>
-      <h3>Hasil Penilaian Perilaku: </h3>
+      <h3>Hasil Penilaian Perilaku: <?php echo $tridharma->nilai_perilaku;?> </h3>
       <br>
       <h3>Kategori :    </h3>
              </div>
