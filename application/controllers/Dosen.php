@@ -246,6 +246,7 @@ class Dosen extends MY_Controller
     public function setuju_eval_skp()
     {
         $dosen=$this->dosen_model;
+        $skp=$this->skp_model;
         $post=$this->input->post();
         $id_tridharma=$post['id_tridharma'];
         $dosen->update_persetujuan_eval_skp();
@@ -274,6 +275,7 @@ class Dosen extends MY_Controller
                 $total_skp_approve++;
             }
             $total_nilai=($realisasi_jumlah*$realisasi_kualitas/100)*$data->approval*$data->kredit;
+            $skp->update_kredit_hasil_skp($data->id_pskp,$total_nilai);
             $total_kredit_skp=$total_kredit_skp+$total_nilai;
             echo "Total Nilai: ".$total_nilai;
             echo "<br>";
@@ -327,6 +329,7 @@ class Dosen extends MY_Controller
         redirect("penilaian/perilaku");
     }
 
+    
     
 
 

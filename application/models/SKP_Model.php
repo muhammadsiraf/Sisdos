@@ -90,13 +90,13 @@ class SKP_model extends CI_Model
 
     public function getSKPperJenis($id_tridharma, $id_jenisTri)
     {
-        return $this->db->query("SELECT jenis_uraian_skp.nama as uraian, skp_penilaian.target_jumlah, skp_penilaian.target_satuan, skp_penilaian.kualitas_mutu, skp_penilaian.waktu_jumlah, skp_penilaian.waktu_satuan, jenis_uraian_skp.id_jenis_tridharma, skp_penilaian.jenis_uraian_skp FROM `skp_penilaian` INNER JOIN `jenis_uraian_skp` ON skp_penilaian.jenis_uraian_skp=jenis_uraian_skp.id_jenis_uraian  WHERE skp_penilaian.id_tridharma=$id_tridharma AND jenis_uraian_skp.id_jenis_tridharma=$id_jenisTri")->result();
+        return $this->db->query("SELECT jenis_uraian_skp.nama as uraian, skp_penilaian.target_jumlah, skp_penilaian.target_satuan, skp_penilaian.kualitas_mutu, skp_penilaian.waktu_jumlah, skp_penilaian.waktu_satuan, jenis_uraian_skp.id_jenis_tridharma, skp_penilaian.jenis_uraian_skp, skp_penilaian.nilai_kredit_akhir FROM `skp_penilaian` INNER JOIN `jenis_uraian_skp` ON skp_penilaian.jenis_uraian_skp=jenis_uraian_skp.id_jenis_uraian  WHERE skp_penilaian.id_tridharma=$id_tridharma AND jenis_uraian_skp.id_jenis_tridharma=$id_jenisTri")->result();
     }
 
     public function getEvalSKP($id_tridharma)
     {
         // return $this->db->query("SELECT uraian_skp.uraian , skp_penilaian.target_jumlah, skp_penilaian.target_satuan, skp_penilaian.kualitas_mutu, skp_penilaian.waktu_jumlah, skp_penilaian.waktu_satuan, skp_penilaian.realisasi_jumlah, skp_penilaian.realisasi_kualitas FROM `skp_penilaian` INNER JOIN `uraian_skp` ON skp_penilaian.id_uraian_skp=uraian_skp.id_uraian WHERE id_tridharma=$id_tridharma")->result();
-        return $this->db->query("SELECT jenis_uraian_skp.nama as uraian , skp_penilaian.target_jumlah, skp_penilaian.approval, skp_penilaian.target_satuan, skp_penilaian.kualitas_mutu, skp_penilaian.waktu_jumlah, skp_penilaian.waktu_satuan, skp_penilaian.realisasi_jumlah, skp_penilaian.realisasi_kualitas, skp_penilaian.id_pskp, skp_penilaian.berkas_bukti_capaian, skp_penilaian.kredit_dapat FROM `skp_penilaian` INNER JOIN `jenis_uraian_skp` ON skp_penilaian.jenis_uraian_skp=jenis_uraian_skp.id_jenis_uraian WHERE id_tridharma=$id_tridharma")->result();
+        return $this->db->query("SELECT jenis_uraian_skp.nama as uraian , skp_penilaian.target_jumlah, skp_penilaian.approval, skp_penilaian.target_satuan, skp_penilaian.kualitas_mutu, skp_penilaian.waktu_jumlah, skp_penilaian.waktu_satuan, skp_penilaian.realisasi_jumlah, skp_penilaian.realisasi_kualitas, skp_penilaian.id_pskp, skp_penilaian.berkas_bukti_capaian, skp_penilaian.nilai_kredit_akhir FROM `skp_penilaian` INNER JOIN `jenis_uraian_skp` ON skp_penilaian.jenis_uraian_skp=jenis_uraian_skp.id_jenis_uraian WHERE id_tridharma=$id_tridharma")->result();
     }
 
     public function getListofUraian($byjenisTridharma)
@@ -144,4 +144,16 @@ class SKP_model extends CI_Model
     {
         return $this->db->query("SELECT jenis_uraian_skp.nama as uraian , skp_penilaian.target_jumlah, skp_penilaian.approval, skp_penilaian.target_satuan, skp_penilaian.kualitas_mutu, skp_penilaian.waktu_jumlah, skp_penilaian.waktu_satuan, skp_penilaian.realisasi_jumlah, skp_penilaian.realisasi_kualitas, skp_penilaian.id_pskp, skp_penilaian.berkas_bukti_capaian, jenis_uraian_skp.kredit, jenis_uraian_skp.maks_jumlah FROM `skp_penilaian` INNER JOIN `jenis_uraian_skp` ON skp_penilaian.jenis_uraian_skp=jenis_uraian_skp.id_jenis_uraian WHERE id_tridharma=$id_tridharma")->result();
     }
+
+    public function get_all_tridharma_dosen($id_dosen)
+    {
+        return $this->db->get_where("tridharma",["id_dosen"=>$id_dosen])->result();
+    }
+
+    public function update_kredit_hasil_skp($id_skp,$nilai_kredit)
+    {
+        $this->db->update($this->_skp,["nilai_kredit_akhir"=>$nilai_kredit],["id_pskp"=>$id_skp]);
+    }
+
+
 }

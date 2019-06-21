@@ -95,7 +95,113 @@ class Jabatan extends MY_Controller
 
     public function viewSimulasi()
     {
-        $this->load->view("dosen/page/jabatan/simulPenilaian");              
+     
+        $iddosen=$this->session->userdata('dosen')->id_dosen;
+        $skp=$this->skp_model;
+        $dosen=$this->dosen_model;
+        $tridharma_akhir=$this->get_tridharma_last_2_years($iddosen);
+        $total_kredit_skp=0;
+        
+        foreach($tridharma_akhir as $akhir){
+            $total_kredit_skp=$total_kredit_skp+$akhir->nilai_kredit_skp;
+        }
+        // echo "Total Kredit SKP 2 Tahun : $total_kredit_skp";
+        $dosen->update_angka_kredit($total_kredit_skp,$iddosen);
+        $data["total_kredit"]=$total_kredit_skp;
+        
+        
+        $kredit_pendidikan=0;
+        $kredit_penelitian=0;
+        $kredit_pengabdian=0;
+        $kredit_penunjang=0;
+        $data["prektek"]="BOI";
+        $dummi[0]=0;
+        $dummi[1]=1;
+        $dummi[2]=2;
+        $dummi[3]=3;
+
+        foreach($tridharma_akhir as $akhir)
+        {
+            // echo "Id : $akhir->id_tridharma";
+            
+                $data_tri=$skp->getSKPperJenis($akhir->id_tridharma,1);
+                $panj=count($data_tri);
+
+                for($i=0;$i<$panj;$i++)
+                {
+                    $kredit_pendidikan=$kredit_pendidikan+$data_tri[$i]->nilai_kredit_akhir;
+                }
+                $data_tri=$skp->getSKPperJenis($akhir->id_tridharma,2);
+                $panj=count($data_tri);
+                if($data_tri!=null)
+                {
+                    for($i=0;$i<$panj;$i++)
+                    {
+                         $kredit_penelitian=$kredit_penelitian+$data_tri[$i]->nilai_kredit_akhir;
+                    }
+                }
+                $data_tri=$skp->getSKPperJenis($akhir->id_tridharma,3);
+                $panj=count($data_tri);
+                if($data_tri!=null)
+                {
+                    for($i=0;$i<$panj;$i++)
+                    {
+                         $kredit_pengabdian=$kredit_pengabdian+$data_tri[$i]->nilai_kredit_akhir;
+                    }
+                }
+                $data_tri=$skp->getSKPperJenis($akhir->id_tridharma,4);
+                $panj=count($data_tri);
+
+               if($data_tri!=null)
+                {
+                    for($i=0;$i<$panj;$i++)
+                    {
+                         $kredit_penunjang=$kredit_penunjang+$data_tri[$i]->nilai_kredit_akhir;
+                    }
+                }
+
+        }
+
+        $data["kredit_pendidikan"]=$kredit_pendidikan;        
+        $data["kredit_penelitian"]=$kredit_penelitian;
+        $data["kredit_pengabdian"]=$kredit_pengabdian;
+        $data["kredit_penunjang"]=$kredit_penunjang;
+
+
+
+        $this->load->view("dosen/page/jabatan/simulPenilaian",$data);              
+
+    }
+
+    public function get_tridharma_last_2_years($iddosen)
+    {
+        $skp=$this->skp_model;
+        $year=(int)date("Y");
+        $Month=date("m");
+        if($Month>=7)
+        {
+            $year=$year+1;
+        }
+        // echo var_dump($year);
+        $all_tridharma=$skp->get_all_tridharma_dosen($iddosen);
+        // echo var_dump($all_tridharma);
+        // echo "<br>";
+        $tridharma_last=[];
+        foreach($all_tridharma as $all){
+            // echo $all->tahun_ajaran."<br>";
+            $tahun_ajar=$all->tahun_ajaran;
+            $tahun_ajar=explode("-",$tahun_ajar);
+            $tahun2=$tahun_ajar[1];
+            if($tahun2==$year){
+                array_push($tridharma_last,$all);
+            }
+            elseif($tahun2==$year-1){
+                array_push($tridharma_last,$all);
+            }
+        }
+        // echo "<br>";
+        // echo var_dump($tridharma_last);
+        return $tridharma_last;
     }
 
     public function viewPengajuan()

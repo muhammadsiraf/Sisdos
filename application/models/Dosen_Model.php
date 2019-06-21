@@ -307,4 +307,8 @@ class Dosen_model extends CI_Model
         $this->db->update("tridharma",$data,$where);
     }
 
+    public function update_angka_kredit($kredit,$id_dosen)
+    {
+        $this->db->update("dosen",["angka_kredit"=>$kredit],["id_dosen"=>$id_dosen]);
+    }
 }
