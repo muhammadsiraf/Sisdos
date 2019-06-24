@@ -162,15 +162,55 @@ class Jabatan extends MY_Controller
 
         }
 
+        $data_simulasi=$this->simulasi_jabatan();
+
         $data["kredit_pendidikan"]=$kredit_pendidikan;        
         $data["kredit_penelitian"]=$kredit_penelitian;
         $data["kredit_pengabdian"]=$kredit_pengabdian;
         $data["kredit_penunjang"]=$kredit_penunjang;
 
-
-
+        if($data_simulasi!=null){
+            $data_simulasi['pendidikan']=$data_simulasi['pendidikan']-$kredit_pendidikan;
+            $data_simulasi['penelitian']=$data_simulasi['penelitian']-$kredit_penelitian;
+            $data_simulasi['pengabdian']=$data_simulasi['pengabdian']-$kredit_pengabdian;
+            $data_simulasi['penunjang']=$data_simulasi['penunjang']-$kredit_penunjang;
+            $data["data_simulasi"]=$data_simulasi;
+            // echo var_dump($data["data_simulasi"]);
+        }
+        
+        
         $this->load->view("dosen/page/jabatan/simulPenilaian",$data);              
 
+    }
+
+    public function simulasi_jabatan()
+    {
+        $post=$this->input->post();
+        $dosen=$this->session->userdata('dosen');
+        $dosen_model=$this->dosen_model;
+        $data_simulasi=[];
+        if(isset($post['jabatan_tujuan'])){
+            $golongan=$dosen->pangkat;
+            $golongan_tujuan=$post['jabatan_tujuan'];
+
+            // echo var_dump($golongan);
+            
+            $kredit_golongan_sekarang=$dosen_model->get_kredit_golongan($golongan);
+            $kredit_golongan_tujuan=$dosen_model->get_kredit_golongan($golongan_tujuan);
+            $goblogk="preketek";
+
+            // echo var_dump($kredit_golongan_sekarang);
+            // echo "Kreidt : ".var_dump($kredit_golongan_tujuan);
+
+            $beda_kredit=abs($kredit_golongan_sekarang->kredit-$kredit_golongan_tujuan->kredit);
+            $data_simulasi['pendidikan']=($beda_kredit*$kredit_golongan_tujuan->pendidikan)/100;
+            $data_simulasi['penelitian']=($beda_kredit*$kredit_golongan_tujuan->penelitian)/100;
+            $data_simulasi['pengabdian']=($beda_kredit*$kredit_golongan_tujuan->pengabdian)/100;
+            $data_simulasi['penunjang']=($beda_kredit*$kredit_golongan_tujuan->penunjang)/100;
+
+        }
+
+        return $data_simulasi;
     }
 
     public function get_tridharma_last_2_years($iddosen)

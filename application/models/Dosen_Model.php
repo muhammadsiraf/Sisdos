@@ -311,4 +311,9 @@ class Dosen_model extends CI_Model
     {
         $this->db->update("dosen",["angka_kredit"=>$kredit],["id_dosen"=>$id_dosen]);
     }
+
+    public function get_kredit_golongan($golongan)
+    {
+        return $this->db->get_where("golongan",["golongan_nama"=>$golongan])->row();
+    }
 }

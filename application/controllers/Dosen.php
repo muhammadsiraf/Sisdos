@@ -300,7 +300,7 @@ class Dosen extends MY_Controller
         $data['iddosen']=$id_dosen;
         $dosennilai=$this->dosen_model;
         $dosen=$this->session->userdata('dosen');
-
+        
         $this->load->view("dosen/page/penilaian/halaman_nilai_dosen",$data);
     }
 
