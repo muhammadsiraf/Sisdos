@@ -22,7 +22,7 @@
         <?php $this->load->view('dosen/_partials/breadcrumb.php')?>
 
         <!-- konten  dashboard -->
-        <?php $this->load->view('dosen/page/serdos/simulasiKonten.php')?>
+        <?php $this->load->view('dosen/page/serdos/simulasi_konten_2.php')?>
         
 
       <!-- Sticky Footer -->
