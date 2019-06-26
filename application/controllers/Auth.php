@@ -9,6 +9,7 @@ class Auth extends CI_Controller
         parent::__construct();
 		$this->load->model("auth_model");
 		$this->load->model("dosen_model");
+		$this->load->model("skp_model");
         $this->load->library('form_validation');
     }
 
@@ -84,7 +85,11 @@ class Auth extends CI_Controller
 		if($whoislogin=='loginadmin'){
 	        $this->load->view("admin/dashboard");
 		}elseif($whoislogin=='logindosen'){
-	        $this->load->view("dosen/dashboard");		
+			$skp=$this->skp_model;
+			$dosen=$this->session->userdata('dosen');
+			$data_tridharma_dosen=$skp->get_all_tridharma_dosen($dosen->id_dosen);
+			$data_dashboard['data_tridharma']=$data_tridharma_dosen;
+	        $this->load->view("dosen/dashboard",$data_dashboard);		
 		}elseif($whoislogin=='logindikti'){
 	        $this->load->view("dikti/dashboard");		
 		}

@@ -22,8 +22,18 @@
         <?php $this->load->view('dosen/_partials/breadcrumb.php')?>
 
         <!-- konten  dashboard -->
-        <?php $this->load->view('dosen/kontendashboard.php')?>
-        
+        <?php 
+          $dosen=$this->session->userdata('dosen');
+
+          if($dosen->JAFA=="Kepala Prodi")
+          {
+            $this->load->view('dosen/konten_dashboard_asesor.php');
+          }
+          else{
+            $this->load->view('dosen/kontendashboard.php');
+
+          }
+        ?>
 
       <!-- Sticky Footer -->
         <?php $this->load->view('dosen/_partials/footer.php')?>

@@ -115,7 +115,8 @@
                <h2></h2>
                
                <hr>
-                 <table class="table">
+               <div class="container">
+                         <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -148,6 +149,8 @@
                     </tbody>
                 </table>
                 <a class="btn btn-lg btn-success" href="<?php echo base_url("profile/edit")?>">Tambah</a>
+               </div>
+                
              </div><!--/tab-pane-->
 
 
