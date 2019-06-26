@@ -1,12 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard Admin</title>
+  <?php $this->load->view('admin/_partials/head.php')?>
 </head>
-<body>
-    <h1>Dashboard Admin</h1>
+
+<body id="page-top">
+
+  <?php $this->load->view('admin/_partials/navbar.php')?>
+  
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <?php $this->load->view('admin/_partials/sidebar.php')?>
+    
+
+    <div id="content-wrapper">
+
+      <div class="container-fluid">
+
+        <?php $this->load->view('admin/_partials/breadcrumb.php')?>
+
+        <!-- konten  dashboard -->
+        <?php 
+          // $dosen=$this->session->userdata('dosen');
+            $this->load->view('admin/konten_dashboard_admin.php');
+
+        
+        ?>
+
+      <!-- Sticky Footer -->
+        <?php $this->load->view('admin/_partials/footer.php')?>
+    
+
+    </div>
+    <!-- /.content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Scroll to Top Button-->
+        <?php $this->load->view('admin/_partials/scrolltop.php')?>
+
+
+  <!-- Logout Modal-->
+        <?php $this->load->view('admin/_partials/modal.php')?>
+ 
+  <!-- JavaScript -->
+        <?php $this->load->view('admin/_partials/js.php')?>
+
+
 </body>
+
 </html>
