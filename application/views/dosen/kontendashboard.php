@@ -2,7 +2,7 @@
 <script type="text/javascript" src="<?php echo base_url("assets/js/chartjs/Chart.js")?>"></script>
 
 <?php
-
+$dosen=$this->session->userdata('dosen');
 $nama_label="nilai kredit skp";
 $nilai_label=[];
 $label=[];
@@ -45,36 +45,20 @@ $data_grafik['border_width']=$border_width;
 $data_grafik['isi_data']=$isi_data;
 
 ?>
-
-
-<h5>
-
-<?php
-
-	// echo var_dump($data_grafik);
-
-?>
-
-</h5>
-<div class="row">
-			<div class="col-xl-3 col-sm-6 mb-3">
-
+	
+	<div class="row">
+		<div class="col-lg">
+			<div class="card">
+				<div class="card-body">
+					<h5>Kredit Anda: <?php echo $dosen->angka_kredit?></h5>
+				</div>
 			</div>
-			<div class="col-xl-3 col-sm-6 mb-3">
+		</div>
 
-			</div>
-			<div class="col-xl-3 col-sm-6 mb-3">
-
-			</div>
-			<div class="col-xl-3 col-sm-6 mb-3">
-
-			</div>
-</div>
-
-
+	</div>
 
 		<h1><?php $statuslogin=$this->session->userdata('nama');
-		$dosen=$this->session->userdata('dosen');
+		// $dosen=$this->session->userdata('dosen');
 		
 		?></h1>
 		<div class="row">
@@ -93,7 +77,7 @@ $data_grafik['isi_data']=$isi_data;
 		</div>
 
 		<br>
-		
+
 
 		<script>
       var grafik_bar=<?php echo json_encode($data_grafik, JSON_PRETTY_PRINT)?>;
