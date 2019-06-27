@@ -121,5 +121,17 @@ class Auth extends CI_Controller
    {
 
    }
+
+   public function view_administrasi_akun()
+   {
+	   if($this->session->userdata('status'))
+	   {
+		   
+		   $this->load->view("admin/page/administrasi_akun");
+	   }
+	   else{
+		   redirect(base_url("home"));
+	   }
+   }
    
 }

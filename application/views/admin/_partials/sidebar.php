@@ -8,19 +8,16 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('profile')?>">
+        <a class="nav-link" href="<?php echo site_url('administrasi/akun')?>">
           <i class="fas fa-fw fa-user "></i>
-          <span>Profile</span></a>
+          <span>Administrasi Akun</span></a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Administrasi Dosen</span>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-        
-        </div>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('administrasi/dosen')?>">
+          <i class="fas fa-fw fa-user "></i>
+          <span>Administrasi Dosen</span></a>
       </li>
+
 
   
 

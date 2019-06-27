@@ -316,4 +316,9 @@ class Dosen_model extends CI_Model
     {
         return $this->db->get_where("golongan",["golongan_nama"=>$golongan])->row();
     }
+
+    public function get_all_dosen_per($number,$offset)
+    {
+        return $this->db->get("dosen",$number,$offset)->result();
+    }
 }
