@@ -73,6 +73,11 @@ class Auth_model extends CI_Model
     }
 
 
+    public function get_all_akun_per($number,$offset)
+    {
+        return $this->db->get("registrasi", $number, $offset)->result();
+    }
+
 
 
 }
