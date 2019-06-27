@@ -16,6 +16,10 @@ class Dosen_model extends CI_Model
     public $TMT_JAFA;
     public $angka_kredit;
     public $username;
+    public $status;
+    public $ikatan_kerja;
+    public $pangkat;
+
 
     public $photo="default.jpg";
 
@@ -320,5 +324,26 @@ class Dosen_model extends CI_Model
     public function get_all_dosen_per($number,$offset)
     {
         return $this->db->get("dosen",$number,$offset)->result();
+    }
+
+    public function update_by_admin()
+    {
+        $post = $this->input->post();
+        $this->nama = $post["nama_dosen"];
+        $this->NIDN_NUPN = $post["nupn"];
+        $this->tempat_lahir = $post["tempat_lahir"];
+        $this->tanggal_lahir = $post["tanggal_lahir"];
+        $this->gelar_depan = $post["gelar_depan"];
+        $this->gelar_belakang = $post["gelar_belakang"];
+        $this->jenis_kelamin = $post["jenis_kelamin"];
+        $this->angka_kredit = $post["kredit"];
+        $this->username = $post["username"];
+        $this->status = $post["status"];
+        $this->ikatan_kerja = $post["ikatan_kerja"];
+        $this->pangkat = $post["pangkat"];
+        $this->JAFA=$post["jafa"];
+        $this->TMT_JAFA=$post["tmt_jafa"];
+        $this->id_dosen=$post["id_dosen"];
+        $this->db->update($this->_table, $this, array('id_dosen'=>$post['id_dosen']));
     }
 }

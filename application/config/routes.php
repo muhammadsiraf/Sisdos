@@ -48,9 +48,12 @@ $route['penilaian/skpbkd/approval-evaluasi/(:num)']='dosen/view_approve_eval_skp
 
 $route['administrasi/dosen'] = 'dosen/view_administrasi_dosen';
 $route['administrasi/dosen/(:num)'] = 'dosen/view_administrasi_dosen/$1';
+$route['administrasi/dosen/detail/(:num)'] = 'dosen/view_detail_admin_dosen/$1';
 
 $route['administrasi/akun'] = 'auth/view_administrasi_akun';
 $route['administrasi/akun/(:num)'] = 'auth/view_administrasi_akun/$1';
+$route['administrasi/akun/detail/(:num)'] = 'auth/view_detail_akun/$1';
+
 
 
 

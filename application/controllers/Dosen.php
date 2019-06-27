@@ -367,6 +367,33 @@ class Dosen extends MY_Controller
         }
     }
 
+    public function view_detail_admin_dosen($id_dosen)
+    {
+        if($this->session->userdata('status')=="loginadmin")
+        {
+            $data_dosen=$this->dosen_model->getById($id_dosen);
+            $data['dosen']=$data_dosen;
+            $this->load->view("admin/page/detail_dosen",$data);
+        }
+        else{
+            redirect(base_url("home"));
+        }
+    }
+
+    public function update_admin()
+    {
+         if($this->session->userdata("status")=="loginadmin")
+         {
+         $dosen = $this->dosen_model;
+         $validation = $this->form_validation;        
+         $dosen->update_by_admin();    
+         $id_dosen=$this->input->post('id_dosen');
+         redirect(base_url("administrasi/dosen/detail/$id_dosen"));
+         }
+         
+    }
+    
+
     
 
     

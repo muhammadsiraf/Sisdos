@@ -21,7 +21,7 @@ foreach($dosen as $dosen)
                     <h5><?php echo "Jenis Kelamin : ".$dosen->jenis_kelamin?></h5>
                     <h5><?php echo "Jabatan : ".$dosen->JAFA?></h5>
                     <h5><?php echo "Username : ".$dosen->username?></h5>
-                    <a href="" class="btn btn-primary">Detail</a>
+                    <a href="<?php echo base_url("administrasi/dosen/detail/$dosen->id_dosen/")?>" class="btn btn-primary">Detail</a>
                 </div>
             </div> 
         </div>
