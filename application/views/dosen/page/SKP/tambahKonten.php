@@ -80,7 +80,7 @@
               <div class="tab-content">
                 
                 <div class="tab-pane active" id="pendidikan">
-                     <form class="form-horizontal">
+                     <!-- <form class="form-horizontal"> -->
                         
       <table class="table">
         <thead class="thead-dark">
@@ -151,11 +151,11 @@
 
       </table>
                        
-                    </form>
+                    <!-- </form> -->
                 </div>
                 
                 <div class="tab-pane" id="penelitian">
-                     <form class="form-horizontal">
+                     <!-- <form class="form-horizontal"> -->
                         
       <table class="table">
         <thead class="thead-dark">
@@ -168,7 +168,7 @@
         </thead>
 
         <tbody>
-           <form action="">
+           <!-- <form action=""> -->
            <?php 
           $count=1;
             if(ISSET($penelitian)){
@@ -224,16 +224,16 @@
 
           ?>
          
-        </form>         
+        <!-- </form>          -->
         </tbody>
 
       </table>
                        
-                    </form>
+                    <!-- </form> -->
                 </div>
               
                 <div class="tab-pane" id="pengabdian">
-                    <form class="form-horizontal">
+                    <!-- <form class="form-horizontal"> -->
                         
       <table class="table">
         <thead class="thead-dark">
@@ -246,7 +246,7 @@
         </thead>
 
         <tbody>
-          <form action="">
+          <!-- <form action=""> -->
           <?php 
           $count=1;
             if(ISSET($pengabdian)){
@@ -301,17 +301,17 @@
             }
 
           ?>
-        </form>         
+        <!-- </form>          -->
         </tbody>
 
       </table>
                        
-                    </form>
+                    <!-- </form> -->
                 
                 </div>
               
                 <div class="tab-pane" id="penunjang">
-                     <form class="form-horizontal">
+                     <!-- <form class="form-horizontal"> -->
                         
       <table class="table">
         <thead class="thead-dark">
@@ -324,7 +324,7 @@
         </thead>
 
         <tbody>
-          <form action="">
+          <!-- <form action=""> -->
            <?php 
           $count=1;
             if(ISSET($penunjang)){
@@ -380,12 +380,12 @@
 
           ?>
          
-        </form>         
+        <!-- </form>          -->
         </tbody>
 
       </table>
                        
-                    </form>         
+                    <!-- </form>          -->
                 </div>
               
 
