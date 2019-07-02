@@ -26,11 +26,19 @@ class Jabatan extends MY_Controller
         {
             $data_skp=$skp->getEvalSKP($id_tridharma);
             foreach($data_skp as $data){
-                $datainput=base_url("file/berkas/$data->berkas_bukti_capaian");
-                // echo "data input : $datainput <br>";
-                $name=$data->berkas_bukti_capaian;
-                $data=file_get_contents($datainput);
-                $zip1->add_data($name,$data);
+                // echo "data berkas: $data->berkas_bukti_capaian";
+                if($data->berkas_bukti_capaian==null||$data->berkas_bukti_capaian=="kosong"){
+                    // echo "preketek";
+                }
+                else{
+                     $datainput=base_url("file/berkas/$data->berkas_bukti_capaian");
+                    // echo "data input : $datainput <br>";
+                     $name=$data->berkas_bukti_capaian;
+                     $data=file_get_contents($datainput);
+                     $zip1->add_data($name,$data);
+                
+                }
+               
                 // $zip1->read_file($datainput);
 
                 // echo "test3<br>";
