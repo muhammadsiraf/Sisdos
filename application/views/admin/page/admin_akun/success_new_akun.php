@@ -24,7 +24,7 @@
         <!-- konten  dashboard -->
         <?php 
           // $dosen=$this->session->userdata('dosen');
-            $this->load->view('admin/page/detail_dosen_konten.php');
+            $this->load->view('admin/page/admin_akun/succes_new_konten.php');
 
         
         ?>

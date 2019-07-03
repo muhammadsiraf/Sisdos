@@ -53,8 +53,8 @@ class Auth_model extends CI_Model
     {
         $post = $this->input->post();
         $this->password = md5($post["password"]);
-        $this->username = $post["name"];
-        $this->tipe = $post["tipe"];
+        $this->username = $post["username"];
+        $this->tipe = 2;
         $this->db->insert($this->_table,$this);
     }
 

@@ -117,6 +117,7 @@ class SKP extends MY_Controller
         $realisasiJumlah=$post["jumlahRealisasi"];
         $realisasiKualitas=$post["kualitasRealisasi"];
         $fileberkas=$post["fileupload"];
+        echo "berkas file nama: $fileberkas";
 		$namafile=uniqid();
         $config['upload_path']          = './file/berkas';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg|pdf|doc|docx';
@@ -151,7 +152,7 @@ class SKP extends MY_Controller
         );
 
         $skp->updateSKP($dataMasuk,$where);
-        redirect("/skp/evaluasi");
+        // redirect("/skp/evaluasi");
 
     }
 

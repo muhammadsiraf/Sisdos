@@ -33,17 +33,19 @@
                     <input type="text" class="form-control" name="pangkat" value="<?php echo $dosen->pangkat?>">
                     <input type="hidden" value="<?php echo $dosen->id_dosen?>" name="id_dosen">
                     <input type="hidden" value="<?php echo $dosen->TMT_JAFA?>" name="tmt_jafa">
+                    <br>
                     <button type="submit" class="btn btn-primary">edit</button>
                     </form>
-                    <h5><?php echo "Nama : ".$dosen->nama?></h5>
+                    <br>
+                    <!-- <h5><?php echo "Nama : ".$dosen->nama?></h5>
                     <h5><?php echo "Tempat Lahir : ".$dosen->tempat_lahir?></h5>
                     <h5><?php echo "Tanggal lahir : ".$dosen->tanggal_lahir?></h5>
                     <h5><?php echo "Gelar Belakang : ".$dosen->gelar_belakang?></h5>
                     <h5><?php echo "Gelar Depan : ".$dosen->gelar_depan?></h5>
                     <h5><?php echo "Jenis Kelamin : ".$dosen->jenis_kelamin?></h5>
                     <h5><?php echo "Jabatan : ".$dosen->JAFA?></h5>
-                    <h5><?php echo "Username : ".$dosen->username?></h5>
-                    <a href="" class="btn btn-primary">hapus</a>
+                    <h5><?php echo "Username : ".$dosen->username?></h5> -->
+                    <a href="<?php echo  base_url("Dosen/delete/$dosen->id_dosen")?>" class="btn btn-primary">hapus</a>
                 </div>
             </div>
         </div>

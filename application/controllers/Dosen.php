@@ -11,6 +11,7 @@ class Dosen extends MY_Controller
 		// $this->dosenRequired(array('except'=>array('')));
         $this->load->model("dosen_model");
         $this->load->model("pendidikan_model");
+        $this->load->model("auth_model");
         $this->load->model("SKP_model");
 
         $this->load->library('form_validation');
@@ -102,9 +103,15 @@ class Dosen extends MY_Controller
 
 
    public function delete($id=null)
-    {
-   
-    }
+   {
+       if($id!=null){
+            $this->dosen_model->delete($id);
+           redirect(base_url("administrasi/dosen/"));
+       }
+       else{
+           redirect(base_url("administrasi/dosen/"));
+       }
+   }
 
     
    public function uploadPhoto()
@@ -360,7 +367,7 @@ class Dosen extends MY_Controller
             $from =$this->uri->segment(3);
             $this->pagination->initialize($config);
             $data_admin['dosen']=$this->dosen_model->get_all_dosen_per(3,$from);
-            $this->load->view("admin/page/administrasi_dosen",$data_admin);
+            $this->load->view("admin/page/admin_dosen/administrasi_dosen",$data_admin);
         }
         else{
             redirect(base_url("home"));
@@ -373,7 +380,7 @@ class Dosen extends MY_Controller
         {
             $data_dosen=$this->dosen_model->getById($id_dosen);
             $data['dosen']=$data_dosen;
-            $this->load->view("admin/page/detail_dosen",$data);
+            $this->load->view("admin/page/admin_dosen/detail_dosen",$data);
         }
         else{
             redirect(base_url("home"));
@@ -392,6 +399,53 @@ class Dosen extends MY_Controller
          }
          
     }
+
+    public function view_form_new_akun()
+    {
+        $this->load->library('form_validation');
+        
+        $config = array(
+            array(
+                'field'=>'username',
+                'label'=>'Username',
+                'rules'=>'trim|required|min_length[5]|max_length[12]|is_unique[registrasi.username]',
+                    array(
+                        'required'      => 'You have not provided %s.',
+                        'is_unique'     => 'This %s already exists.'
+                    )
+            ),
+            array(
+                'field'=>'password',
+                'label'=>'Password',
+                'rules'=>'trim|min_length[6]|max_length[12]|required',
+                'errors'=> array(
+                        'required'=>'You must provide a %s',
+                )
+            ),
+            array(
+                'field'=>'password_conf',
+                'label'=>'Password Confirmation',
+                'rules'=>'trim|min_length[6]|max_length[12]|required|matches[password]',
+                'error'=> array(
+                        'matches'=>'password different bro',
+                )
+            ),
+
+        );
+
+        $this->form_validation->set_rules($config);
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view("admin/page/admin_akun/new_akun");            
+        }
+        else{
+            $this->auth_model->save();
+            // $this->load->view("admin/page/admin_akun/success_new_akun");
+            redirect("administrasi/akun");
+        }
+        // $this->view->load("");
+    }
+
     
 
     

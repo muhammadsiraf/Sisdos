@@ -24,7 +24,7 @@
         <!-- konten  dashboard -->
         <?php 
           // $dosen=$this->session->userdata('dosen');
-            $this->load->view('admin/page/administrasi_dosen_konten.php');
+            $this->load->view('admin/page/page/detail_akun_konten.php');
 
         
         ?>

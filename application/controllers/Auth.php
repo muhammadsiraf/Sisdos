@@ -152,7 +152,7 @@ class Auth extends CI_Controller
             $from =$this->uri->segment(3);
             $this->pagination->initialize($config);
             $data_admin['akun']=$this->auth_model->get_all_akun_per(5,$from);
-            $this->load->view("admin/page/administrasi_akun",$data_admin);
+            $this->load->view("admin/page/admin_akun/administrasi_akun",$data_admin);
 		//    $this->load->view("admin/page/administrasi_akun");
 	   }
 	   else{

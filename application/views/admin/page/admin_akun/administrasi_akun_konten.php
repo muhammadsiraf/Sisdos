@@ -1,5 +1,7 @@
 <h1>Administrasi Akun</h1>
-
+<br>
+<a href="<?php echo base_url("dosen/view_form_new_akun")?>" class="btn btn-primary">akun baru</a>
+<br>
 <div class="container">
 
 <?php 
