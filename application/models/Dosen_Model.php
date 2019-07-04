@@ -23,12 +23,134 @@ class Dosen_model extends CI_Model
 
     public $photo="default.jpg";
 
-    public function rules()
+     public function rules_update()
     {
-        return [
-            
-        ];
+        $config = array(
+            array(
+                'field'=>'nama_dosen',
+                'label'=>'Nama Dosen',
+                'rules'=>'alpha_numeric_spaces',
+                    array(
+
+                    )
+            ),
+            array(
+                'field'=>'nupn',
+                'label'=>'NUPN/NIDN',
+                'rules'=>'numeric',
+                    array(
+
+                    )
+            ),
+            array(
+                'field'=>'tempat_lahir',
+                'label'=>'Tempat Lahir',
+                'rules'=>'',
+                    array(
+
+                    )
+            ),
+            array(
+                'field'=>'gelar_belakang',
+                'label'=>'Gelar Belakang',
+                'rules'=>'',
+                    array(
+
+                    )
+            ),
+            array(
+                'field'=>'gelar_depan',
+                'label'=>'Gelar Depan',
+                'rules'=>'',
+                    array(
+
+                    )
+            ),
+            array(
+                'field'=>'jenis_kelamin',
+                'label'=>'Jenis Kelamin',
+                'rules'=>'in_list[Laki-laki,Perempuan]',
+                    array(
+
+                    )
+            ),
+            array(
+                'field'=>'jafa',
+                'label'=>'JAFA',
+                'rules'=>'',
+                    array(
+
+                    )
+            ),
+            array(
+                'field'=>'username',
+                'label'=>'Username',
+                'rules'=>'min_length[3]|max_length[12]',
+                    array(
+
+                    )
+            ),
+            array(
+                'field'=>'kredit',
+                'label'=>'Kredit',
+                'rules'=>'numeric',
+                    array(
+
+                    )
+            ),
+            array(
+                'field'=>'status',
+                'label'=>'Status',
+                'rules'=>'alpha',
+                    array(
+
+                    )
+            ),
+            array(
+                'field'=>'ikatan_kerja',
+                'label'=>'Ikatan Kerja',
+                'rules'=>'alpha_numeric_spaces',
+                    array(
+
+                    )
+            ),
+            array(
+                'field'=>'pangkat',
+                'label'=>'Pangkat',
+                'rules'=>'',
+                    array(
+
+                    )
+            ),
+            array(
+                'field'=>'id_dosen',
+                'label'=>'Id Dosen',
+                'rules'=>'numeric',
+                    array(
+
+                    )
+            ),
+            array(
+                'field'=>'tmt_jafa',
+                'label'=>'TMT JAFA',
+                'rules'=>'',
+                    array(
+
+                    )
+            ),
+            array(
+                'field'=>'tanggal_lahir',
+                'label'=>'Tanggal Lahir',
+                'rules'=>'',
+                    array(
+
+                    )
+            ),
+        );
+        return $config;
     }
+
+    
 
     public function getAll()
     {
@@ -346,4 +468,10 @@ class Dosen_model extends CI_Model
         $this->id_dosen=$post["id_dosen"];
         $this->db->update($this->_table, $this, array('id_dosen'=>$post['id_dosen']));
     }
+
+    public function make_dosen($data)
+    {
+        $this->db->insert($this->_table,$data);
+    }
+    
 }

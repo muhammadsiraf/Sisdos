@@ -392,10 +392,27 @@ class Dosen extends MY_Controller
          if($this->session->userdata("status")=="loginadmin")
          {
          $dosen = $this->dosen_model;
-         $validation = $this->form_validation;        
-         $dosen->update_by_admin();    
-         $id_dosen=$this->input->post('id_dosen');
-         redirect(base_url("administrasi/dosen/detail/$id_dosen"));
+         $this->load->library('form_validation');
+         
+         $config = $dosen->rules_update();
+
+
+         $this->form_validation->set_rules($config);
+
+         if($this->form_validation->run()==false){
+             $id_dosen=$this->input->post('id_dosen');
+            //  print_r($this->form_validation->get_all_errors());
+            // echo var_dump($this->form_validation->run());
+            // echo validation_errors();
+            redirect(base_url("administrasi/dosen/detail/$id_dosen"));
+         }
+         else{
+            $dosen->update_by_admin();    
+            $id_dosen=$this->input->post('id_dosen');
+            redirect(base_url("administrasi/dosen/detail/$id_dosen"));
+         }
+
+         
          }
          
     }
@@ -408,7 +425,7 @@ class Dosen extends MY_Controller
             array(
                 'field'=>'username',
                 'label'=>'Username',
-                'rules'=>'trim|required|min_length[5]|max_length[12]|is_unique[registrasi.username]',
+                'rules'=>'trim|required|min_length[3]|max_length[12]|is_unique[registrasi.username]',
                     array(
                         'required'      => 'You have not provided %s.',
                         'is_unique'     => 'This %s already exists.'
@@ -430,6 +447,14 @@ class Dosen extends MY_Controller
                         'matches'=>'password different bro',
                 )
             ),
+            array(
+                'field'=>'rasanya',
+                'label'=>'rasanya',
+                'rules'=>'trim|min_length[6]|max_length[12]|',
+                'error'=> array(
+                        '',
+                )
+            ),
 
         );
 
@@ -440,6 +465,12 @@ class Dosen extends MY_Controller
         }
         else{
             $this->auth_model->save();
+            $post=$this->input->post();
+            $username=$post['username'];
+            $data=array(
+                "username"=>$username,
+            );
+            $this->dosen_model->make_dosen($data);
             // $this->load->view("admin/page/admin_akun/success_new_akun");
             redirect("administrasi/akun");
         }

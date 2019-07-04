@@ -117,9 +117,10 @@ class Auth extends CI_Controller
 
     }
 
-   public function delete($id=null)
+   public function delete($username=null)
    {
-
+		$this->auth_model->delete($username);
+		redirect("administrasi/akun");
    }
 
    public function view_administrasi_akun()
