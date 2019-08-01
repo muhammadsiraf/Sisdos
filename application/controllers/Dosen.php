@@ -29,6 +29,7 @@ class Dosen extends MY_Controller
         $dosen=$this->dosen_model->getByUsername($username);
         $data['pendidikan']=$this->pendidikan_model->getByDosen($dosen->id_dosen);
         $data['dosen']=$dosen;
+        $data['pangkat']=$this->dosen_model->get_pangkat_by_dosen($this->session->userdata('dosen')->id_dosen);
         $this->load->view("dosen/page/profile",$data);
     }
 
@@ -53,6 +54,8 @@ class Dosen extends MY_Controller
 
         $this->load->view("dosen/page/profile");
     }
+
+
 
     public function getAll()
     {
@@ -87,11 +90,53 @@ class Dosen extends MY_Controller
         }
     }
 
+    public function tambah_pangkat()
+    {
+       $dosencek=$this->session->userdata('dosen');
+       $dosen=$this->dosen_model;
+       if (ISSET($_POST['id_dosen'])){
+            $dosen->tambah_pangkat();
+            redirect('/profile/');
+       }
+       if  ($dosencek!=null){
+             $data['dosen']=$dosencek;
+             $this->load->view("dosen/page/pangkat",$data);           
+       }
+
+    }
+
+    public function hapus_pangkat($id_riwayat_pangkat)
+    {
+       $dosencek=$this->session->userdata('dosen');
+       $dosen=$this->dosen_model;   
+       if  ($dosencek!=null){
+            $dosen->hapus_pangkat($id_riwayat_pangkat);
+            redirect($_SERVER['HTTP_REFERER']);     
+       }
+    }
+
+    public function edit_pangkat($id_riwayat_pangkat)
+    {
+       $dosencek=$this->session->userdata('dosen');
+       $dosen=$this->dosen_model;
+       if($dosencek!=null){
+             $data['id_pangkat']=$id_riwayat_pangkat;
+             $data['dosen']=$dosencek;
+             $data['edit']=1;
+             $this->load->view("dosen/page/pangkat",$data);           
+       }
+       if(ISSET($_POST['pangkat'])){
+            $post=$this->input->post();
+            $dosen->update_pangkat($id_riwayat_pangkat,$post['pangkat']);
+            redirect("profile");
+       }
+    }
+
     public function tambahPendidikan()
     {
         $dosencek=$this->session->userdata('dosen');
        
-       if  ($dosencek!=null){
+       if($dosencek!=null){
              echo "dosen check true";
              $pendidikan = $this->pendidikan_model;
              $validation = $this->form_validation;        
@@ -101,6 +146,25 @@ class Dosen extends MY_Controller
         }
     }
 
+    public function hapusPendidikan($id_pendidikan)
+    {
+        $pendidikan = $this->pendidikan_model;
+        $pendidikan->hapusPendidikan($id_pendidikan);
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function editPendidikan($id_pendidikan)
+    {
+        $pendidikan = $this->pendidikan_model;
+        $data['pendidikan']=$pendidikan->get_by_id($id_pendidikan);
+        // $test=$pendidikan->get_by_id($id_pendidikan);
+        // echo $test->id_pendidikan;
+        $this->load->view("dosen/page/editPendidikan",$data);   
+        if(ISSET($_POST['id_pendidikan'])){
+            $pendidikan->updatePendidikan();
+            redirect("profile");
+        }     
+    }
 
    public function delete($id=null)
    {
@@ -117,14 +181,38 @@ class Dosen extends MY_Controller
    public function uploadPhoto()
     {
        $dosencek=$this->session->userdata('dosen');
-       
+       $dosen=$this->dosen_model;
+       $id_dosen=$dosencek->id_dosen;
+       $id_photo=uniqid();
        if  ($dosencek!=null){
-             echo "dosen check true";
-             $dosen = $this->dosen_model;
-             $validation = $this->form_validation;        
-             $dosen->_uploadImageDosen();
-            //   $this->session->set_flashdata('success', 'berhasil simpan data baru');
-            //   redirect('/profile/');
+                $config['upload_path']          = './datadosen/profile';
+                $config['allowed_types']        = 'gif|jpg|png';
+                $config['max_size']             = 2000;
+                $config['max_width']            = 1024;
+                $config['max_height']           = 1024;
+                $config['file_name']            = $id_photo;
+                $this->load->library('upload', $config);
+
+                if ( ! $this->upload->do_upload('foto_dosen'))
+                {
+                        $error = array('error' => $this->upload->display_errors());
+                        $eror = $this->upload->display_errors();
+                        echo $eror;
+                        echo "gagal upload";    
+                        redirect($_SERVER['HTTP_REFERER']);
+
+                }
+                else
+                {
+                        // redirect($_SERVER['HTTP_REFERER']);
+                        $data = $this->upload->data();
+                        $file_name= $data['file_name'];
+                        $dosen->upload_foto_dosen($id_dosen,$file_name);
+                        redirect($_SERVER['HTTP_REFERER']);
+
+                        // echo "berhasil Upload"; 
+                }
+                
         }
     }
 
@@ -300,6 +388,7 @@ class Dosen extends MY_Controller
 
         redirect("penilaian/skpbkd/approval-evaluasi/$id_tridharma");
     }
+    
     public function view_nilai_dosen($semester,$tahun,$id_dosen)
     {   
         $data['semester']=$semester;
@@ -477,6 +566,60 @@ class Dosen extends MY_Controller
         // $this->view->load("");
     }
 
+
+    public function edit_akun($id_dosen=null)
+    {
+        if($id_dosen!=null)
+        {
+            $this->load->library('form_validation');
+            $config = array(
+            array(
+                'field'=>'username',
+                'label'=>'Username',
+                'rules'=>'trim|required|min_length[3]|max_length[12]|is_unique[registrasi.username]',
+                    array(
+                        'required'      => 'You have not provided %s.',
+                        'is_unique'     => 'This %s already exists.'
+                    )
+            ),
+            array(
+                'field'=>'password',
+                'label'=>'Password',
+                'rules'=>'trim|min_length[6]|max_length[12]|required',
+                'errors'=> array(
+                        'required'=>'You must provide a %s',
+                )
+            ),
+            array(
+                'field'=>'password_conf',
+                'label'=>'Password Confirmation',
+                'rules'=>'trim|min_length[6]|max_length[12]|required|matches[password]',
+                'error'=> array(
+                        'matches'=>'password different bro',
+                )
+            ),
+
+        );
+
+        $this->form_validation->set_rules($config);
+
+        if($this->fom_validation->run()==false){
+            $this->load->view("admin/page/admin_akun/edit_akun");        
+        }
+        else{
+            $post=$this->input->post();
+            $username=$post['username'];
+            $id_dosen=$this->dosen_model->getByUsername($username)->id_dosen;
+            // $this->auth_model->update();
+            $data_update= array(
+                "username"=>$username,
+            );
+            $this->dosen_model->update_dosen_where();
+
+        }
+        $this->load->view("admin/page/admin_akun/edit_akun");
+        }
+    }
     
 
     

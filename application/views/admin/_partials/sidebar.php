@@ -22,6 +22,11 @@
           <i class="fas fa-fw fa-user "></i>
           <span>Administrasi Evaluasi Dosen</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('administrasi/akun')?>">
+          <i class="fas fa-fw fa-user "></i>
+          <span>Administrasi Sistem</span></a>
+      </li>
 
 
   

@@ -28,6 +28,11 @@ class Pendidikan_model extends CI_Model
         return $this->db->get($this->_table)->result();
     }
 
+    public function get_by_id($id)
+    {
+        return $this->db->get($this->_table,["id_pendidikan"=>$id])->row();
+    }
+
     public function getByDosen($id_dosen)
     {
         return $this->db->get_where($this->_table, ["id_dosen"=>$id_dosen])->result();
@@ -57,12 +62,26 @@ class Pendidikan_model extends CI_Model
 
     public function updatePendidikan()
     {
-       
+       $post = $this->input->post();
+       $this->id_pendidikan=$post["id_pendidikan"];
+       $this->id_dosen=$post["id_dosen"];
+        $this->jenjang = $post["jenjang"];
+        $this->perguruan_tinggi = $post["perguruan_tinggi"];
+        $this->program_studi = $post["program_studi"];
+        $this->negara = $post["negara"];
+        $this->tahun_mulai = $post["tahun_mulai"];
+        $this->tahun_selesai = $post["tahun_selesai"];
+        $this->gelar = $post["gelar"];
+        $this->sumber_dana = $post["sumberdana"];
+
+        $where=array("id_pendidikan"=>$this->id_pendidikan);
+        $this->db->update($this->_table,$this, $where);
     }
 
-    public function deletePendidikan($id)
+    public function hapusPendidikan($id)
     {
-
+        $where=array("id_pendidikan"=>$id);
+        $this->db->delete($this->_table, $where);
     }
 
 

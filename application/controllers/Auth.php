@@ -16,12 +16,13 @@ class Auth extends CI_Controller
     public function index()
     {	
 		
-		$statuslogin=$this->session->userdata('statuslogin');
+		$statuslogin=$this->session->userdata('status');
 		if($statuslogin!=null)
 		{
 			redirect(base_url('home'));
 		}        
 		else{
+			// echo "Test: $statuslogin";
 			$this->load->view("loginview");
 		}
     }

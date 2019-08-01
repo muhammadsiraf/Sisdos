@@ -232,36 +232,38 @@ class Dosen_model extends CI_Model
         $this->db->update($this->_table, $this, array('id_dosen'=>$post['id']));
     }
 
-    public function _uploadImageDosen()
+    public function tambah_pangkat()
     {
-        $iddosen=$this->session->userdata('dosen')->id_dosen;
-        $uploadpath="./datadosen/$iddosen/profile/";
-        echo "->check go to upload function";
-        if(!is_dir($uploadpath)) {
-            echo "->check make path";
-            mkdir($uploadpath);
-        }
+        $post = $this->input->post();
+        $pangkat = $post["pangkat"];
+        $id_dosen = $post["id_dosen"];
+        $data=array("id_dosen"=>$id_dosen,"id_pangkat"=>$pangkat);
+        $this->db->insert("riwayat_pangkat",$data);
+    }
 
-        $config['upload_path']          = $uploadpath;
-        $config['allowed_types']        = 'gif|jpg|png';
-        $config['file_name']            = 'photodose1';
-        $config['overwrite']			= true;
-        $config['max_size']             = 1024; // 1MB
-    // $config['max_width']            = 1024;
-    // $config['max_height']           = 768;
+    public function hapus_pangkat($id_riwayat_pangkat)
+    {
+        $where=array("id_riwayat_pangkat"=>$id_riwayat_pangkat);
+        return $this->db->delete("riwayat_pangkat",$where);
+    }
 
-        $this->load->library('upload', $config);
+    public function update_pangkat($id_riwayat_pangkat,$pangkat)
+    {
+        $where=array("id_riwayat_pangkat"=>$id_riwayat_pangkat);
+        $data=array("id_pangkat"=>$pangkat);
+        return $this->db->update("riwayat_pangkat", $data, $where);
+    }
 
-        if ($this->upload->do_upload('berkas')) {
-            echo "->check uploaded";
-            $sql = "UPDATE `dosen` SET `photo` = 'photodosen1.jpg' WHERE `dosen`.`id_dosen` = $iddosen";
-            $this->db->query($sql);
-        }
-        else{
-            echo "->gak keupload gan ";
-        }
-    
-        // redirect('/profile/');
+    public function get_pangkat_by_dosen($id_dosen)
+    {
+        return $this->db->query("SELECT golongan.golongan_nama, riwayat_pangkat.id_riwayat_pangkat  FROM `golongan` INNER JOIN `riwayat_pangkat` ON golongan.id = riwayat_pangkat.id_pangkat WHERE riwayat_pangkat.id_dosen=$id_dosen")->result();
+    }
+
+    public function upload_foto_dosen($id_dosen,$nama_file)
+    {
+       $where=array("id_dosen"=>$id_dosen);
+       $data=array("photo"=>$nama_file);
+       return $this->db->update($this->_table,$data,$where);
     }
 
     public function delete($id)
@@ -473,5 +475,12 @@ class Dosen_model extends CI_Model
     {
         $this->db->insert($this->_table,$data);
     }
+
+    public function update_dosen_where($data_update, $where)
+    {
+        $this->db->update($this->_table,$data_update,$where);
+    }
+
+    
     
 }

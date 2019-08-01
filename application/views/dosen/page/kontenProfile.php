@@ -8,17 +8,20 @@
           $uriphoto="datadosen/default/default.png";
           }
         else{
-              $uriphoto="datadosen/$dosen->id_dosen/profile/$dosen->photo";
+              $uriphoto="datadosen/profile/$dosen->photo";
           }
       ?>
         <img class="card-img-top" src="<?php echo base_url("$uriphoto")?>" alt="Card image cap">
         <div class="card-body">
-            <p class="card-text"><?php echo base_url("$uriphoto")?> Some Dosen Photo <?php echo $dosen->photo?> text to build on the card title and make up the bulk of the card's content.</p>
-       <form action="<?php echo base_url('dosen/uploadPhoto')?>">
-        <!-- <a class="btn btn-sm btn-success" href="">New Photo?</a -->
-        <a class="btn btn-sm btn-danger" href="">Delete</a>
-        <input type="file" name="berkas" class="btn btn-sm btn-success">
-        <input type="submit" value="upload" />
+            <!-- <p class="card-text"><?php echo base_url("$uriphoto")?> Some Dosen Photo  text to build on the card title and make up the bulk of the card's content.</p> -->
+        <?php echo form_open_multipart('Dosen/uploadPhoto');?>
+
+            <input type="file" name="foto_dosen" size="20" />
+
+            <br /><br />
+
+            <input type="submit" value="upload" />
+
         </form>
         </div>
       </div>
@@ -38,7 +41,7 @@
                     <a class="nav-link" data-toggle="tab" href="#jabatan">Riwayat Jabatan</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#settings">Riwayat Pangkat</a>
+                    <a class="nav-link" data-toggle="tab" href="#pangkat">Riwayat Pangkat</a>
                 </li>
               </ul>
 
@@ -133,6 +136,8 @@
                     <tbody>
                         <?php $num=1;foreach ($pendidikan as $pend) {
                             echo '<tr>';
+                                $url_delete=base_url("Dosen/hapusPendidikan/$pend->id_pendidikan");
+                                $url_edit=base_url("Dosen/editPendidikan/$pend->id_pendidikan");
                                 echo "<th scope=\"row\">$num</th>";
                                 echo '<td>'.$pend->jenjang.'</td>';
                                 echo '<td>'.$pend->perguruan_tinggi.'</td>';
@@ -142,6 +147,8 @@
                                 echo '<td>'.$pend->tahun_selesai.'</td>';
                                 echo '<td>'.$pend->gelar.'</td>';
                                 echo '<td>'.$pend->sumber_dana.'</td>';
+                                echo "<td><a href=$url_delete class=\"btn btn-danger\">X</a></td>";
+                                echo "<td><a href=$url_edit class=\"btn btn-success\">Edit</a></td>";                                
                             echo '</tr>';
                             $num++;
                         } 
@@ -192,6 +199,24 @@
               	</form>
               </div>
                
+                
+              <div class="tab-pane" id="pangkat">
+            		
+               	
+                  <hr>
+                  <h6>pangkat</h6>
+                  <a href="<?php echo base_url("Dosen/tambah_pangkat")?>" class="btn btn-primary">tambah</a>
+                  <!-- <button class="btn btn-primary">tambah</button> -->
+                  <?php
+                    foreach($pangkat as $pang){
+                        echo "<br><h4>1. $pang->golongan_nama</h4>";
+                        echo "<a href=\"Dosen/hapus_pangkat/$pang->id_riwayat_pangkat\" class=\"btn btn-danger\">X</a>";
+                        echo "<a href=\"Dosen/edit_pangkat/$pang->id_riwayat_pangkat\" class=\"btn btn-primary\">edit</a>";
+                    }
+                  ?>
+              </div>
+                        
+
               </div><!--/tab-pane-->
           </div><!--/tab-content-->
 

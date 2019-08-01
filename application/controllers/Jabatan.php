@@ -198,24 +198,25 @@ class Jabatan extends MY_Controller
         $dosen_model=$this->dosen_model;
         $data_simulasi=[];
         if(isset($post['jabatan_tujuan'])){
-            $golongan=$dosen->pangkat;
-            $golongan_tujuan=$post['jabatan_tujuan'];
+            if($post['jabatan_tujuan']!=null){
+                $golongan=$dosen->pangkat;
+                $golongan_tujuan=$post['jabatan_tujuan'];
 
-            // echo var_dump($golongan);
+            // echo var_dump($golongan);    
             
-            $kredit_golongan_sekarang=$dosen_model->get_kredit_golongan($golongan);
-            $kredit_golongan_tujuan=$dosen_model->get_kredit_golongan($golongan_tujuan);
-            $goblogk="preketek";
+                $kredit_golongan_sekarang=$dosen_model->get_kredit_golongan($golongan);
+                $kredit_golongan_tujuan=$dosen_model->get_kredit_golongan($golongan_tujuan);
+                $goblogk="preketek";
 
             // echo var_dump($kredit_golongan_sekarang);
             // echo "Kreidt : ".var_dump($kredit_golongan_tujuan);
 
-            $beda_kredit=abs($kredit_golongan_sekarang->kredit-$kredit_golongan_tujuan->kredit);
-            $data_simulasi['pendidikan']=($beda_kredit*$kredit_golongan_tujuan->pendidikan)/100;
-            $data_simulasi['penelitian']=($beda_kredit*$kredit_golongan_tujuan->penelitian)/100;
-            $data_simulasi['pengabdian']=($beda_kredit*$kredit_golongan_tujuan->pengabdian)/100;
-            $data_simulasi['penunjang']=($beda_kredit*$kredit_golongan_tujuan->penunjang)/100;
-
+                $beda_kredit=abs($kredit_golongan_sekarang->kredit-$kredit_golongan_tujuan->kredit);
+                $data_simulasi['pendidikan']=($beda_kredit*$kredit_golongan_tujuan->pendidikan)/100;
+                $data_simulasi['penelitian']=($beda_kredit*$kredit_golongan_tujuan->penelitian)/100;
+                $data_simulasi['pengabdian']=($beda_kredit*$kredit_golongan_tujuan->pengabdian)/100;
+                $data_simulasi['penunjang']=($beda_kredit*$kredit_golongan_tujuan->penunjang)/100;
+            }
         }
 
         return $data_simulasi;

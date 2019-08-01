@@ -27,7 +27,7 @@
 <div class="form-group">
 <h3><label for="label">Jabatan Yang Dituju: </label></h3>
 <select class="custom-select my-1 mr-sm-2" name="jabatan_tujuan" id="inlineFormCustomSelectPref">
-    <option selected>Pilih...</option>
+    <option selected value="iii/b">Pilih...</option>
     <option value="iii/b">Asisten Ahli Gol III/b</option>
     <option value="iii/c">Lektor Gol III/c</option>
     <option value="iii/d">Lektor Gol III/d</option>

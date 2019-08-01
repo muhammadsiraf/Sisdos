@@ -74,35 +74,35 @@ class Serdos extends MY_Controller
     {
         $nilai_nkp=0;
 
-        if($dosen->pangkat=="iii/a")
+        if(strcasecmp($dosen->pangkat,"gol iii/a"))
         {
             $nilai_nkp=4;
         }
-        else if($dosen->pangkat=="iii/b")
+        else if(strcasecmp($dosen->pangkat,"gol iii/b"))
         {
             $nilai_nkp=4;
         }
-        else if($dosen->pangkat=="iii/c")
+        else if(strcasecmp($dosen->pangkat,"gol iii/c"))
         {
             $nilai_nkp=5;
         }
-        else if($dosen->pangkat=="iv/a")
+        else if(strcasecmp($dosen->pangkat,"gol iv/a"))
         {
             $nilai_nkp=5;
         }
-        else if($dosen->pangkat=="iv/b")
+        else if(strcasecmp($dosen->pangkat,"gol iv/b"))
         {
             $nilai_nkp=6;
         }
-        else if($dosen->pangkat=="iv/c")
+        else if(strcasecmp($dosen->pangkat,"gol iv/c"))
         {
             $nilai_nkp=6;
         }
-        else if($dosen->pangkat=="iv/d")
+        else if(strcasecmp($dosen->pangkat,"gol iv/d"))
         {
             $nilai_nkp=7;
         }
-        else if($dosen->pangkat=="iv/e")
+        else if(strcasecmp($dosen->pangkat,"gol iv/e"))
         {
             $nilai_nkp=7;
         }
