@@ -110,6 +110,63 @@ class SKP extends MY_Controller
         redirect("/skp/rancangan");
     }
 
+    public function update_eval_skp_banyak()
+    {
+        $size=sizeof($_POST);
+        $number=$size/3;
+        $skp=$this->skp_model;
+        $post=$this->input->post();
+        for($i=1;$i<=$number;$i++)
+        {
+            $idpskp=$post["idpskp$i"];
+            $realisasiJumlah=$post["jumlahRealisasi$i"];
+            $realisasiKualitas=$post["kualitasRealisasi$i"];                
+            $fileberkas=$post["fileupload$i"];
+        	$namafile=uniqid();
+            $config['upload_path']          = './file/berkas';
+		    $config['allowed_types']        = 'gif|jpg|png|jpeg|pdf|doc|docx';
+		    $config['file_name']            = $namafile;
+            $this->load->library('upload', $config);
+        
+            if (isset($_FILES) && @$_FILES['fileupload']['error'] == '0') 
+            {
+                if ( ! $this->upload->do_upload('fileupload'))
+                {
+
+                }   
+            else
+            {
+                $upload_data = $this->upload->data();
+				$file_name = $upload_data['file_name'];
+            }
+            }
+            else{
+                $file_name="kosong";
+            }
+
+
+            $where=array(
+                'id_pskp'=>$idpskp,
+            );
+            if(isset($_FILES) && @$_FILES['fileupload']['error'] == '0'){
+                $dataMasuk=array(
+                'realisasi_jumlah'=>$realisasiJumlah,
+                'realisasi_kualitas'=>$realisasiKualitas,
+                'berkas_bukti_capaian'=>$file_name,
+            );
+            }
+            else{
+                $dataMasuk=array(
+                'realisasi_jumlah'=>$realisasiJumlah,
+                'realisasi_kualitas'=>$realisasiKualitas,
+                // 'berkas_bukti_capaian'=>$file_name,
+                ); 
+            }
+            $skp->updateSKP($dataMasuk,$where);
+        }
+        redirect("/skp/evaluasi");    
+    }
+
     public function updateEvalSKP(){
         $skp=$this->skp_model;
         $post=$this->input->post();
@@ -144,15 +201,24 @@ class SKP extends MY_Controller
         $where=array(
             'id_pskp'=>$idpskp,
         );
-
-        $dataMasuk=array(
+        if(isset($_FILES) && @$_FILES['fileupload']['error'] == '0'){
+            $dataMasuk=array(
             'realisasi_jumlah'=>$realisasiJumlah,
             'realisasi_kualitas'=>$realisasiKualitas,
             'berkas_bukti_capaian'=>$file_name,
         );
+        }
+        else{
+          $dataMasuk=array(
+            'realisasi_jumlah'=>$realisasiJumlah,
+            'realisasi_kualitas'=>$realisasiKualitas,
+            // 'berkas_bukti_capaian'=>$file_name,
+        );  
+        }
+        
 
         $skp->updateSKP($dataMasuk,$where);
-        // redirect("/skp/evaluasi");
+        redirect("/skp/evaluasi");
 
     }
 

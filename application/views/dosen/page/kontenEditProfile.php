@@ -100,7 +100,26 @@
                           
                           <div class="col-xs-6">
                               <label for="password"><h4>Jenis Kelamin</h4></label>
-                              <input type="text" class="form-control" name="jeniskelamin" id="email" placeholder="<?php echo $dosen->jenis_kelamin;?>" value="<?php echo $dosen->jenis_kelamin;?>" title="Masukan Jenis Kelamin">
+                              <?php 
+                              $laki="selected";
+                              $wanita="selected";
+                              if($dosen->jenis_kelamin!="Laki-laki"){
+                                $laki="";
+                              }
+                              else if($dosen->jenis_kelamin!="Perempuan"){
+                                $wanita="";
+                              }
+                              else{
+                                $laki="";
+                                $wanita="";
+                              }
+                              ?>
+                              <select name="jeniskelamin" class="custom-select" id="inputGroupSelect02">
+                                 <!-- <option selected></option> -->
+                                 <option value="1" <?php echo $laki?>>Laki-laki</option>
+                                 <option value="2" <?php echo $wanita?>>Perempuan</option>
+                                 <!-- <option value="3">Three</option> -->
+                              </select>
                           </div>
                       </div>
                       <div class="form-group">

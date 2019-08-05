@@ -142,7 +142,7 @@
                   $urlberkas=base_url("/file/berkas/$bkd->berkas_bukti_capaian");
                   echo "<td><a type=\"button\" class=\"btn btn-primary\" href=$urlberkas>Lihat</a></td>";
               }
-
+              echo "<td><input type=\"submit\" value=\"update\" class=\"btn btn-primary\"></td>";              
               echo "</form>";
               echo "</tr>";
               $count++;

@@ -98,6 +98,7 @@
                           <div class="col-xs-6">
                               <label for="password"><h4>Jenis Kelamin</h4></label>
                               <input type="text" readonly class="form-control" name="jeniskelamin" id="email" placeholder="<?php echo $dosen->jenis_kelamin;?>" title="Masukan Jenis Kelamin">
+                              
                           </div>
                       </div>
                       <div class="form-group">
