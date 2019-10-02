@@ -102,7 +102,7 @@
               echo "<td>$bkd->realisasi_kualitas</td>";
               $urlupdate=base_url("/SKP/updateBKD/4");
               echo "<form action=\"$urlupdate\" method=\"POST\">";
-              echo "<td><input name=\"sksBKD\" type=\"text\" class=\"form-control\" id=\"jumlahRealisasi\" aria-describedby=\"\" placeholder=\"Jumlah\" value=\"$bkd->sks_bkd\"></td>";
+              echo "<td><input name=\"sksBKD\" type=\"number\" class=\"form-control\" id=\"jumlahRealisasi\" aria-describedby=\"\" placeholder=\"Jumlah\" value=\"$bkd->sks_bkd\"></td>";
               echo "<input name=\"idpskp\" type=\"hidden\" class=\"form-control\" id=\"kualitasRealisasi\" aria-describedby=\"\" placeholder=\"Kualitas\" value=\"$bkd->id_pskp\">";
               echo "<td><select class=\"form-control form-control-sm\" name=\"rekomendasi\">";
               

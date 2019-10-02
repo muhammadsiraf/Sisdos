@@ -21,46 +21,46 @@
                             <div class="col-sm">
                                 <h5>Skor rerata 5 mahasiswa </h5>
                                 <label for="">pedagogik</label> 
-                                <input type="number" class="form-control" name="pedagogik_mhs" required>
+                                <input type="number" class="form-control" name="pedagogik_mhs" min="1" max="7" required>
                                 <label for="">profesional</label> 
-                                <input type="number" class="form-control" name="profesional_mhs" required>
+                                <input type="number" class="form-control" name="profesional_mhs" min="1" max="7" required>
                                 <label for="">kepribadian</label>
-                                <input type="number" class="form-control" name="kepribadian_mhs" required>
+                                <input type="number" class="form-control" name="kepribadian_mhs" min="1" max="7" required>
                                 <label for="">sosial</label> 
-                                <input type="number" class="form-control" name="sosial_mhs" required>
+                                <input type="number" class="form-control" name="sosial_mhs" min="1" max="7" required>
                             </div>
                             <div class="col-sm">
                                 <h5>Skor rerata 3 teman sejawat </h5>
                                 <label for="">pedagogik</label> 
-                                <input type="number" class="form-control" name="pedagogik_teman" required>
+                                <input type="number" class="form-control" name="pedagogik_teman" min="1" max="7" required>
                                 <label for="">profesional</label> 
-                                <input type="number" class="form-control" name="profesional_teman" required>
+                                <input type="number" class="form-control" name="profesional_teman" min="1" max="7" required>
                                 <label for="">kepribadian</label>
-                                <input type="number" class="form-control" name="kepribadian_teman" required>
+                                <input type="number" class="form-control" name="kepribadian_teman" min="1" max="7"  required>
                                 <label for="">sosial</label> 
-                                <input type="number" class="form-control" name="sosial_teman" required>
+                                <input type="number" class="form-control" name="sosial_teman" min="1" max="7" required>
                             </div>
                             <div class="col-sm">
                                 <h5>Skor rerata 1 dosen yang disertifikasi </h5>
                                 <label for="">pedagogik</label> 
-                                <input type="number" class="form-control" name="pedagogik_dys" required>
+                                <input type="number" class="form-control" name="pedagogik_dys" min="1" max="7"  required>
                                 <label for="">profesional</label> 
-                                <input type="number" class="form-control" name="profesional_dys" required>
+                                <input type="number" class="form-control" name="profesional_dys" min="1" max="7" required>
                                 <label for="">kepribadian</label>
-                                <input type="number" class="form-control" name="kepribadian_dys" required>
+                                <input type="number" class="form-control" name="kepribadian_dys" min="1" max="7"  required>
                                 <label for="">sosial</label> 
-                                <input type="number" class="form-control" name="sosial_dys" required>
+                                <input type="number" class="form-control" name="sosial_dys" min="1" max="7" required>
                             </div>
                             <div class="col-sm">
                                 <h5>Skor rerata 1 atasan langsung </h5>
                                 <label for="">pedagogik</label> 
-                                <input type="number" class="form-control" name="pedagogik_atasan" required>
+                                <input type="number" class="form-control" name="pedagogik_atasan" min="1" max="7" required>
                                 <label for="">profesional</label> 
-                                <input type="number" class="form-control" name="profesional_atasan" required>
+                                <input type="number" class="form-control" name="profesional_atasan" min="1" max="7" required>
                                 <label for="">kepribadian</label>
-                                <input type="number" class="form-control" name="kepribadian_atasan" required>
+                                <input type="number" class="form-control" name="kepribadian_atasan" min="1" max="7" required>
                                 <label for="">sosial</label> 
-                                <input type="number" class="form-control" name="sosial_atasan" required>
+                                <input type="number" class="form-control" name="sosial_atasan" min="1" max="7"  required>
                             </div>
                         </div>
                         <hr>
@@ -72,28 +72,28 @@
                             <div class="col-6">
                                 <h5>Perkembangan Kualitas </h5>          
                                 <label for="">Usaha Kreatif</label>
-                                <input type="number" class="form-control" name="des_1" required>
+                                <input type="number" class="form-control" name="des_1" min="1" max="7" required>
                                 <label for="">Dampak Perubahan</label>
-                                <input type="number" class="form-control" name="des_2" required>
+                                <input type="number" class="form-control" name="des_2" min="1" max="7" required>
                                 <label for="">Kedisiplinan</label>
-                                <input type="number" class="form-control" name="des_3" required>
+                                <input type="number" class="form-control" name="des_3" min="1" max="7" required>
                                 <label for="">Keteladanan</label>
-                                <input type="number" class="form-control" name="des_4" required>
+                                <input type="number" class="form-control" name="des_4" min="1" max="7" required>
                                 <label for="">Keterbukaan terhadap kritik</label>
-                                <input type="number" class="form-control" name="des_5" required>      
+                                <input type="number" class="form-control" name="des_5" min="1" max="7" required>      
                             </div>
                             <div class="col-6">
                                 <h5>Perkembangan Keilmuan dan Keahlian</h5>
                                 <label for="">Publikasi Karya Ilmiah</label>
-                                <input type="number" class="form-control" name="des_6" required>
+                                <input type="number" class="form-control" name="des_6" min="1" max="7" required>
                                 <label for="">Makna dan kegunaan</label>
-                                <input type="number" class="form-control" name="des_7" required>
+                                <input type="number" class="form-control" name="des_7" min="1" max="7" required>
                                 <label for="">Usaha Inovatif</label>
-                                <input type="number" class="form-control" name="des_8" required>
+                                <input type="number" class="form-control" name="des_8" min="1" max="7" required>
                                 <label for="">Konsistensi</label>
-                                <input type="number" class="form-control" name="des_9" required>
+                                <input type="number" class="form-control" name="des_9" min="1" max="7" required>
                                 <label for="">Target Kerja</label>
-                                <input type="number" class="form-control" name="des_10" required>
+                                <input type="number" class="form-control" name="des_10" min="1" max="7" required>
                         
                             </div>
                         </div>
@@ -104,13 +104,13 @@
 
                                 <h5>Pengabdian kepada Masyarakat </h5>        
                                 <label for="">Kegiatan PKM</label>
-                                <input type="number" class="form-control" name="des_11" required>
+                                <input type="number" class="form-control" name="des_11" min="1" max="7" required>
                                 <label for="">Dampak Perubahan</label>
-                                <input type="number" class="form-control" name="des_12" required>
+                                <input type="number" class="form-control" name="des_12" min="1" max="7" required>
                                 <label for="">Dukungan Masyarakat</label>
-                                <input type="number" class="form-control" name="des_13" required>
+                                <input type="number" class="form-control" name="des_13" min="1" max="7" required>
                                 <label for="">Kemampuan Berkomunikasi</label>
-                                <input type="number" class="form-control" name="des_14" required>
+                                <input type="number" class="form-control" name="des_14" min="1" max="7" required>
 
                             </div>
 
@@ -118,17 +118,17 @@
 
                                  <h5>Manajemen Pengolaan Institusi</h5>
                                 <label for="">Kemampuan Kerjasama</label>
-                                <input type="number" class="form-control" name="des_15" required>
+                                <input type="number" class="form-control" name="des_15" min="1" max="7" required>
                                 <label for="">Implementasi Kegiatan dari usulan/pemikiran</label>
-                                <input type="number" class="form-control" name="des_16" required>
+                                <input type="number" class="form-control" name="des_16" min="1" max="7" required>
                                 <label for="">Dukungan Institusi</label>
-                                <input type="number" class="form-control" name="des_17" required>
+                                <input type="number" class="form-control" name="des_17" min="1" max="7" required>
                                 <label for="">Kendali diri</label>
-                                <input type="number" class="form-control" name="des_18" required>
+                                <input type="number" class="form-control" name="des_18" min="1" max="7" required>
                                 <label for="">Tanggung jawab</label>
-                                <input type="number" class="form-control" name="des_19" required>
+                                <input type="number" class="form-control" name="des_19" min="1" max="7" required>
                                 <label for="">Keteguhan pada Prinsip </label>
-                                <input type="number" class="form-control" name="des_20" required>   
+                                <input type="number" class="form-control" name="des_20" min="1" max="7" required>   
 
                             </div>
                             
@@ -139,13 +139,13 @@
 
                                 <h5>Peningkatan kualitas kegiatan mahasiswa</h5>
                                 <label for="">Peran pada Kegiatan Kemahasiswaan</label>
-                                <input type="number" class="form-control" name="des_21" required>
+                                <input type="number" class="form-control" name="des_21" min="1" max="7" required>
                                 <label for="">Implementasi Peran</label>
-                                <input type="number" class="form-control" name="des_22" required>
+                                <input type="number" class="form-control" name="des_22" min="1" max="7" required>
                                 <label for="">Interaksi dengan Mahasiswa</label>
-                                <input type="number" class="form-control" name="des_23" required>
+                                <input type="number" class="form-control" name="des_23" min="1" max="7" required>
                                 <label for="">Manfaat Kegiatan</label>
-                                <input type="number" class="form-control" name="des_24" required>
+                                <input type="number" class="form-control" name="des_24" min="1" max="7" required>
                         
                             </div>
                         </div>

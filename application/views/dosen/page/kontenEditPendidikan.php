@@ -6,9 +6,9 @@
                 <div class="form-group">
                           <div class="col-xs-6">
                               <label for="first_name"><h4>Jenjang</h4></label>
-                              <input type="text" class="form-control" name="jenjang" id="jenjang" placeholder="" title="Jenjang" value="<?php echo $pendidikan->jenjang?>">
-                              <input type="hidden" class="form-control" name="id_pendidikan" id="jenjang" placeholder="" title="Jenjang" value="<?php echo $pendidikan->id_pendidikan?>">
-                              <input type="hidden" class="form-control" name="id_dosen" id="jenjang" placeholder="" title="Jenjang" value="<?php echo $pendidikan->id_dosen?>">
+                              <input type="text" class="form-control" name="jenjang" id="jenjang" placeholder="" title="Jenjang" value="<?php echo $pendidikan->jenjang?>" required>
+                              <input type="hidden" class="form-control" name="id_pendidikan" id="jenjang" placeholder="" title="Jenjang" value="<?php echo $pendidikan->id_pendidikan?>" required>
+                              <input type="hidden" class="form-control" name="id_dosen" id="jenjang" placeholder="" title="Jenjang" value="<?php echo $pendidikan->id_dosen?>" required>
 
                           </div>
                       </div>
@@ -16,35 +16,35 @@
                           
                           <div class="col-xs-6">
                             <label for="last_name"><h4>Perguruan Tinggi</h4></label>
-                              <input type="text" class="form-control" name="perguruan_tinggi" id="perguru" placeholder="" title="perguruan tinggi" value="<?php echo $pendidikan->perguruan_tinggi?>">
+                              <input type="text" class="form-control" name="perguruan_tinggi" id="perguru" placeholder="" title="perguruan tinggi" value="<?php echo $pendidikan->perguruan_tinggi?>" required>
                           </div>
                       </div>
           
                       <div class="form-group">
                           <div class="col-xs-6">
                              <label for="mobile"><h4>Program Studi</h4></label>
-                              <input type="text" class="form-control" name="program_studi" id="prodi" placeholder="" title="program didik" value="<?php echo $pendidikan->program_studi?>">
+                              <input type="text" class="form-control" name="program_studi" id="prodi" placeholder="" title="program didik" value="<?php echo $pendidikan->program_studi?>" required>
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="email"><h4>Negara</h4></label>
-                              <input type="text" class="form-control" name="negara" id="negara" placeholder="" title="Negara" value="<?php echo $pendidikan->negara?>">
+                              <input type="text" class="form-control" name="negara" id="negara" placeholder="" title="Negara" value="<?php echo $pendidikan->negara?>" required>
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="email"><h4>Tahun Mulai</h4></label>
-                              <input type="text" class="form-control" name="tahun_mulai" id="tahunmulai" placeholder="" title="Tahun Mulai" value="<?php echo $pendidikan->tahun_mulai?>">
+                              <input type="text" class="form-control" name="tahun_mulai" id="tahunmulai" placeholder="" title="Tahun Mulai" value="<?php echo $pendidikan->tahun_mulai?>" required>
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="password"><h4>Tahun Selesai</h4></label>
-                              <input type="text" class="form-control" name="tahun_selesai" id="tahunselesai" placeholder="" title="tahun selesai" value="<?php echo $pendidikan->tahun_selesai?>">
+                              <input type="text" class="form-control" name="tahun_selesai" id="tahunselesai" placeholder="" title="tahun selesai" value="<?php echo $pendidikan->tahun_selesai?>"required>
                           </div>
                       </div>
 
@@ -52,14 +52,14 @@
                           
                           <div class="col-xs-6">
                               <label for="password"><h4>Gelar</h4></label>
-                              <input type="text" class="form-control" name="gelar" id="gelar" placeholder="" title="gelar" value="<?php echo $pendidikan->gelar?>">
+                              <input type="text" class="form-control" name="gelar" id="gelar" placeholder="" title="gelar" value="<?php echo $pendidikan->gelar?>" required>
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="password"><h4>Sumber Dana</h4></label>
-                              <input type="text" class="form-control" name="sumberdana" id="sumberdana" placeholder="" title="sumber dana" value="<?php echo $pendidikan->sumber_dana?>">
+                              <input type="text" class="form-control" name="sumberdana" id="sumberdana" placeholder="" title="sumber dana" value="<?php echo $pendidikan->sumber_dana?>" required>
                           </div>
                       </div>
                       <div class="form-group">

@@ -53,7 +53,7 @@
                       <div class="form-group">
                           
                           <div class="col-xs-6">
-                              <label for="first_name"><h4>NIPN</h4></label>
+                              <label for="first_name"><h4>NUPN</h4></label>
                               <input type="text" readonly class="form-control" name="nupn" id="first_name" placeholder="<?php echo $dosen->NIDN_NUPN;?>" title="Masukan NUPN">
                           </div>
                       </div>
@@ -210,9 +210,11 @@
                   <!-- <button class="btn btn-primary">tambah</button> -->
                   <?php
                     foreach($pangkat as $pang){
+                        $url_edit=base_url("Dosen/edit_pangkat/$pang->id_riwayat_pangkat");
+                        $url_hapus=base_url("Dosen/hapus_pangkat/$pang->id_riwayat_pangkat");
                         echo "<br><h4>1. $pang->golongan_nama</h4>";
-                        echo "<a href=\"Dosen/hapus_pangkat/$pang->id_riwayat_pangkat\" class=\"btn btn-danger\">X</a>";
-                        echo "<a href=\"Dosen/edit_pangkat/$pang->id_riwayat_pangkat\" class=\"btn btn-primary\">edit</a>";
+                        echo "<a href=\"$url_hapus\" class=\"btn btn-danger\">X</a>";
+                        echo "<a href=\"$url_edit\" class=\"btn btn-primary\">edit</a>";
                     }
                   ?>
               </div>

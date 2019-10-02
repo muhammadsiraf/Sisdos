@@ -1,22 +1,18 @@
-<!DOCTYPE html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-  $("form").submit(function(){
-    alert("Submitted");
-  });
-});
-</script>
+	<title>Membuat form validation dengan Codeigniter | MalasNgoding.com</title>
 </head>
 <body>
-
-<form action="">
-  First name: <input type="text" name="FirstName" value="Mickey"><br>
-  Last name: <input type="text" name="LastName" value="Mouse"><br>
-  <input type="submit" value="Submit">
-</form> 
-
+	<h1>Membuat Form Validation dengan CodeIgniter</h1>
+	<?php echo validation_errors(); ?>
+	<?php echo form_open('ujikontrol/aksi'); ?>
+		<label>Nama</label><br/>
+		<input type="text" name="nama"><br/>
+		<label>Email</label><br/>
+		<input type="text" name="email"><br/>
+		<label>Konfirmasi Email</label><br/>
+		<input type="text" name="konfir_email"><br/>
+		<input type="submit" value="Simpan">
+	</form>
 </body>
 </html>

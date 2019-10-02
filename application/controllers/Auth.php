@@ -23,7 +23,7 @@ class Auth extends CI_Controller
 		}        
 		else{
 			// echo "Test: $statuslogin";
-			$this->load->view("loginview");
+			$this->load->view("login_view");
 		}
     }
 
@@ -69,7 +69,7 @@ class Auth extends CI_Controller
 		}else{
 			$data["notif"]="Username dan Password Salah";
 			// echo "Username $username dan password salah $password !";
-			$this->load->view('LoginView',$data);
+			$this->load->view('login_view',$data);
 			// echo 
 		}
  	}

@@ -101,7 +101,7 @@
               echo "<td>$bkd->realisasi_kualitas</td>";
               $urlupdate=base_url("/SKP/updateBKD/1");
               echo "<form action=\"$urlupdate\" method=\"POST\">";
-              echo "<td><input name=\"sksBKD\" type=\"text\" class=\"form-control\" id=\"jumlahRealisasi\" aria-describedby=\"\" placeholder=\"Jumlah\" value=\"$bkd->sks_bkd\"></td>";
+              echo "<td><input  name=\"sksBKD\" type=\"number\" class=\"form-control\" id=\"jumlahRealisasi\" aria-describedby=\"\" placeholder=\"Jumlah\" value=\"$bkd->sks_bkd\" style=\"width: 60px;\" ></td>";
               echo "<input name=\"idpskp\" type=\"hidden\" class=\"form-control\" id=\"kualitasRealisasi\" aria-describedby=\"\" placeholder=\"Kualitas\" value=\"$bkd->id_pskp\">";
               echo "<td><select class=\"form-control form-control-sm\" name=\"rekomendasi\">";
               
@@ -142,7 +142,7 @@
                   $urlberkas=base_url("/file/berkas/$bkd->berkas_bukti_capaian");
                   echo "<td><a type=\"button\" class=\"btn btn-primary\" href=$urlberkas>Lihat</a></td>";
               }
-              echo "<td><input type=\"submit\" value=\"update\" class=\"btn btn-primary\"></td>";              
+              echo "<td><input type=\"submit\" value=\"update\" class=\"btn btn-primary \"></td>";              
               echo "</form>";
               echo "</tr>";
               $count++;

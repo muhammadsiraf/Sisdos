@@ -13,7 +13,6 @@ class Dosen extends MY_Controller
         $this->load->model("pendidikan_model");
         $this->load->model("auth_model");
         $this->load->model("SKP_model");
-
         $this->load->library('form_validation');
     }
     
@@ -55,8 +54,6 @@ class Dosen extends MY_Controller
         $this->load->view("dosen/page/profile");
     }
 
-
-
     public function getAll()
     {
         return $this->db->get($this->_table)->result();
@@ -69,10 +66,17 @@ class Dosen extends MY_Controller
        if  ($dosencek!=null){
              echo "dosen check true";
              $dosen = $this->dosen_model;
-             $validation = $this->form_validation;        
-              $dosen->updateProfil();
-              $this->session->set_flashdata('success', 'berhasil simpan data baru');
-              redirect('/profile/');
+             $validation = $this->form_validation;
+             $validation->set_rules($dosen->rules_update());
+            //  if($validation->run()){
+                 $dosen->updateProfil();
+                 $this->session->set_flashdata('success', 'berhasil simpan data baru');
+                 redirect('/profile/');
+            //  }
+            //  else{
+                //  redirect('/profile/');
+            //  }
+             
         }
     }
 
@@ -95,15 +99,19 @@ class Dosen extends MY_Controller
        $dosencek=$this->session->userdata('dosen');
        $dosen=$this->dosen_model;
        if (ISSET($_POST['id_dosen'])){
+            // $id_dosen=$_POST['id_dosen'];
+            // echo var_dump($id_dosen);
+            // echo "preketek";
+            // echo "$id_dosen";
             $dosen->tambah_pangkat();
             redirect('/profile/');
        }
-       if  ($dosencek!=null){
+       else if  ($dosencek!=null){
              $data['dosen']=$dosencek;
              $this->load->view("dosen/page/pangkat",$data);           
        }
-
     }
+
 
     public function hapus_pangkat($id_riwayat_pangkat)
     {
@@ -135,14 +143,32 @@ class Dosen extends MY_Controller
     public function tambahPendidikan()
     {
         $dosencek=$this->session->userdata('dosen');
-       
-       if($dosencek!=null){
+        // $this->form_validation->set_rules('jenjang','Nama','required');
+		// $this->form_validation->set_rules('perguruan_tinggi','Email','required|alpha_numeric_spaces');
+		// $this->form_validation->set_rules('program_studi','Konfirmasi Email','required|alpha_numeric_spaces');
+		// $this->form_validation->set_rules('negara','Konfirmasi Email','required|alpha');
+		// $this->form_validation->set_rules('tahun_mulai','Konfirmasi Email','required|numeric');
+		// $this->form_validation->set_rules('tahun_selesai','Konfirmasi Email','required|numeric');
+		// $this->form_validation->set_rules('gelar','Konfirmasi Email','required');
+		// $this->form_validation->set_rules('sumberdana','Konfirmasi Email','required|alpha');
+        
+        if($dosencek!=null){
              echo "dosen check true";
              $pendidikan = $this->pendidikan_model;
-             $validation = $this->form_validation;        
-              $pendidikan->addPendidikan();
-              $this->session->set_flashdata('success', 'berhasil simpan data baru');
-              redirect('/profile/');
+             $validation = $this->form_validation;
+            // if($validation->run()!=false){
+                $pendidikan->addPendidikan();
+                $this->session->set_flashdata('success', 'berhasil simpan data baru');
+                redirect('/profile/');
+            // }else{
+                // $dosen=$this->dosen_model->getByUsername($username);
+                // $username=$this->session->userdata('dosen')->username;
+                // $data['pendidikan']=$this->pendidikan_model->getByDosen($dosen->id_dosen);
+                // $data['dosen']=$dosen;
+                // $data['pangkat']=$this->dosen_model->get_pangkat_by_dosen($this->session->userdata('dosen')->id_dosen);
+                // $this->load->view("dosen/page/profile",$data);
+            // }     
+              
         }
     }
 

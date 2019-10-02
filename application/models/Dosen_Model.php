@@ -23,134 +23,68 @@ class Dosen_model extends CI_Model
 
     public $photo="default.jpg";
 
-     public function rules_update()
+    public function rules_update()
     {
         $config = array(
             array(
-                'field'=>'nama_dosen',
-                'label'=>'Nama Dosen',
-                'rules'=>'alpha_numeric_spaces',
-                    array(
-
-                    )
-            ),
-            array(
                 'field'=>'nupn',
-                'label'=>'NUPN/NIDN',
-                'rules'=>'numeric',
-                    array(
+                'label'=>'nupn',
+                // 'rules'=>'numeric',
+                //     array(
 
-                    )
+                //     )
             ),
             array(
-                'field'=>'tempat_lahir',
-                'label'=>'Tempat Lahir',
-                'rules'=>'',
-                    array(
+                'field'=>'nama',
+                'label'=>'Nama Dosen',
+                // 'rules'=>'alpha_spaces',
+                //     array(
 
-                    )
+                //     )
             ),
             array(
-                'field'=>'gelar_belakang',
-                'label'=>'Gelar Belakang',
-                'rules'=>'',
-                    array(
+                'field'=>'tempatlahir',
+                'label'=>'tempat lahir',
+                // 'rules'=>'alpha_numeric_spaces',
+                //     array(
 
-                    )
+                //     )
             ),
             array(
-                'field'=>'gelar_depan',
-                'label'=>'Gelar Depan',
-                'rules'=>'',
-                    array(
+                'field'=>'tanggallahir',
+                'label'=>'tanggal lahir',
+                // 'rules'=>'numeric',
+                //     array(
 
-                    )
+                //     )
             ),
             array(
-                'field'=>'jenis_kelamin',
-                'label'=>'Jenis Kelamin',
-                'rules'=>'in_list[Laki-laki,Perempuan]',
-                    array(
+                'field'=>'gelardepan',
+                'label'=>'gelar depan',
+                // 'rules'=>'alpha_spaces',
+                //     array(
 
-                    )
+                //     )
             ),
             array(
-                'field'=>'jafa',
-                'label'=>'JAFA',
-                'rules'=>'',
-                    array(
+                'field'=>'gelarbelakang',
+                'label'=>'gelar belakang',
+                // 'rules'=>'alpha_spaces',
+                //     array(
 
-                    )
+                //     )
             ),
             array(
-                'field'=>'username',
-                'label'=>'Username',
-                'rules'=>'min_length[3]|max_length[12]',
-                    array(
+                'field'=>'jeniskelamin',
+                'label'=>'jenis kelamin',
+                // 'rules'=>'alpha_spaces',
+                //     array(
 
-                    )
-            ),
-            array(
-                'field'=>'kredit',
-                'label'=>'Kredit',
-                'rules'=>'numeric',
-                    array(
-
-                    )
-            ),
-            array(
-                'field'=>'status',
-                'label'=>'Status',
-                'rules'=>'alpha',
-                    array(
-
-                    )
-            ),
-            array(
-                'field'=>'ikatan_kerja',
-                'label'=>'Ikatan Kerja',
-                'rules'=>'alpha_numeric_spaces',
-                    array(
-
-                    )
-            ),
-            array(
-                'field'=>'pangkat',
-                'label'=>'Pangkat',
-                'rules'=>'',
-                    array(
-
-                    )
-            ),
-            array(
-                'field'=>'id_dosen',
-                'label'=>'Id Dosen',
-                'rules'=>'numeric',
-                    array(
-
-                    )
-            ),
-            array(
-                'field'=>'tmt_jafa',
-                'label'=>'TMT JAFA',
-                'rules'=>'',
-                    array(
-
-                    )
-            ),
-            array(
-                'field'=>'tanggal_lahir',
-                'label'=>'Tanggal Lahir',
-                'rules'=>'',
-                    array(
-
-                    )
+                //     )
             ),
         );
         return $config;
     }
-
-    
 
     public function getAll()
     {
@@ -237,8 +171,18 @@ class Dosen_model extends CI_Model
         $post = $this->input->post();
         $pangkat = $post["pangkat"];
         $id_dosen = $post["id_dosen"];
-        $data=array("id_dosen"=>$id_dosen,"id_pangkat"=>$pangkat);
-        $this->db->insert("riwayat_pangkat",$data);
+        if($this->is_pangkat_udah($pangkat,$id_dosen)!=null){
+            
+        }
+        else{
+            $data=array("id_dosen"=>$id_dosen,"id_pangkat"=>$pangkat);
+            $this->db->insert("riwayat_pangkat",$data);
+        }
+    }
+
+    public function is_pangkat_udah($id_pangkat,$id_dosen)
+    {
+        return $this->db->get_where("riwayat_pangkat", ["id_pangkat"=>$id_pangkat, "id_dosen"=>$id_dosen])->row();
     }
 
     public function hapus_pangkat($id_riwayat_pangkat)

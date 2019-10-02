@@ -8,12 +8,12 @@
           $uriphoto="datadosen/default/default.png";
           }
         else{
-              $uriphoto="datadosen/$dosen->id_dosen/profile/$dosen->photo";
+              $uriphoto="datadosen/profile/$dosen->photo";;
           }
       ?>
         <img class="card-img-top" src="<?php echo base_url("$uriphoto")?>" alt="Card image cap">
         <div class="card-body">
-            <p class="card-text"><?php echo base_url("$uriphoto")?> Some Dosen Photo <?php echo $dosen->photo?> text to build on the card title and make up the bulk of the card's content.</p>
+            <!-- <p class="card-text"><?php echo base_url("$uriphoto")?> Some Dosen Photo <?php echo $dosen->photo?> text to build on the card title and make up the bulk of the card's content.</p> -->
         <form action="<?php echo base_url('dosen/uploadPhoto')?>">
         <!-- <a class="btn btn-sm btn-success" href="">New Photo?</a -->
         <a class="btn btn-sm btn-danger" href="">Delete</a>
@@ -56,15 +56,15 @@
                       <div class="form-group">
                           
                           <div class="col-xs-6">
-                              <label for="first_name"><h4>NIPN</h4></label>
-                              <input type="text" class="form-control" name="nupn" id="first_name" placeholder="<?php echo $dosen->NIDN_NUPN;?>" value="<?php echo $dosen->NIDN_NUPN;?>" title="Masukan NUPN">
+                              <label for="first_name"><h4>NUPN/NIDN</h4></label>
+                              <input type="numeric" class="form-control" name="nupn" id="first_name" placeholder="<?php echo $dosen->NIDN_NUPN;?>" value="<?php echo $dosen->NIDN_NUPN;?>" title="Masukan NUPN" >
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                             <label for="last_name"><h4>Nama</h4></label>
-                              <input type="text" class="form-control" name="nama" id="last_name" placeholder="<?php echo $dosen->nama;?>" value="<?php echo $dosen->nama;?>" title="Masukan Nama">
+                              <input type="text" class="form-control" name="nama" id="last_name" placeholder="<?php echo $dosen->nama;?>" value="<?php echo $dosen->nama;?>" title="Masukan Nama" pattern="[a-zA-Z][a-zA-Z ]+">
                           </div>
                       </div>
           
@@ -72,28 +72,28 @@
                           
                           <div class="col-xs-6">
                               <label for="phone"><h4>Tempat Lahir</h4></label>
-                              <input type="text" class="form-control" name="tempatlahir" id="phone" placeholder="<?php echo $dosen->tempat_lahir;?>" value="<?php echo $dosen->tempat_lahir;?>" title="Masukan Tempat Lahir">
+                              <input type="text" class="form-control" name="tempatlahir" id="phone" placeholder="<?php echo $dosen->tempat_lahir;?>" value="<?php echo $dosen->tempat_lahir;?>" title="Masukan Tempat Lahir" pattern="[a-zA-Z][a-zA-Z ]+">
                           </div>
                       </div>
           
                       <div class="form-group">
                           <div class="col-xs-6">
                              <label for="mobile"><h4>Tanggal Lahir</h4></label>
-                              <input id="datepicker" type="text" class="form-control" name="tanggallahir" id="mobile" placeholder="<?php echo $dosen->tanggal_lahir;?>" value="<?php echo $dosen->tanggal_lahir;?>" title="Masukan Tanggal Lahir">
+                              <input id="datepicker" type="text" class="form-control" name="tanggallahir" id="mobile" placeholder="<?php echo $dosen->tanggal_lahir;?>" value="<?php echo $dosen->tanggal_lahir;?>" title="Masukan Tanggal Lahir" pattern="([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))">
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="email"><h4>Gelar Depan</h4></label>
-                              <input  type="text" class="form-control" name="gelardepan" id="email" placeholder="<?php echo $dosen->gelar_depan;?>" value="<?php echo $dosen->gelar_depan;?>" title="Masukan Gelar Depan">
+                              <input  type="text" class="form-control" name="gelardepan" id="email" placeholder="<?php echo $dosen->gelar_depan;?>" value="<?php echo $dosen->gelar_depan;?>" title="Masukan Gelar Depan" pattern="[a-zA-Z,.][a-zA-Z,.]+">
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="email"><h4>Gelar Belakang</h4></label>
-                              <input type="text" class="form-control" name="gelarbelakang" id="email" placeholder="<?php echo $dosen->gelar_belakang;?>" value="<?php echo $dosen->gelar_belakang;?>" title="Masukan Gelar Belakang">
+                              <input type="text" class="form-control" name="gelarbelakang" id="email" placeholder="<?php echo $dosen->gelar_belakang;?>" value="<?php echo $dosen->gelar_belakang;?>" title="Masukan Gelar Belakang" pattern="[a-zA-Z,.][a-zA-Z,.]+">
                           </div>
                       </div>
                       <div class="form-group">
@@ -116,8 +116,8 @@
                               ?>
                               <select name="jeniskelamin" class="custom-select" id="inputGroupSelect02">
                                  <!-- <option selected></option> -->
-                                 <option value="1" <?php echo $laki?>>Laki-laki</option>
-                                 <option value="2" <?php echo $wanita?>>Perempuan</option>
+                                 <option value="Laki-laki" <?php echo $laki?>>Laki-laki</option>
+                                 <option value="Perempuan" <?php echo $wanita?>>Perempuan</option>
                                  <!-- <option value="3">Three</option> -->
                               </select>
                           </div>
@@ -146,42 +146,54 @@
                           
                           <div class="col-xs-6">
                               <label for="first_name"><h4>Jenjang</h4></label>
-                              <input type="text" class="form-control" name="jenjang" id="jenjang" placeholder="" title="Jenjang">
+                              <!-- <input type="text" class="form-control" name="jenjang" id="jenjang" placeholder="" title="Jenjang"> -->
+                              <select name="jenjang" class="custom-select" id="inputGroupSelect02">
+                                 <!-- <option selected></option> -->
+                                 <option value="D1" >Diploma 1 </option>
+                                 <option value="D3" >Diploma 3 </option>
+                                 <option value="D4" >Diploma 4 </option>
+                                 <option value="S1" >Sarjana</option>
+                                 <option value="S2" >Master</option>
+                                 <option value="S3" >Doktor</option>
+
+
+                                 <!-- <option value="3">Three</option> -->
+                              </select>
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                             <label for="last_name"><h4>Perguruan Tinggi</h4></label>
-                              <input type="text" class="form-control" name="perguruan_tinggi" id="perguru" placeholder="" title="perguruan tinggi">
+                              <input type="text" class="form-control" name="perguruan_tinggi" id="perguru" placeholder="" title="perguruan tinggi" pattern="[a-zA-Z][a-zA-Z ]+" required>
                           </div>
                       </div>
           
                       <div class="form-group">
                           <div class="col-xs-6">
                              <label for="mobile"><h4>Program Studi</h4></label>
-                              <input type="text" class="form-control" name="program_studi" id="prodi" placeholder="" title="program didik">
+                              <input type="text" class="form-control" name="program_studi" id="prodi" placeholder="" title="program didik" pattern="[a-zA-Z][a-zA-Z ]+" required>
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="email"><h4>Negara</h4></label>
-                              <input type="text" class="form-control" name="negara" id="negara" placeholder="" title="Negara">
+                              <input type="text" class="form-control" name="negara" id="negara" placeholder="" title="Negara" pattern="[a-zA-Z][a-zA-Z ]+" required>
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
-                              <label for="email"><h4>Tahun Mulai</h4></label>
-                              <input type="text" class="form-control" name="tahun_mulai" id="tahunmulai" placeholder="" title="Tahun Mulai">
+                              <label for="year"><h4>Tahun Mulai</h4></label>
+                              <input type="text" class="form-control" name="tahun_mulai" id="tahunmulai" placeholder="" title="Tahun Mulai" pattern="^\d{4}$" required>
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
-                              <label for="password"><h4>Tahun Selesai</h4></label>
-                              <input type="text" class="form-control" name="tahun_selesai" id="tahunselesai" placeholder="" title="tahun selesai">
+                              <label for="year"><h4>Tahun Selesai</h4></label>
+                              <input type="text" class="form-control" name="tahun_selesai" id="tahunselesai" placeholder="" title="tahun selesai" pattern="^\d{4}$" required>
                           </div>
                       </div>
 
@@ -189,14 +201,14 @@
                           
                           <div class="col-xs-6">
                               <label for="password"><h4>Gelar</h4></label>
-                              <input type="text" class="form-control" name="gelar" id="gelar" placeholder="" title="gelar">
+                              <input type="text" class="form-control" name="gelar" id="gelar" placeholder="" title="gelar" pattern="[a-zA-Z.,][a-zA-Z.,]+"required>
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="password"><h4>Sumber Dana</h4></label>
-                              <input type="text" class="form-control" name="sumberdana" id="sumberdana" placeholder="" title="sumber dana">
+                              <input type="text" class="form-control" name="sumberdana" id="sumberdana" placeholder="" title="sumber dana" pattern="[a-zA-Z][a-zA-Z ]+" required>
                           </div>
                       </div>
                       <div class="form-group">
@@ -280,5 +292,17 @@
         $('#datepicker').datepicker({
             uiLibrary: 'bootstrap4',
             format:'yyyy-mm-dd'
+        });
+
+        $("#yearpicker").datepicker({
+            format: "yyyy",
+            viewMode: "years", 
+            minViewMode: "years"
+        });
+
+        $("#yearpicker1").datepicker({
+            format: "yyyy",
+            viewMode: "years", 
+            minViewMode: "years"
         });
     </script>

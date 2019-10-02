@@ -41,7 +41,7 @@
           <h6 class="dropdown-header">Kenaikan Jabatan</h6>
           <a class="dropdown-item" href="<?php echo site_url('jabatan/kelengkapan')?>">Pengisian Kelengkapan</a>
           <a class="dropdown-item" href="<?php echo site_url('jabatan/simulasi')?>">Simulasi Penilaian</a>
-          <a class="dropdown-item" href="<?php echo site_url('jabatan/pengajuan')?>">Pengajuan</a>
+          <!-- <a class="dropdown-item" href="<?php echo site_url('jabatan/pengajuan')?>">Pengajuan</a> -->
           <div class="dropdown-divider"></div>
         </div>
       </li>
@@ -55,7 +55,7 @@
           <h6 class="dropdown-header">Sertifikasi Dosen</h6>
           <a class="dropdown-item" href="<?php echo site_url('serdos/bkdserdos')?>"></a>
           <a class="dropdown-item" href="<?php echo site_url('serdos/simulasi')?>">Simulasi Pengajuan</a>
-          <a class="dropdown-item" href="<?php echo site_url('serdos/pengajuan')?>">Pengajuan</a>
+          <!-- <a class="dropdown-item" href="<?php echo site_url('serdos/pengajuan')?>">Pengajuan</a> -->
           <div class="dropdown-divider"></div>
         </div>
       </li>

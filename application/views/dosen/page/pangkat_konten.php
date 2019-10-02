@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-body">
             <?php
-                if($edit==1){
+                if(isset($edit)){
                    $url_tambah= base_url("Dosen/edit_pangkat/$id_pangkat");
                    echo "<form action=\"$url_tambah\" method=\"POST\">"; 
                    echo "<div class=\"form-group\">";
@@ -28,6 +28,7 @@
                 }
                 else{
                    echo "<h5>Form isian pangkat baru</h5>"; 
+                   echo "$dosen->id_dosen";
                    $url_tambah= base_url("Dosen/tambah_pangkat");
                    echo "<form action=\"$url_tambah\" method=\"POST\">"; 
                    echo "<div class=\"form-group\">";
@@ -44,7 +45,7 @@
                    echo "<option value=\"7\">Pembina Utama Madya(Gol. IV/d)</option>";
                    echo "<option value=\"8\">Pembina Utama(Gol. IV/e)</option>";
                    echo "</select>";
-                   echo "<input type=\"hidden\" name=\"id_dosen\" value=\"<?php echo $dosen->id_dosen?>\">";
+                   echo "<input type=\"hidden\" name=\"id_dosen\" value=\"$dosen->id_dosen\">";
                    echo "</div>";
                    echo "<br>";
                    echo "<button type=\"submit\" class=\"btn btn-success\">tambah</button>";

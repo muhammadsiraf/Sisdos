@@ -200,6 +200,7 @@ class Jabatan extends MY_Controller
         if(isset($post['jabatan_tujuan'])){
             if($post['jabatan_tujuan']!=null){
                 $golongan=$dosen->pangkat;
+                // echo var_dump($dosen->pangkat);
                 $golongan_tujuan=$post['jabatan_tujuan'];
 
             // echo var_dump($golongan);    
@@ -210,8 +211,15 @@ class Jabatan extends MY_Controller
 
             // echo var_dump($kredit_golongan_sekarang);
             // echo "Kreidt : ".var_dump($kredit_golongan_tujuan);
-
-                $beda_kredit=abs($kredit_golongan_sekarang->kredit-$kredit_golongan_tujuan->kredit);
+                if($kredit_golongan_sekarang==null)
+                {
+                    $beda_kredit=abs(0-$kredit_golongan_tujuan->kredit);
+                }
+                else
+                {
+                    $beda_kredit=abs($kredit_golongan_sekarang->kredit-$kredit_golongan_tujuan->kredit);
+                }
+                // echo var_dump($kredit_golongan_tujuan->kredit);
                 $data_simulasi['pendidikan']=($beda_kredit*$kredit_golongan_tujuan->pendidikan)/100;
                 $data_simulasi['penelitian']=($beda_kredit*$kredit_golongan_tujuan->penelitian)/100;
                 $data_simulasi['pengabdian']=($beda_kredit*$kredit_golongan_tujuan->pengabdian)/100;
