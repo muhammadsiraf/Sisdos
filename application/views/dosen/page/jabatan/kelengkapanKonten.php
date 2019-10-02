@@ -114,8 +114,9 @@
                   echo "<a class=\"btn btn-warning\" href=$urlberkas>view</a><br>";
                 //   echo "<button class=\"btn btn-primary\">edit<input type=\"file\" name=\"fileupload\" class=\"custom-file-input\"></button><br>";
                 }
-                echo "<input class=\"btn btn-success\" type=\"submit\" value=\"download\">
-                </td>";
+                // $faris="file/berkas/5d478f18155bc.jpg";
+                $urldownload=base_url()."SKP/download_file/$skp->berkas_bukti_capaian";
+                echo "<a class=\"btn btn-success\" href=$urldownload>Download</a><br>";
                 echo "</tr>";
                 echo "</form>";
                 $count++;

@@ -732,18 +732,10 @@ class SKP extends MY_Controller
         return $syarat;
     }
 
-    public function edit($id=null)
-    {
-       
+    public function download_file($file){
+        // echo "$url";
+        $urlbaru="file/berkas/$file";
+        force_download($urlbaru,NULL);
     }
-
-   public function delete($id=null)
-    {
-   
-    }
-
-   public function view_dosne()
-    {
-
-    }
+ 
 }
