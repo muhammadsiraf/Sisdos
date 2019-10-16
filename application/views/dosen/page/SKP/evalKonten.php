@@ -104,8 +104,8 @@
                 echo form_open_multipart($urlupdate);
                 // echo "<form action=\"$urlupdate\" method=\"POST\">";
                 echo "<input type=\"hidden\" value=\"$skp->id_pskp\" name=\"idpskp\">";
-                echo "<td><input name=\"jumlahRealisasi\" type=\"number\" class=\"form-control\" id=\"jumlahRealisasi\" aria-describedby=\"\" placeholder=\"Jumlah\" value=\"$skp->realisasi_jumlah\" type=\"number\"></td>";
-                echo "<td><input name=\"kualitasRealisasi\" type=\"number\" class=\"form-control\" id=\"kualitasRealisasi\" aria-describedby=\"\" placeholder=\"Kualitas\" value=\"$skp->realisasi_kualitas\" type=\"number\"></td>";
+                echo "<td><input name=\"jumlahRealisasi\" type=\"number\" class=\"form-control\" id=\"jumlahRealisasi\" aria-describedby=\"\" placeholder=\"Jumlah\" value=\"$skp->realisasi_jumlah\" style=\"width: 100px;\"></td>";
+                echo "<td><input name=\"kualitasRealisasi\" type=\"number\" class=\"form-control\" id=\"kualitasRealisasi\" aria-describedby=\"\" placeholder=\"Kualitas\" value=\"$skp->realisasi_kualitas\" style=\"width: 100px;\"></td>";
                 echo "<td>$skp->waktu_jumlah</td>";
                 echo "<td>$skp->waktu_satuan</td>";
                 echo "<td>";if(!$skp->berkas_bukti_capaian||$skp->berkas_bukti_capaian=="kosong"){

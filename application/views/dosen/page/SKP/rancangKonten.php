@@ -101,11 +101,11 @@
                 $uriEdit=base_url("/SKP/editSKP/");
                 echo "<form action=\"$uriEdit\" id=\"$namaid\" method=\"POST\">";
                 echo "<input name=\"idpskp\" type=\"hidden\" value=\"$skp->id_pskp\">";
-                echo "<td><input name=\"jumlahTarget\" type=\"number\" class=\"form-control\" id=\"jumlahTarget\" aria-describedby=\"\" placeholder=\"Jumlah\" value=\"$skp->target_jumlah\" type=\"number\"></td>";
-                echo "<td><input name=\"satuanTarget\" type=\"text\" class=\"form-control\" id=\"satuanTarget\" aria-describedby=\"\" placeholder=\"Satuan\" value=\"$skp->target_satuan\"></td>";
-                echo "<td><input name=\"kualitasMutu\" type=\"number\" class=\"form-control\" id=\"kualitasMutu\" aria-describedby=\"\" placeholder=\"Mutu\" value=\"$skp->kualitas_mutu\" type=\"number\"></td>";
-                echo "<td><input name=\"jumlahWaktu\" type=\"number\" class=\"form-control\" id=\"jumlahWaktu\" aria-describedby=\"\" placeholder=\"Jumlah\" value=\"$skp->waktu_jumlah\" type=\"number\"></td>";
-                echo "<td><input name=\"satuanWaktu\" type=\"text\" class=\"form-control\" id=\"satuanWaktu\" aria-describedby=\"\" placeholder=\"Satuan\" value=\"$skp->waktu_satuan\"></td>";
+                echo "<td><input name=\"jumlahTarget\" type=\"number\" class=\"form-control\" id=\"jumlahTarget\" aria-describedby=\"\" placeholder=\"Jumlah\" value=\"$skp->target_jumlah\" style=\"width: 100px;\"></td>";
+                echo "<td><input name=\"satuanTarget\" type=\"text\" class=\"form-control\" id=\"satuanTarget\" aria-describedby=\"\" placeholder=\"Satuan\" value=\"$skp->target_satuan\" style=\"width: 100px;\"></td>";
+                echo "<td><input name=\"kualitasMutu\" type=\"number\" class=\"form-control\" id=\"kualitasMutu\" aria-describedby=\"\" placeholder=\"Mutu\" value=\"$skp->kualitas_mutu\" style=\"width: 100px;\" min=\"0\" max=\"100\" ></td>";
+                echo "<td><input name=\"jumlahWaktu\" type=\"number\" class=\"form-control\" id=\"jumlahWaktu\" aria-describedby=\"\" placeholder=\"Jumlah\" value=\"$skp->waktu_jumlah\" style=\"width: 100px;\"></td>";
+                echo "<td><input name=\"satuanWaktu\" type=\"text\" class=\"form-control\" id=\"satuanWaktu\" aria-describedby=\"\" placeholder=\"Satuan\" value=\"$skp->waktu_satuan\" style=\"width: 100px;\"></td>";
                 $urldelete=base_url("/SKP/deleteSKP/$skp->id_pskp");             
                 $urlupdate=base_url("/SKP/editSKP/");  
                 echo "<td><a class=\"btn btn-danger\"href=\"$urldelete\">X</a>||<input class=\"btn btn-primary\" type=\"submit\" value=\"update\"></td>";

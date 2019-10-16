@@ -132,7 +132,7 @@
       <br>
       <h3>Hasil Penilaian Perilaku: <?php echo $tridharma->nilai_perilaku;?> </h3>
       <br>
-      <h3>Kategori :    </h3>
+      <!-- <h3>Kategori :    </h3> -->
              </div>
          </div>
     </div>

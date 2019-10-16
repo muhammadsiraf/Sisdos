@@ -19,7 +19,7 @@
 
       <div class="container-fluid">
 
-        <?php $this->load->view('dosen/_partials/breadcrumb.php')?>
+   
 
         <!-- konten  dashboard -->
         <?php $this->load->view('dosen/page/kontenProfile.php')?>
