@@ -11,7 +11,16 @@
       <thead class="table-bordered">
       <tr>
         <th scope="col">Nama: </th>
-        <th scope="col"><?php echo $dosen->nama ?></th>
+        <th scope="col"><?php 
+        if(ISSET($dosen_bawah))
+        {
+          echo $dosen_bawah->nama;
+        }
+        else{
+          echo $dosen->nama;
+        }
+         ?>
+        </th>
       </tr>
       <tr>
         <th scope="col">Status BKD:</th>
@@ -128,9 +137,27 @@
         </tbody>
       </table>
 
-      <h3>Jumlah Kredit: <?php echo $tridharma->nilai_kredit_skp;?> </h3>
+      <h3>Jumlah Kredit: <?php 
+      if(ISSET($tridharma->nilai_kredit_skp))
+      {
+        echo $tridharma->nilai_kredit_skp;
+      }
+      else
+      {
+        echo "kosong";
+      }
+      ?> </h3>
       <br>
-      <h3>Hasil Penilaian Perilaku: <?php echo $tridharma->nilai_perilaku;?> </h3>
+      <h3>Hasil Penilaian Perilaku: <?php
+      if(ISSET($tridharma->nilai_perilaku))
+      {
+        echo $tridharma->nilai_perilaku;
+      }
+      else
+      {
+        echo "kosong";
+      }
+      ?> </h3>
       <br>
       <!-- <h3>Kategori :    </h3> -->
              </div>

@@ -16,7 +16,6 @@ $route['skp/komponen'] = 'skp/viewKomponenSKP';
 $route['skp/hasil'] = 'skp/view_hasil_skp';
 $route['skp/tambah/(:num)'] = 'skp/viewTambahSKP/$1';
 
-
 $route['bkd/pendidikan']='skp/viewPendidikanBKD';
 $route['bkd/penelitian']='skp/viewPenelitianBKD';
 $route['bkd/pengabdian']='skp/viewPengabdianBKD';

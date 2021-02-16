@@ -12,6 +12,7 @@ class SKP extends MY_Controller
         parent::__construct();
 		$this->dosenRequired(array('except'=>array('')));
         $this->load->model("skp_model");
+        $this->load->model("dosen_model");
         $this->load->library('form_validation');
     }
 
@@ -311,6 +312,50 @@ class SKP extends MY_Controller
     {
         $iddosen=$this->session->userdata('dosen')->id_dosen;
         
+        $skp=$this->skp_model;
+        if(!ISSET($_POST['tahunajar'],$_POST['semester'])){
+            $tahunajar="2018-2019";
+            $semester="genap";
+            if($id_tridharma=$skp->getTridharma($iddosen,"genap","2018-2019")!=null)
+            {
+                            $tridharma=$skp->getTridharma($iddosen,"genap","2018-2019");
+                            $id_tridharma=$tridharma->id_tridharma;
+                            $dataRancanganSKP=$skp->getEvalSKP($id_tridharma);
+                            $data['idtridharma']=$id_tridharma;
+                            $data['tridharma']=$tridharma;
+                            $data['dataSKP']=$dataRancanganSKP;            
+            }
+            else{
+                $data['tridharma']=null;
+                $data['dataSKP']=null;
+            }
+            $this->load->view("dosen/page/skp/hasil_skp",$data);               
+        }
+        else{
+            $tahunajar=$_POST['tahunajar'];
+            $semester=$_POST['semester'];
+            if($id_tridharma=$skp->getTridharma($iddosen,$semester,$tahunajar)!=null)
+            {
+                            $tridharma=$skp->getTridharma($iddosen,$semester,$tahunajar);                            
+                            $id_tridharma=$tridharma->id_tridharma;
+                            $dataRancanganSKP=$skp->getEvalSKP($id_tridharma);
+                            $data['tridharma']=$tridharma;
+                            $data['id_tridharma']=$id_tridharma;
+                            $data['dataSKP']=$dataRancanganSKP;            
+            }
+            else{
+                $data['tridharma']=null;
+                $data['dataSKP']=null;
+            }
+            $this->load->view("dosen/page/skp/hasil_skp",$data);   
+        }
+    }
+
+
+    public function view_hasil_skp_dosen($id_dosen)
+    {
+        $iddosen=$id_dosen;
+        $data['dosen_bawah']=$this->dosen_model->getById($iddosen);
         $skp=$this->skp_model;
         if(!ISSET($_POST['tahunajar'],$_POST['semester'])){
             $tahunajar="2018-2019";

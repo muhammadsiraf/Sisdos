@@ -174,13 +174,13 @@
                               <input type="text" readonly class="form-control" name="first_name" id="first_name" placeholder="<?php echo $dosen->JAFA?>" title="enter your first name if any.">
                           </div>
                       </div>
-                      <div class="form-group">
+                      <!-- <div class="form-group">
                           
                           <div class="col-xs-6">
                             <label for="tmtjafa"><h4>TMT JAFA</h4></label>
-                              <input type="text" readonly class="form-control" name="last_name" id="last_name" placeholder="<?php echo $dosen->TMT_JAFA?>" title="enter your last name if any.">
+                              <input type="date" readonly class="form-control" name="last_name" id="last_name" placeholder="<?php echo $dosen->TMT_JAFA?>" title="enter your last name if any.">
                           </div>
-                      </div>
+                      </div> -->
           
                       <div class="form-group">
                           

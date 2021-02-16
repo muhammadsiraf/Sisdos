@@ -88,13 +88,21 @@
                     echo "<th scope=\"row\">Belum Mengisi</th>";
                     
                 }
-                echo "<th scope=\"row\"><a href=\"\" class=\"btn btn-primary\">detail</a></th>";
-                echo "</tr>";
-                $count++;
+                ?>
+                <th scope="row">
+                <form action="<?php echo base_url("skp/view_hasil_skp_dosen/$dosbaw->id_dosen");?>" method="POST">
+                  <input type="hidden" value="<?php echo $semester?>" name="semester">
+                  <input type="hidden" value="<?php echo $tahun?>" name="tahun">
+                  <!-- <input type="hidden" value="<?php echo $dosbaw->id_dosen?>" name="id_dosen"> -->
+                  <input type="submit" value="detail" class="btn btn-primary">
+                </form>
+                </th>
+                <!-- <a href="" class="btn btn-primary">detail</a></th>"; -->
+                </tr>
+                <?php $count++;
                 }
             }
         ?>
-        
         </tbody>
       </table>
 

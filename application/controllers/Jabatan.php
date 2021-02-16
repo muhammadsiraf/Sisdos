@@ -122,11 +122,11 @@ class Jabatan extends MY_Controller
         $kredit_penelitian=0;
         $kredit_pengabdian=0;
         $kredit_penunjang=0;
-        $data["prektek"]="BOI";
-        $dummi[0]=0;
-        $dummi[1]=1;
-        $dummi[2]=2;
-        $dummi[3]=3;
+        // $data["prektek"]="BOI";
+        // $dummi[0]=0;
+        // $dummi[1]=1;
+        // $dummi[2]=2;
+        // $dummi[3]=3;
 
         foreach($tridharma_akhir as $akhir)
         {

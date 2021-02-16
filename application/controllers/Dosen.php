@@ -258,13 +258,13 @@ class Dosen extends MY_Controller
 
         }
         $semester=$data['semester'];
-        $sems="ganjil";
         $tahun=$data['tahun'];
         $prodi=$dosen_penilai->program_didik;
         $all_dosen_bawahan=$dosen->get_all_dosen($dosen_penilai->program_didik);
         $data_nilai_dosen=$skp->get_tridharma_dosen($semester,$tahun,$prodi);
         $data['dosen_bawahan']=$all_dosen_bawahan;
         $data['nilai_dosen']=$data_nilai_dosen;
+        
         // echo var_dump($data_nilai_dosen);
         $this->load->view("dosen/page/penilaian/daftardosen",$data);        
     }
